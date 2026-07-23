@@ -306,8 +306,57 @@ function ParliamentStructure() {
   );
 }
 
+/** Three sectors of the economy infographic. */
+function EconomySectors() {
+  const cols: { head: Bilingual; sub: Bilingual; items: Bilingual[]; fill: string; stroke: string }[] = [
+    {
+      head: T('Primary', 'प्राथमिक'),
+      sub: T('Nature', 'प्रकृति'),
+      items: [T('Agriculture', 'कृषि'), T('Mining, fishing', 'खनन, मत्स्य'), T('Forestry', 'वानिकी')],
+      fill: 'var(--green-soft)',
+      stroke: 'var(--green)',
+    },
+    {
+      head: T('Secondary', 'द्वितीयक'),
+      sub: T('Industry', 'उद्योग'),
+      items: [T('Manufacturing', 'विनिर्माण'), T('Construction', 'निर्माण'), T('Factories', 'कारखाने')],
+      fill: 'var(--accent-soft)',
+      stroke: 'var(--accent)',
+    },
+    {
+      head: T('Tertiary', 'तृतीयक'),
+      sub: T('Services', 'सेवाएँ'),
+      items: [T('Banking, IT', 'बैंकिंग, IT'), T('Transport, trade', 'परिवहन, व्यापार'), T('Largest in India', 'भारत में सबसे बड़ा')],
+      fill: 'var(--primary-soft)',
+      stroke: 'var(--primary)',
+    },
+  ];
+  return (
+    <svg viewBox="0 0 400 210" {...svgBase} aria-label="Three sectors of the economy">
+      <style>{`.ch{font-size:13px;font-weight:800;font-family:inherit}
+        .sb{font-size:10px;font-family:inherit}
+        .it{fill:var(--text);font-size:10px;font-family:inherit}`}</style>
+      {cols.map((c, i) => {
+        const x = 8 + i * 130;
+        return (
+          <g key={i}>
+            <rect x={x} y="14" width="122" height="184" rx="10" fill={c.fill} stroke={c.stroke} strokeWidth="1.5" />
+            <Label b={c.head} className="ch" x={x + 61} y="40" textAnchor="middle" fill={c.stroke} />
+            <Label b={c.sub} className="sb" x={x + 61} y="56" textAnchor="middle" fill={c.stroke} />
+            <line x1={x + 14} y1="66" x2={x + 108} y2="66" stroke={c.stroke} strokeWidth="1" />
+            {c.items.map((it, j) => (
+              <Label key={j} b={it} className="it" x={x + 61} y={90 + j * 30} textAnchor="middle" />
+            ))}
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 const REGISTRY: Record<string, () => ReactNode> = {
   'parliament-structure': ParliamentStructure,
+  'economy-sectors': EconomySectors,
   'bihar-neighbours': BiharNeighbours,
   'bihar-rivers': BiharRivers,
   'ancient-centres': AncientCentres,
