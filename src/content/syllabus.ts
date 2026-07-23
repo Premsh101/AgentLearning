@@ -2,6 +2,10 @@ import type { Bilingual } from '../lib/i18n';
 import type { Chapter, Question, Subject } from './types';
 import { polityCh01 } from './polity/ch01-historical-background';
 import { polityCh02 } from './polity/ch02-making-of-constitution';
+import { polityCh03 } from './polity/ch03-preamble';
+import { polityCh04 } from './polity/ch04-fundamental-rights';
+import { historyCh01 } from './history/ch01-ancient-bihar';
+import { geographyCh01 } from './geography/ch01-bihar-geography';
 import { biharCh01 } from './bihar/ch01-general-introduction';
 
 export const SUBJECTS: Subject[] = [
@@ -61,13 +65,19 @@ export const SUBJECTS: Subject[] = [
   },
 ];
 
-export const CHAPTERS: Chapter[] = [polityCh01, polityCh02, biharCh01];
+export const CHAPTERS: Chapter[] = [
+  polityCh01,
+  polityCh02,
+  polityCh03,
+  polityCh04,
+  historyCh01,
+  geographyCh01,
+  biharCh01,
+];
 
 /** Chapters planned for upcoming content drops, shown as "coming soon". */
 export const PLANNED: Record<string, Bilingual[]> = {
   polity: [
-    { en: 'Preamble & Salient Features', hi: 'प्रस्तावना व प्रमुख विशेषताएँ' },
-    { en: 'Fundamental Rights', hi: 'मौलिक अधिकार' },
     { en: 'DPSP & Fundamental Duties', hi: 'नीति-निदेशक तत्व व मौलिक कर्तव्य' },
     { en: 'President, PM & Council of Ministers', hi: 'राष्ट्रपति, प्रधानमंत्री व मंत्रिपरिषद' },
     { en: 'Parliament & State Legislature', hi: 'संसद व राज्य विधानमंडल' },
@@ -75,13 +85,12 @@ export const PLANNED: Record<string, Bilingual[]> = {
     { en: 'Panchayati Raj (Bihar focus)', hi: 'पंचायती राज (बिहार फोकस)' },
   ],
   history: [
-    { en: 'Ancient Bihar: Magadha to Guptas', hi: 'प्राचीन बिहार: मगध से गुप्त तक' },
     { en: 'Modern India: 1857 to 1947', hi: 'आधुनिक भारत: 1857 से 1947' },
     { en: 'Freedom Struggle in Bihar', hi: 'बिहार में स्वतंत्रता संग्राम' },
   ],
   geography: [
     { en: 'Physical Geography of India', hi: 'भारत का भौतिक भूगोल' },
-    { en: 'Geography of Bihar: Rivers & Soils', hi: 'बिहार का भूगोल: नदियाँ व मिट्टियाँ' },
+    { en: 'Climate, Soils & Agriculture of Bihar', hi: 'बिहार की जलवायु, मिट्टी व कृषि' },
   ],
   economy: [
     { en: 'Basics of Indian Economy', hi: 'भारतीय अर्थव्यवस्था की मूल बातें' },
@@ -111,5 +120,9 @@ export const QUESTION_BANK: Question[] = CHAPTERS.flatMap((c) => c.quiz);
 export const TOPIC_LABELS: Record<string, Bilingual> = {
   'polity-historical': { en: 'Polity: Historical Background', hi: 'राजव्यवस्था: ऐतिहासिक पृष्ठभूमि' },
   'polity-making': { en: 'Polity: Making of the Constitution', hi: 'राजव्यवस्था: संविधान निर्माण' },
+  'polity-preamble': { en: 'Polity: Preamble & Features', hi: 'राजव्यवस्था: प्रस्तावना व विशेषताएँ' },
+  'polity-rights': { en: 'Polity: Fundamental Rights', hi: 'राजव्यवस्था: मौलिक अधिकार' },
+  'history-ancient-bihar': { en: 'History: Ancient Bihar', hi: 'इतिहास: प्राचीन बिहार' },
+  'geography-bihar': { en: 'Geography: Bihar', hi: 'भूगोल: बिहार' },
   'bihar-general': { en: 'Bihar: General Introduction', hi: 'बिहार: सामान्य परिचय' },
 };
