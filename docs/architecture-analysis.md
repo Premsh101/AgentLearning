@@ -37,6 +37,20 @@ The correct mental model is not "a company of 12 agents." It is:
 
 ---
 
+## Locked product decisions (2026-07-23)
+
+Confirmed by the product owner — these are commitments, not options:
+
+1. **Hindi/bilingual content from day one.** Every piece of content carries `en` + `hi`; the UI itself is bilingual with a global language toggle.
+2. **Offline-first PWA + PDF export.** The app ships as an installable PWA; chapters and question banks work offline. PDF export via print-optimized rendering (no server-side PDF stack in MVP).
+3. **Mock-test engine with real exam simulation.** Timer, question palette, mark-for-review, skip tracking, optional negative marking (BPSC prelims currently has none — configurable), score + per-topic breakdown.
+4. **"Report a mistake" button** on every chapter and question, feeding a correction workflow (stored locally + pre-filled GitHub issue in MVP).
+5. **No custom TTS/STT.** Voice uses the browser Web Speech API only — `speechSynthesis` for read-aloud, `SpeechRecognition` for voice input (interview practice later). Zero server voice cost.
+6. **Pluggable AI provider layer.** The user chooses the LLM backend in Settings: **Claude (Anthropic) · OpenAI · OpenAI-compatible API · Google Gemini · Vertex AI · Local LLM (Ollama)** — with a per-provider model dropdown (fetched live from the provider where the API allows, static fallback otherwise). API keys stay in the browser (localStorage); no keys on our servers in MVP.
+7. **Content standard:** top-notch accuracy, simple and easy language, and **mandatory takeaway notes at the end of every chapter**.
+
+---
+
 ## Agent-by-agent verdict
 
 ### CEO Agent (orchestrator) — ❌ Not needed as an agent
