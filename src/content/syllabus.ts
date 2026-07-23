@@ -5,10 +5,13 @@ import { polityCh02 } from './polity/ch02-making-of-constitution';
 import { polityCh03 } from './polity/ch03-preamble';
 import { polityCh04 } from './polity/ch04-fundamental-rights';
 import { polityCh05 } from './polity/ch05-dpsp-duties';
+import { polityCh06 } from './polity/ch06-parliament';
 import { historyCh01 } from './history/ch01-ancient-bihar';
 import { historyCh02 } from './history/ch02-freedom-struggle-bihar';
+import { historyCh03 } from './history/ch03-modern-india';
 import { geographyCh01 } from './geography/ch01-bihar-geography';
 import { biharCh01 } from './bihar/ch01-general-introduction';
+import { biharCh02 } from './bihar/ch02-art-culture';
 
 export const SUBJECTS: Subject[] = [
   {
@@ -73,23 +76,25 @@ export const CHAPTERS: Chapter[] = [
   polityCh03,
   polityCh04,
   polityCh05,
+  polityCh06,
   historyCh01,
   historyCh02,
+  historyCh03,
   geographyCh01,
   biharCh01,
+  biharCh02,
 ];
 
 /** Chapters planned for upcoming content drops, shown as "coming soon". */
 export const PLANNED: Record<string, Bilingual[]> = {
   polity: [
     { en: 'President, PM & Council of Ministers', hi: 'राष्ट्रपति, प्रधानमंत्री व मंत्रिपरिषद' },
-    { en: 'Parliament & State Legislature', hi: 'संसद व राज्य विधानमंडल' },
     { en: 'Judiciary', hi: 'न्यायपालिका' },
     { en: 'Panchayati Raj (Bihar focus)', hi: 'पंचायती राज (बिहार फोकस)' },
   ],
   history: [
-    { en: 'Modern India: 1857 to 1947', hi: 'आधुनिक भारत: 1857 से 1947' },
     { en: 'Medieval Bihar', hi: 'मध्यकालीन बिहार' },
+    { en: 'Post-Independence Bihar', hi: 'स्वतंत्रता के बाद का बिहार' },
   ],
   geography: [
     { en: 'Physical Geography of India', hi: 'भारत का भौतिक भूगोल' },
@@ -104,9 +109,8 @@ export const PLANNED: Record<string, Bilingual[]> = {
     { en: 'Space & Defence Technology', hi: 'अंतरिक्ष व रक्षा प्रौद्योगिकी' },
   ],
   bihar: [
-    { en: 'History of Bihar', hi: 'बिहार का इतिहास' },
     { en: 'Bihar: Schemes & Governance', hi: 'बिहार: योजनाएँ व शासन' },
-    { en: 'Art & Culture of Bihar', hi: 'बिहार की कला एवं संस्कृति' },
+    { en: 'Bihar Economy & Agriculture', hi: 'बिहार अर्थव्यवस्था व कृषि' },
   ],
 };
 
@@ -126,8 +130,11 @@ export const TOPIC_LABELS: Record<string, Bilingual> = {
   'polity-preamble': { en: 'Polity: Preamble & Features', hi: 'राजव्यवस्था: प्रस्तावना व विशेषताएँ' },
   'polity-rights': { en: 'Polity: Fundamental Rights', hi: 'राजव्यवस्था: मौलिक अधिकार' },
   'polity-dpsp': { en: 'Polity: DPSP & Duties', hi: 'राजव्यवस्था: नीति-निदेशक तत्व व कर्तव्य' },
+  'polity-parliament': { en: 'Polity: Parliament', hi: 'राजव्यवस्था: संसद' },
   'history-ancient-bihar': { en: 'History: Ancient Bihar', hi: 'इतिहास: प्राचीन बिहार' },
   'history-freedom-bihar': { en: 'History: Bihar in Freedom Struggle', hi: 'इतिहास: स्वतंत्रता संग्राम में बिहार' },
+  'history-modern-india': { en: 'History: Modern India', hi: 'इतिहास: आधुनिक भारत' },
   'geography-bihar': { en: 'Geography: Bihar', hi: 'भूगोल: बिहार' },
   'bihar-general': { en: 'Bihar: General Introduction', hi: 'बिहार: सामान्य परिचय' },
+  'bihar-culture': { en: 'Bihar: Art & Culture', hi: 'बिहार: कला व संस्कृति' },
 };

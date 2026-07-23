@@ -264,7 +264,50 @@ function BiharFreedomSites() {
   );
 }
 
+/** Structure of the Union Parliament (Article 79). */
+function ParliamentStructure() {
+  return (
+    <svg viewBox="0 0 400 250" {...svgBase} aria-label="Structure of Parliament">
+      <style>{`.box{stroke-width:1.5}
+        .hd{fill:#fff;font-size:12px;font-weight:800;font-family:inherit}
+        .t{fill:var(--text);font-size:10px;font-family:inherit}
+        .cap{fill:var(--text-dim);font-size:10px;font-family:inherit}
+        .ln{stroke:var(--text-dim);stroke-width:1.5}`}</style>
+      {/* President */}
+      <rect className="box" x="130" y="14" width="140" height="40" rx="8" fill="var(--accent)" stroke="var(--accent)" />
+      <Label b={T('President', 'राष्ट्रपति')} className="hd" x="200" y="33" textAnchor="middle" />
+      <Label b={T('(part of Parliament)', '(संसद का अंग)')} className="cap" x="200" y="47" textAnchor="middle" fill="#fff" />
+      {/* connectors */}
+      <line className="ln" x1="200" y1="54" x2="200" y2="70" />
+      <line className="ln" x1="95" y1="70" x2="305" y2="70" />
+      <line className="ln" x1="95" y1="70" x2="95" y2="86" />
+      <line className="ln" x1="305" y1="70" x2="305" y2="86" />
+      {/* Rajya Sabha */}
+      <rect className="box" x="12" y="86" width="166" height="150" rx="8" fill="var(--primary-soft)" stroke="var(--primary)" />
+      <rect x="12" y="86" width="166" height="30" rx="8" fill="var(--primary)" />
+      <Label b={T('Rajya Sabha', 'राज्य सभा')} className="hd" x="95" y="106" textAnchor="middle" />
+      <Label b={T('Council of States', 'राज्यों की परिषद')} className="t" x="95" y="134" textAnchor="middle" />
+      <Label b={T('Max 250 (238 + 12 nominated)', 'अधिकतम 250 (238 + 12 मनोनीत)')} className="t" x="95" y="152" textAnchor="middle" fontSize={9} />
+      <Label b={T('Permanent house', 'स्थायी सदन')} className="t" x="95" y="170" textAnchor="middle" fontSize={9} />
+      <Label b={T('6-year term', '6 वर्ष कार्यकाल')} className="t" x="95" y="188" textAnchor="middle" fontSize={9} />
+      <Label b={T('Chair: Vice-President', 'सभापति: उपराष्ट्रपति')} className="t" x="95" y="206" textAnchor="middle" fontSize={9} />
+      <Label b={T('Min age 30', 'न्यूनतम आयु 30')} className="t" x="95" y="224" textAnchor="middle" fontSize={9} />
+      {/* Lok Sabha */}
+      <rect className="box" x="222" y="86" width="166" height="150" rx="8" fill="var(--green-soft)" stroke="var(--green)" />
+      <rect x="222" y="86" width="166" height="30" rx="8" fill="var(--green)" />
+      <Label b={T('Lok Sabha', 'लोक सभा')} className="hd" x="305" y="106" textAnchor="middle" />
+      <Label b={T('House of the People', 'लोगों का सदन')} className="t" x="305" y="134" textAnchor="middle" />
+      <Label b={T('Max 550; directly elected', 'अधिकतम 550; प्रत्यक्ष निर्वाचित')} className="t" x="305" y="152" textAnchor="middle" fontSize={9} />
+      <Label b={T('5-year term', '5 वर्ष कार्यकाल')} className="t" x="305" y="170" textAnchor="middle" fontSize={9} />
+      <Label b={T('Can be dissolved', 'विघटित हो सकती है')} className="t" x="305" y="188" textAnchor="middle" fontSize={9} />
+      <Label b={T('Chair: Speaker', 'पीठासीन: अध्यक्ष')} className="t" x="305" y="206" textAnchor="middle" fontSize={9} />
+      <Label b={T('Min age 25', 'न्यूनतम आयु 25')} className="t" x="305" y="224" textAnchor="middle" fontSize={9} />
+    </svg>
+  );
+}
+
 const REGISTRY: Record<string, () => ReactNode> = {
+  'parliament-structure': ParliamentStructure,
   'bihar-neighbours': BiharNeighbours,
   'bihar-rivers': BiharRivers,
   'ancient-centres': AncientCentres,

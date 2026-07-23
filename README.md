@@ -10,7 +10,7 @@ An AI-powered, **bilingual (Hindi + English)**, **offline-first** study operatin
 
 | Area | Status | AI or code? |
 |---|---|---|
-| **Bilingual study material** (Polity ×5, History ×2, Geography ×1, Bihar GK ×1) with chapter takeaways | ✅ | Build-time content |
+| **Bilingual study material** (Polity ×6, History ×3, Geography ×1, Bihar GK ×2) with chapter takeaways | ✅ | Build-time content |
 | **Visual learning** — inline-SVG maps, infographics & timelines | ✅ | Build-time content (offline-safe) |
 | **Read-aloud** (Hindi/English) | ✅ | Browser TTS (`speechSynthesis`) — no server voice |
 | **PDF export** of any chapter | ✅ | Print-optimized CSS |
