@@ -1,9 +1,20 @@
-import type { Block } from '../content/types';
+import type { Block, NoteKind } from '../content/types';
 import { useLang } from '../lib/i18n';
 import { RichText } from './RichText';
+import { Timeline } from './Timeline';
+import { Figure } from './figures/Figures';
+
+const NOTE_STYLE: Record<NoteKind, { cls: string; icon: string; en: string; hi: string }> = {
+  trick: { cls: 'note-trick', icon: '🧠', en: 'Memory trick', hi: 'याद रखने की ट्रिक' },
+  why: { cls: 'note-why', icon: '🎯', en: 'Why it matters', hi: 'यह क्यों ज़रूरी है' },
+  analogy: { cls: 'note-analogy', icon: '💡', en: 'Think of it like this', hi: 'ऐसे समझें' },
+  story: { cls: 'note-story', icon: '📖', en: 'The story', hi: 'कहानी' },
+  trap: { cls: 'note-trap', icon: '⚠️', en: 'Exam trap', hi: 'परीक्षा जाल' },
+  info: { cls: 'note-info', icon: 'ℹ️', en: 'Note', hi: 'ध्यान दें' },
+};
 
 export function Blocks({ blocks }: { blocks: Block[] }) {
-  const { tb } = useLang();
+  const { tb, lang } = useLang();
   return (
     <div className="content-section">
       {blocks.map((b, i) => {
@@ -50,13 +61,22 @@ export function Blocks({ blocks }: { blocks: Block[] }) {
                 </table>
               </div>
             );
-          case 'note':
+          case 'note': {
+            const style = NOTE_STYLE[b.kind ?? 'trick'];
+            const title = b.title ? tb(b.title) : lang === 'hi' ? style.hi : style.en;
             return (
-              <div className="note-box" key={i}>
-                {b.title && <div className="note-title">💡 {tb(b.title)}</div>}
+              <div className={`note-box ${style.cls}`} key={i}>
+                <div className="note-title">
+                  {style.icon} {title}
+                </div>
                 <RichText text={tb(b.text)} />
               </div>
             );
+          }
+          case 'timeline':
+            return <Timeline key={i} events={b.events} caption={b.caption} />;
+          case 'figure':
+            return <Figure key={i} figureId={b.figureId} caption={b.caption} />;
         }
       })}
     </div>

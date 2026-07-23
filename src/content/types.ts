@@ -5,11 +5,26 @@ import type { Bilingual } from '../lib/i18n';
  * deterministic, bilingual by construction, and safe to export to PDF.
  * Inline **bold** is supported inside any text.
  */
+export interface TimelineEvent {
+  when: Bilingual;
+  label: Bilingual;
+}
+
+/**
+ * A note-box variant. Dual-coding & psychology: 'trick' = mnemonic,
+ * 'why' = relevance framing, 'analogy' = concrete comparison,
+ * 'story' = narrative hook, 'trap' = common exam trap to avoid.
+ */
+export type NoteKind = 'trick' | 'why' | 'analogy' | 'story' | 'trap' | 'info';
+
 export type Block =
   | { type: 'p'; text: Bilingual }
   | { type: 'list'; items: Bilingual[]; ordered?: boolean }
   | { type: 'table'; caption?: Bilingual; headers: Bilingual[]; rows: Bilingual[][] }
-  | { type: 'note'; title?: Bilingual; text: Bilingual };
+  | { type: 'note'; kind?: NoteKind; title?: Bilingual; text: Bilingual }
+  | { type: 'timeline'; caption?: Bilingual; events: TimelineEvent[] }
+  /** Renders a registered inline-SVG figure (map / infographic / diagram) by id. */
+  | { type: 'figure'; figureId: string; caption?: Bilingual };
 
 export interface Section {
   id: string;

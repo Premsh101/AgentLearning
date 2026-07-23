@@ -10,7 +10,8 @@ An AI-powered, **bilingual (Hindi + English)**, **offline-first** study operatin
 
 | Area | Status | AI or code? |
 |---|---|---|
-| **Bilingual study material** (Polity ×2, Bihar GK ×1) with chapter takeaways | ✅ | Build-time content |
+| **Bilingual study material** (Polity ×4, History ×1, Geography ×1, Bihar GK ×1) with chapter takeaways | ✅ | Build-time content |
+| **Visual learning** — inline-SVG maps, infographics & timelines | ✅ | Build-time content (offline-safe) |
 | **Read-aloud** (Hindi/English) | ✅ | Browser TTS (`speechSynthesis`) — no server voice |
 | **PDF export** of any chapter | ✅ | Print-optimized CSS |
 | **Daily Quiz** engine with instant explanations | ✅ | Deterministic selection over question bank |
@@ -50,9 +51,16 @@ Uses the **browser's built-in Web Speech API** only — `speechSynthesis` for re
 
 ## Content model
 
-Content is authored as **structured, bilingual data** (`src/content/`), not raw markdown — every string carries `{ en, hi }`, so the language toggle is instant and correct everywhere, and rendering to screen or PDF stays deterministic. Each chapter has: intro, sections (paragraphs / lists / tables / note-boxes), **mandatory takeaway notes**, and a tagged question bank.
+Content is authored as **structured, bilingual data** (`src/content/`), not raw markdown — every string carries `{ en, hi }`, so the language toggle is instant and correct everywhere, and rendering to screen or PDF stays deterministic. Each chapter has: intro, sections (paragraphs / lists / tables / **timelines** / **figures** / psychology-based note-boxes), **mandatory takeaway notes**, and a tagged question bank.
 
-Adding a chapter = add one typed file under `src/content/<subject>/` and register it in `src/content/syllabus.ts`. No code changes elsewhere.
+### Learning design (why the content sticks)
+Chapters are written for real aspirants, applying a few well-known learning principles:
+- **Dual coding** — key facts are paired with a visual: inline-SVG **maps** (Bihar & neighbours, river system, ancient heritage centres), **infographics** (Preamble keywords, the six Fundamental Rights) and **timelines** (dynasties, court judgments). All SVG, so they're crisp, tiny, work offline and need no external images.
+- **Memory hooks & mnemonics** — colour-coded note-boxes: 🧠 memory trick, 🎯 why it matters, 💡 analogy, 📖 story, ⚠️ exam trap.
+- **Chunking & retrieval** — short labelled sections, then a per-chapter quiz, then takeaways for spaced revision.
+- **Simple language** — plain Hindi/English a first-time learner can follow, with the exam angle made explicit.
+
+Adding a chapter = add one typed file under `src/content/<subject>/` and register it in `src/content/syllabus.ts`. Adding a diagram = add one component to `src/components/figures/Figures.tsx` and reference it by id. No other code changes.
 
 ---
 
@@ -64,6 +72,10 @@ npm run dev        # http://localhost:5173
 npm run build      # typecheck + production build to dist/
 npm run preview    # serve the production build
 ```
+
+## Deployment
+
+Ships as a static PWA behind nginx via a multi-stage `Dockerfile`, designed for **Coolify on a KVM VPS**. No backend, no database, no server-side secrets. See [`docs/deployment.md`](docs/deployment.md) for the full Coolify setup.
 
 ---
 
