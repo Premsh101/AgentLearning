@@ -10,6 +10,8 @@ import { historyCh01 } from './history/ch01-ancient-bihar';
 import { historyCh02 } from './history/ch02-freedom-struggle-bihar';
 import { historyCh03 } from './history/ch03-modern-india';
 import { geographyCh01 } from './geography/ch01-bihar-geography';
+import { economyCh01 } from './economy/ch01-indian-economy-basics';
+import { scienceCh01 } from './science/ch01-everyday-science';
 import { biharCh01 } from './bihar/ch01-general-introduction';
 import { biharCh02 } from './bihar/ch02-art-culture';
 
@@ -81,6 +83,8 @@ export const CHAPTERS: Chapter[] = [
   historyCh02,
   historyCh03,
   geographyCh01,
+  economyCh01,
+  scienceCh01,
   biharCh01,
   biharCh02,
 ];
@@ -101,11 +105,11 @@ export const PLANNED: Record<string, Bilingual[]> = {
     { en: 'Climate, Soils & Agriculture of Bihar', hi: 'बिहार की जलवायु, मिट्टी व कृषि' },
   ],
   economy: [
-    { en: 'Basics of Indian Economy', hi: 'भारतीय अर्थव्यवस्था की मूल बातें' },
+    { en: 'Budget, Banking & Inflation', hi: 'बजट, बैंकिंग व मुद्रास्फीति' },
     { en: 'Bihar Economic Survey Highlights', hi: 'बिहार आर्थिक सर्वेक्षण के मुख्य बिंदु' },
   ],
   science: [
-    { en: 'Everyday Science', hi: 'दैनिक जीवन का विज्ञान' },
+    { en: 'Human Body & Health', hi: 'मानव शरीर व स्वास्थ्य' },
     { en: 'Space & Defence Technology', hi: 'अंतरिक्ष व रक्षा प्रौद्योगिकी' },
   ],
   bihar: [
@@ -135,6 +139,8 @@ export const TOPIC_LABELS: Record<string, Bilingual> = {
   'history-freedom-bihar': { en: 'History: Bihar in Freedom Struggle', hi: 'इतिहास: स्वतंत्रता संग्राम में बिहार' },
   'history-modern-india': { en: 'History: Modern India', hi: 'इतिहास: आधुनिक भारत' },
   'geography-bihar': { en: 'Geography: Bihar', hi: 'भूगोल: बिहार' },
+  'economy-basics': { en: 'Economy: Basics', hi: 'अर्थव्यवस्था: मूल बातें' },
+  'science-everyday': { en: 'Science: Everyday Science', hi: 'विज्ञान: दैनिक विज्ञान' },
   'bihar-general': { en: 'Bihar: General Introduction', hi: 'बिहार: सामान्य परिचय' },
   'bihar-culture': { en: 'Bihar: Art & Culture', hi: 'बिहार: कला व संस्कृति' },
 };
