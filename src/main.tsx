@@ -8,6 +8,7 @@ import { Learn } from './pages/Learn';
 import { SubjectView } from './pages/SubjectView';
 import { ChapterView } from './pages/ChapterView';
 import { DailyQuiz } from './pages/DailyQuiz';
+import { CurrentAffairs } from './pages/CurrentAffairs';
 import { MockTest } from './pages/MockTest';
 import { Mentor } from './pages/Mentor';
 import { Settings } from './pages/Settings';
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path="learn/:subjectId" element={<SubjectView />} />
             <Route path="chapter/:chapterId" element={<ChapterView />} />
             <Route path="quiz" element={<DailyQuiz />} />
+            <Route path="current-affairs" element={<CurrentAffairs />} />
             <Route path="mock" element={<MockTest />} />
             <Route path="mentor" element={<Mentor />} />
             <Route path="settings" element={<Settings />} />

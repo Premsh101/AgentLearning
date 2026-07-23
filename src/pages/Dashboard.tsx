@@ -57,6 +57,12 @@ export function Dashboard() {
           <h2 style={{ marginTop: 0 }}>✅ {t('nav.quiz')}</h2>
           <p style={{ color: 'var(--text-dim)', margin: 0 }}>{t('quiz.desc')}</p>
         </Link>
+        <Link to="/current-affairs" className="card" style={{ color: 'var(--text)' }}>
+          <h2 style={{ marginTop: 0 }}>📰 {t('nav.ca')}</h2>
+          <p style={{ color: 'var(--text-dim)', margin: 0 }}>
+            {lang === 'hi' ? 'हर समाचार को सारांश, तथ्य, MCQ व मुख्य प्रश्नों सहित परीक्षा सामग्री में बदलें।' : 'Turn any news into exam material — summary, facts, MCQs and mains questions.'}
+          </p>
+        </Link>
         <Link to="/mock" className="card" style={{ color: 'var(--text)' }}>
           <h2 style={{ marginTop: 0 }}>⏱️ {t('nav.mock')}</h2>
           <p style={{ color: 'var(--text-dim)', margin: 0 }}>{t('mock.desc')}</p>
