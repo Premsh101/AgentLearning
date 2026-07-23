@@ -195,12 +195,83 @@ function FundamentalRights() {
   );
 }
 
+/** DPSP classification infographic: three schools with example articles. */
+function DpspCategories() {
+  const cols: { head: Bilingual; items: Bilingual[]; fill: string; stroke: string }[] = [
+    {
+      head: T('Socialist', 'समाजवादी'),
+      items: [T('Art 38, 39 — welfare, resources', 'अनु. 38, 39 — कल्याण, संसाधन'), T('Art 41–43 — work, wages', 'अनु. 41–43 — कार्य, मज़दूरी'), T('Art 47 — nutrition, health', 'अनु. 47 — पोषण, स्वास्थ्य')],
+      fill: 'var(--primary-soft)',
+      stroke: 'var(--primary)',
+    },
+    {
+      head: T('Gandhian', 'गांधीवादी'),
+      items: [T('Art 40 — village panchayats', 'अनु. 40 — ग्राम पंचायत'), T('Art 43 — cottage industry', 'अनु. 43 — कुटीर उद्योग'), T('Art 46, 48 — weaker sections, cow', 'अनु. 46, 48 — दुर्बल वर्ग, गोरक्षा')],
+      fill: 'var(--accent-soft)',
+      stroke: 'var(--accent)',
+    },
+    {
+      head: T('Liberal–Intellectual', 'उदार–बौद्धिक'),
+      items: [T('Art 44 — Uniform Civil Code', 'अनु. 44 — समान नागरिक संहिता'), T('Art 48A — environment', 'अनु. 48A — पर्यावरण'), T('Art 50 — separate judiciary', 'अनु. 50 — पृथक न्यायपालिका')],
+      fill: 'var(--green-soft)',
+      stroke: 'var(--green)',
+    },
+  ];
+  return (
+    <svg viewBox="0 0 400 230" {...svgBase} aria-label="Classification of Directive Principles">
+      <style>{`.ch{font-size:12px;font-weight:800;font-family:inherit}
+        .it{fill:var(--text);font-size:9.5px;font-family:inherit}`}</style>
+      {cols.map((c, i) => {
+        const x = 8 + i * 130;
+        return (
+          <g key={i}>
+            <rect x={x} y="16" width="122" height="200" rx="10" fill={c.fill} stroke={c.stroke} strokeWidth="1.5" />
+            <Label b={c.head} className="ch" x={x + 61} y="38" textAnchor="middle" fill={c.stroke} fontSize={i === 2 ? 10 : 12} />
+            <line x1={x + 12} y1="48" x2={x + 110} y2="48" stroke={c.stroke} strokeWidth="1" />
+            {c.items.map((it, j) => (
+              <Label key={j} b={it} className="it" x={x + 10} y={70 + j * 40} />
+            ))}
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+/** Schematic map of key freedom-struggle sites in Bihar. */
+function BiharFreedomSites() {
+  const dots: { x: number; y: number; n: Bilingual; d: Bilingual }[] = [
+    { x: 120, y: 55, n: T('Champaran', 'चंपारण'), d: T("Gandhi's 1st Satyagraha, 1917", 'गांधी का प्रथम सत्याग्रह, 1917') },
+    { x: 235, y: 130, n: T('Patna', 'पटना'), d: T('Sapt Shaheed, Quit India 1942', 'सप्त शहीद, भारत छोड़ो 1942') },
+    { x: 120, y: 150, n: T('Jagdishpur', 'जगदीशपुर'), d: T('Kunwar Singh, Revolt of 1857', 'कुँवर सिंह, 1857 की क्रांति') },
+  ];
+  return (
+    <svg viewBox="0 0 400 210" {...svgBase} aria-label="Freedom struggle sites in Bihar">
+      <style>{`.land{fill:var(--surface-2);stroke:var(--border)}
+        .ganga{fill:none;stroke:#1f6fb2;stroke-width:5}
+        .nm{fill:var(--text);font-size:12px;font-weight:700;font-family:inherit}
+        .ds{fill:var(--text-dim);font-size:10px;font-family:inherit}`}</style>
+      <rect className="land" x="10" y="10" width="380" height="190" rx="8" />
+      <path className="ganga" d="M15 120 Q150 100 250 120 T385 115" />
+      {dots.map((p, i) => (
+        <g key={i}>
+          <circle cx={p.x} cy={p.y} r="6" fill="var(--red)" stroke="var(--surface)" strokeWidth="1.5" />
+          <Label b={p.n} className="nm" x={p.x + 10} y={p.y + 1} />
+          <Label b={p.d} className="ds" x={p.x + 10} y={p.y + 15} />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 const REGISTRY: Record<string, () => ReactNode> = {
   'bihar-neighbours': BiharNeighbours,
   'bihar-rivers': BiharRivers,
   'ancient-centres': AncientCentres,
   'preamble-keywords': PreambleKeywords,
   'fundamental-rights': FundamentalRights,
+  'dpsp-categories': DpspCategories,
+  'bihar-freedom-sites': BiharFreedomSites,
 };
 
 export function Figure({ figureId, caption }: { figureId: string; caption?: Bilingual }) {

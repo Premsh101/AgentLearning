@@ -4,7 +4,9 @@ import { polityCh01 } from './polity/ch01-historical-background';
 import { polityCh02 } from './polity/ch02-making-of-constitution';
 import { polityCh03 } from './polity/ch03-preamble';
 import { polityCh04 } from './polity/ch04-fundamental-rights';
+import { polityCh05 } from './polity/ch05-dpsp-duties';
 import { historyCh01 } from './history/ch01-ancient-bihar';
+import { historyCh02 } from './history/ch02-freedom-struggle-bihar';
 import { geographyCh01 } from './geography/ch01-bihar-geography';
 import { biharCh01 } from './bihar/ch01-general-introduction';
 
@@ -70,7 +72,9 @@ export const CHAPTERS: Chapter[] = [
   polityCh02,
   polityCh03,
   polityCh04,
+  polityCh05,
   historyCh01,
+  historyCh02,
   geographyCh01,
   biharCh01,
 ];
@@ -78,7 +82,6 @@ export const CHAPTERS: Chapter[] = [
 /** Chapters planned for upcoming content drops, shown as "coming soon". */
 export const PLANNED: Record<string, Bilingual[]> = {
   polity: [
-    { en: 'DPSP & Fundamental Duties', hi: 'नीति-निदेशक तत्व व मौलिक कर्तव्य' },
     { en: 'President, PM & Council of Ministers', hi: 'राष्ट्रपति, प्रधानमंत्री व मंत्रिपरिषद' },
     { en: 'Parliament & State Legislature', hi: 'संसद व राज्य विधानमंडल' },
     { en: 'Judiciary', hi: 'न्यायपालिका' },
@@ -86,7 +89,7 @@ export const PLANNED: Record<string, Bilingual[]> = {
   ],
   history: [
     { en: 'Modern India: 1857 to 1947', hi: 'आधुनिक भारत: 1857 से 1947' },
-    { en: 'Freedom Struggle in Bihar', hi: 'बिहार में स्वतंत्रता संग्राम' },
+    { en: 'Medieval Bihar', hi: 'मध्यकालीन बिहार' },
   ],
   geography: [
     { en: 'Physical Geography of India', hi: 'भारत का भौतिक भूगोल' },
@@ -122,7 +125,9 @@ export const TOPIC_LABELS: Record<string, Bilingual> = {
   'polity-making': { en: 'Polity: Making of the Constitution', hi: 'राजव्यवस्था: संविधान निर्माण' },
   'polity-preamble': { en: 'Polity: Preamble & Features', hi: 'राजव्यवस्था: प्रस्तावना व विशेषताएँ' },
   'polity-rights': { en: 'Polity: Fundamental Rights', hi: 'राजव्यवस्था: मौलिक अधिकार' },
+  'polity-dpsp': { en: 'Polity: DPSP & Duties', hi: 'राजव्यवस्था: नीति-निदेशक तत्व व कर्तव्य' },
   'history-ancient-bihar': { en: 'History: Ancient Bihar', hi: 'इतिहास: प्राचीन बिहार' },
+  'history-freedom-bihar': { en: 'History: Bihar in Freedom Struggle', hi: 'इतिहास: स्वतंत्रता संग्राम में बिहार' },
   'geography-bihar': { en: 'Geography: Bihar', hi: 'भूगोल: बिहार' },
   'bihar-general': { en: 'Bihar: General Introduction', hi: 'बिहार: सामान्य परिचय' },
 };
