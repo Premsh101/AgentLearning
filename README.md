@@ -15,6 +15,7 @@ An AI-powered, **bilingual (Hindi + English)**, **offline-first** study operatin
 | **Read-aloud** (Hindi/English) | ✅ | Browser TTS (`speechSynthesis`) — no server voice |
 | **PDF export** of any chapter | ✅ | Print-optimized CSS |
 | **Daily Quiz** engine with instant explanations | ✅ | Deterministic selection over question bank |
+| **Current Affairs** — digest + "news → exam material" generator | ✅ | Curated content + client-side AI (user's key) |
 | **Mock Test** — real exam simulation | ✅ | Pure code |
 | **"Report a mistake"** on every chapter | ✅ | Local store + pre-filled GitHub issue |
 | **AI Mentor** chat with pluggable providers | ✅ | AI (user's own key) |
@@ -81,8 +82,8 @@ Ships as a static PWA behind nginx via a multi-stage `Dockerfile`, designed for 
 
 ## Roadmap
 
-- **Phase 1 (this):** content + core code + AI mentor + mock engine + PWA. ✅
-- **Phase 2:** Current Affairs Intelligence — daily batch pipeline (dedup → BPSC-relevance → exam-content generation) with a **human review queue** before publishing; daily/weekly/monthly digests + PDF.
+- **Phase 1:** content + core code + AI mentor + mock engine + PWA. ✅
+- **Phase 2 (started):** Current Affairs Intelligence. **Delivered client-side:** a curated, static-GK-linked digest (browse by category, PDF export) and the signature **"news → exam material"** generator that turns any pasted news item into a summary, background, static-GK link, key facts, MCQs and mains questions using the user's own AI provider. **Next (server-side):** the automated daily batch pipeline (source monitoring → dedup via embeddings → BPSC-relevance classifier → exam-content generation) with a **human review queue** before publishing, and auto-assembled daily/weekly/monthly magazines. That part needs a backend and is intentionally out of the current no-backend MVP.
 - **Phase 3:** performance dashboard, spaced-repetition (FSRS), planner feedback loop, BPSC notification watcher.
 - **Phase 4:** mains answer evaluation (OCR + rubric), interview coach (browser voice), predicted-questions batch job.
 

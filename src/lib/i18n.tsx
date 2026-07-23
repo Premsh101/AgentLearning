@@ -17,6 +17,7 @@ const UI: Record<string, Bilingual> = {
   'nav.dashboard': { en: 'Dashboard', hi: 'डैशबोर्ड' },
   'nav.learn': { en: 'Learn', hi: 'अध्ययन' },
   'nav.quiz': { en: 'Daily Quiz', hi: 'दैनिक क्विज़' },
+  'nav.ca': { en: 'Current Affairs', hi: 'करेंट अफेयर्स' },
   'nav.mock': { en: 'Mock Test', hi: 'मॉक टेस्ट' },
   'nav.mentor': { en: 'AI Mentor', hi: 'AI मेंटर' },
   'nav.settings': { en: 'Settings', hi: 'सेटिंग्स' },
