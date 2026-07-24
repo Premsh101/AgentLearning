@@ -99,6 +99,15 @@ export function PYQ() {
               </Link>
             ))}
           </div>
+          <p className="hint" style={{ marginTop: 8 }}>
+            {lang === 'hi'
+              ? 'पूरा पेपर जोड़ना है? '
+              : 'Want to load a whole paper? '}
+            <Link to="/question-bank">{lang === 'hi' ? 'प्रश्न बैंक → पेपर चिपकाएँ' : 'Question Bank → Paste paper'}</Link>
+            {lang === 'hi'
+              ? ' में आधिकारिक PDF का टेक्स्ट चिपकाएँ — सभी प्रश्न उसी वर्ष में जुड़ जाएँगे।'
+              : ' — paste the official PDF text and every question is added under that year.'}
+          </p>
         </>
       )}
 

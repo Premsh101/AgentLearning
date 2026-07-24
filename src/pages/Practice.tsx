@@ -35,9 +35,9 @@ export function Practice() {
   useEffect(() => {
     setQuestions(null);
     setError('');
-    // Year practice pulls the whole year's PYQ set; otherwise a 15-question set.
+    // Year practice pulls the whole year's set (any source); otherwise 15 Qs.
     api
-      .questions({ topic, subject, year, source: year ? 'pyq' : undefined, limit: year ? 100 : 15 })
+      .questions({ topic, subject, year, limit: year ? 200 : 15 })
       .then((r) => setQuestions(r.questions))
       .catch((e) => setError(e instanceof Error ? e.message : String(e)));
   }, [topic, subject, year, nonce]);
