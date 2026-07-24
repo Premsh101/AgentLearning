@@ -28,6 +28,7 @@ const UI: Record<string, Bilingual> = {
   'nav.mentor': { en: 'AI Mentor', hi: 'AI मेंटर' },
   'nav.maps': { en: 'Maps', hi: 'मानचित्र' },
   'nav.notebook': { en: 'Notebook', hi: 'नोटबुक' },
+  'nav.syllabus': { en: 'Syllabus Index', hi: 'पाठ्यक्रम सूचकांक' },
   'nav.qbank': { en: 'Question Bank', hi: 'प्रश्न बैंक' },
   'nav.account': { en: 'Account', hi: 'खाता' },
   'nav.settings': { en: 'Settings', hi: 'सेटिंग्स' },

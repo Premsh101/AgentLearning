@@ -31,6 +31,7 @@ const Interview = lazy(() => import('./pages/Interview').then((m) => ({ default:
 const Mentor = lazy(() => import('./pages/Mentor').then((m) => ({ default: m.Mentor })));
 const Maps = lazy(() => import('./pages/Maps').then((m) => ({ default: m.Maps })));
 const Notebook = lazy(() => import('./pages/Notebook').then((m) => ({ default: m.Notebook })));
+const Syllabus = lazy(() => import('./pages/Syllabus').then((m) => ({ default: m.Syllabus })));
 const Settings = lazy(() => import('./pages/Settings').then((m) => ({ default: m.Settings })));
 const Account = lazy(() => import('./pages/Account').then((m) => ({ default: m.Account })));
 const Landing = lazy(() => import('./pages/Landing').then((m) => ({ default: m.Landing })));
@@ -84,6 +85,7 @@ function render() {
             <Route path="mentor" element={<Suspense fallback={<Loading />}><Mentor /></Suspense>} />
             <Route path="maps" element={<Suspense fallback={<Loading />}><Maps /></Suspense>} />
             <Route path="notebook" element={<Suspense fallback={<Loading />}><Notebook /></Suspense>} />
+            <Route path="syllabus" element={<Suspense fallback={<Loading />}><Syllabus /></Suspense>} />
             <Route path="settings" element={<Suspense fallback={<Loading />}><Settings /></Suspense>} />
             <Route path="account" element={<Suspense fallback={<Loading />}><Account /></Suspense>} />
           </Route>

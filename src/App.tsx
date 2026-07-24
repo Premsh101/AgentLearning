@@ -4,6 +4,7 @@ import { MentorWidget } from './components/MentorWidget';
 
 const NAV = [
   { to: '/', key: 'nav.dashboard', icon: '📊', end: true },
+  { to: '/syllabus', key: 'nav.syllabus', icon: '🧭', end: false },
   { to: '/learn', key: 'nav.learn', icon: '📚', end: false },
   { to: '/quiz', key: 'nav.quiz', icon: '✅', end: false },
   { to: '/current-affairs', key: 'nav.ca', icon: '📰', end: false },
