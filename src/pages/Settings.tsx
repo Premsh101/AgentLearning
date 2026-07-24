@@ -56,8 +56,8 @@ export function Settings() {
       <h1>⚙️ {t('nav.settings')}</h1>
       <p className="subtitle">
         {lang === 'hi'
-          ? 'AI प्रदाता चुनें और परीक्षा तिथि सेट करें। आपकी API कुंजी केवल इसी ब्राउज़र में सुरक्षित रहती है।'
-          : 'Choose your AI provider and set your exam date. Your API key stays only in this browser.'}
+          ? 'AI प्रदाता चुनें और परीक्षा तिथि सेट करें। लॉगिन होने पर ये सेटिंग्स आपके खाते में सहेजी जाती हैं और हर डिवाइस पर उपलब्ध रहती हैं।'
+          : 'Choose your AI provider and set your exam date. When you are logged in, these settings are saved to your account and available on every device.'}
       </p>
 
       <div className="card" style={{ marginBottom: 18 }}>
@@ -102,41 +102,50 @@ export function Settings() {
             <label>{meta.id === 'vertex' ? (lang === 'hi' ? 'एक्सेस टोकन' : 'Access token') : 'API Key'}</label>
             <input type="password" value={settings.apiKey} onChange={(e) => update({ apiKey: e.target.value })} placeholder={meta.keyHint} />
             <div className="hint">
-              🔒 {lang === 'hi' ? 'यह कुंजी केवल आपके ब्राउज़र (localStorage) में रहती है — सर्वर पर नहीं भेजी जाती।' : 'This key is stored only in your browser (localStorage) — never sent to our servers.'}
+              🔒 {lang === 'hi' ? 'लॉगिन होने पर यह कुंजी आपके खाते में (आपके अपने सर्वर पर) सहेजी जाती है ताकि हर डिवाइस पर वही AI काम करे। यह केवल आपके चुने प्रदाता को भेजी जाती है।' : 'When logged in, this key is saved to your account (on your own server) so the same AI works on every device. It is only ever sent to your chosen provider.'}
             </div>
           </div>
         )}
 
         <div className="field">
           <label>{lang === 'hi' ? 'मॉडल' : 'Model'}</label>
-          <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
-            <select value={settings.model} onChange={(e) => update({ model: e.target.value })} style={{ maxWidth: 300 }}>
-              {(models.length ? models : [settings.model]).filter(Boolean).map((m) => (
-                <option key={m} value={m}>
-                  {m}
-                </option>
-              ))}
-              {settings.model && !models.includes(settings.model) && <option value={settings.model}>{settings.model}</option>}
-            </select>
-            {meta.canListModels && (
-              <button className="btn small" onClick={refreshModels} disabled={loadingModels}>
-                {loadingModels ? '…' : `🔄 ${lang === 'hi' ? 'मॉडल लाएँ' : 'Fetch models'}`}
-              </button>
-            )}
-          </div>
+          {/* Dropdown of known/fetched models (only when there's a list to pick from). */}
+          {models.length > 0 && (
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap', marginBottom: 8 }}>
+              <select
+                value={models.includes(settings.model) ? settings.model : ''}
+                onChange={(e) => e.target.value && update({ model: e.target.value })}
+                style={{ maxWidth: 320 }}
+              >
+                <option value="">{lang === 'hi' ? '— सूची से चुनें —' : '— pick from list —'}</option>
+                {models.filter(Boolean).map((m) => (
+                  <option key={m} value={m}>{m}</option>
+                ))}
+              </select>
+              {meta.canListModels && (
+                <button className="btn small" onClick={refreshModels} disabled={loadingModels}>
+                  {loadingModels ? '…' : `🔄 ${lang === 'hi' ? 'मॉडल लाएँ' : 'Fetch models'}`}
+                </button>
+              )}
+            </div>
+          )}
+          {/* Manual entry — ALWAYS available for every provider (some don't list models). */}
+          <input
+            value={settings.model}
+            onChange={(e) => update({ model: e.target.value })}
+            placeholder={lang === 'hi' ? 'या मॉडल नाम यहाँ टाइप करें' : 'or type the model name here'}
+            style={{ maxWidth: 420 }}
+          />
           <div className="hint">
             {modelMsg ||
               (meta.canListModels
                 ? lang === 'hi'
-                  ? 'API कुंजी डालकर "मॉडल लाएँ" दबाएँ, या सूची से चुनें।'
-                  : 'Enter your key and click "Fetch models", or pick from the list.'
+                  ? 'सूची से चुनें, या ऊपर बॉक्स में सीधे मॉडल नाम टाइप करें। मॉडल लाने के लिए पहले API कुंजी डालें।'
+                  : 'Pick from the list, or type any model name in the box above. Enter your key first to fetch the list.'
                 : lang === 'hi'
-                  ? 'इस प्रदाता के लिए मॉडल नाम मैन्युअल रूप से चुना जाता है।'
-                  : 'Model is selected manually for this provider.')}
+                  ? 'इस प्रदाता के लिए मॉडल नाम सीधे टाइप करें।'
+                  : 'Type the model name directly for this provider.')}
           </div>
-          {!meta.canListModels && (
-            <input style={{ marginTop: 8 }} value={settings.model} onChange={(e) => update({ model: e.target.value })} placeholder="model name" />
-          )}
         </div>
       </div>
 
