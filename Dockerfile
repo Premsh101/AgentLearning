@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # ---- Build stage ----
-FROM node:20 AS build
+FROM node:22 AS build
 WORKDIR /app
 # Don't let the playwright devDependency download browsers during npm ci.
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
@@ -14,7 +14,7 @@ RUN npm run build && npm run seed:build && npm run build:server
 # ---- Runtime stage ----
 # Minimal and robust: bare `node` runs a single pre-bundled server file.
 # No npm, no tsx, no dev dependencies in the runtime image.
-FROM node:20-slim AS runtime
+FROM node:22-slim AS runtime
 WORKDIR /app
 ENV NODE_ENV=production \
     PORT=3000 \
