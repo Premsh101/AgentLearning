@@ -14,6 +14,7 @@ const NAV = [
   { to: '/mains', key: 'nav.mains', icon: '📝', end: false },
   { to: '/interview', key: 'nav.interview', icon: '🎤', end: false },
   { to: '/mentor', key: 'nav.mentor', icon: '🤖', end: false },
+  { to: '/question-bank', key: 'nav.qbank', icon: '🛠️', end: false },
   { to: '/settings', key: 'nav.settings', icon: '⚙️', end: false },
 ];
 
