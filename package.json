@@ -10,7 +10,8 @@
     "seed:build": "tsx server/scripts/build-seed.ts",
     "server": "tsx watch server/src/index.ts",
     "start": "tsx server/src/index.ts",
-    "typecheck:server": "tsc -p server/tsconfig.json"
+    "typecheck:server": "tsc -p server/tsconfig.json",
+    "build:server": "esbuild server/src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=server-dist/index.mjs --external:better-sqlite3 --banner:js=\"import{createRequire as __cr}from'node:module';const require=__cr(import.meta.url);\""
   },
   "dependencies": {
     "better-sqlite3": "^13.0.1",
@@ -29,6 +30,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "esbuild": "^0.28.1",
     "playwright": "^1.61.1",
     "typescript": "^5.5.4",
     "vite": "^5.4.0",
