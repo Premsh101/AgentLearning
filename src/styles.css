@@ -627,3 +627,10 @@ table.content-table { border-collapse: collapse; width: 100%; margin: 14px 0; fo
 .syl-chip:hover { border-color: var(--primary); }
 .syl-chip.done { background: var(--green-soft); border-color: var(--green); color: var(--green); }
 .syl-chip.map { background: var(--primary-soft); border-color: var(--primary); color: var(--primary); }
+
+/* PYQ practice-by-year cards */
+.year-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-bottom: 8px; }
+.year-card { border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; background: var(--surface); color: var(--text); transition: transform .12s, border-color .12s; }
+.year-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+.year-num { font-size: 1.6rem; font-weight: 800; color: var(--primary); }
+.year-count { font-size: 0.82rem; color: var(--text-dim); }

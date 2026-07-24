@@ -9,11 +9,13 @@ export function PYQ() {
   const { lang, tb } = useLang();
   const [subjectFilter, setSubjectFilter] = useState<string>('all');
   const [live, setLive] = useState<PyqStats | null>(null);
+  const [years, setYears] = useState<{ year: number; count: number }[]>([]);
 
   // Prefer live stats computed over the real (growing) question bank; fall back
   // to the bundled sample dataset when the backend isn't reachable (offline).
   useEffect(() => {
     api.pyqStats().then(setLive).catch(() => setLive(null));
+    api.pyqYears().then((r) => setYears(r.years)).catch(() => setYears([]));
   }, []);
 
   const subjectName = (id: string) => {
@@ -80,7 +82,27 @@ export function PYQ() {
         })}
       </div>
 
-      {/* Section 2 — Topic priority */}
+      {/* Section 2 — Practice by year */}
+      {years.length > 0 && (
+        <>
+          <h2>{lang === 'hi' ? 'वर्ष अनुसार अभ्यास (विगत वर्ष प्रश्न)' : 'Practice by year (previous-year questions)'}</h2>
+          <p className="subtitle" style={{ marginBottom: 12 }}>
+            {lang === 'hi'
+              ? 'BPSC प्रारंभिक के वास्तविक विगत वर्ष प्रश्न — उत्तर व व्याख्या सहित। कोई वर्ष चुनें और अभ्यास करें।'
+              : 'Authentic BPSC prelims previous-year questions with answers and explanations. Pick a year to practise.'}
+          </p>
+          <div className="year-grid">
+            {years.map((y) => (
+              <Link key={y.year} to={`/practice?year=${y.year}`} className="year-card">
+                <div className="year-num">{y.year}</div>
+                <div className="year-count">{y.count} {lang === 'hi' ? 'प्रश्न' : 'questions'}</div>
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* Section 3 — Topic priority */}
       <h2>{lang === 'hi' ? 'विषय प्राथमिकता' : 'Topic priority'}</h2>
       <div className="toolbar no-print">
         <button

@@ -34,7 +34,7 @@ api.get('/health', (_req, res) => {
 api.get(
   '/questions',
   wrap((req, res) => {
-    const { subject, topic, status = 'approved', difficulty } = req.query;
+    const { subject, topic, status = 'approved', difficulty, year, source } = req.query;
     const limit = Math.min(Number(req.query.limit) || 100, 500);
     const clauses: string[] = [];
     const params: unknown[] = [];
@@ -42,9 +42,22 @@ api.get(
     if (subject) { clauses.push('subjectId = ?'); params.push(String(subject)); }
     if (topic) { clauses.push('topic = ?'); params.push(String(topic)); }
     if (difficulty) { clauses.push('difficulty = ?'); params.push(Number(difficulty)); }
+    if (year) { clauses.push('year = ?'); params.push(Number(year)); }
+    if (source) { clauses.push('source = ?'); params.push(String(source)); }
     const where = clauses.length ? 'WHERE ' + clauses.join(' AND ') : '';
     const rows = db.prepare(`SELECT * FROM questions ${where} LIMIT ?`).all(...params, limit) as Parameters<typeof rowToQuestion>[0][];
     res.json({ questions: rows.map(rowToQuestion) });
+  })
+);
+
+// Years that have previous-year questions, with per-year counts.
+api.get(
+  '/pyq/years',
+  wrap((_req, res) => {
+    const rows = db
+      .prepare(`SELECT year, COUNT(*) AS count FROM questions WHERE year IS NOT NULL AND status = 'approved' GROUP BY year ORDER BY year DESC`)
+      .all() as { year: number; count: number }[];
+    res.json({ years: rows });
   })
 );
 

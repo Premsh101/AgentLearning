@@ -7720,5 +7720,1061 @@
     "explanation_hi": "हर अक्षर +1 खिसकता है (M→N, O→P, B→C…)। अतः P→Q, H→I, O→P, N→O, E→F = QIPOF।",
     "source": "seed:chapters",
     "status": "approved"
+  },
+  {
+    "id": "pyq70-01",
+    "subjectId": "history",
+    "topic": "history-medieval",
+    "year": 2024,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Malik Kafur was the military commander of which Delhi Sultanate ruler?",
+    "question_hi": "मलिक काफ़ूर किस दिल्ली सल्तनत शासक का सेनापति था?",
+    "options": [
+      {
+        "en": "Alauddin Khalji",
+        "hi": "अलाउद्दीन खिलजी"
+      },
+      {
+        "en": "Balban",
+        "hi": "बलबन"
+      },
+      {
+        "en": "Iltutmish",
+        "hi": "इल्तुतमिश"
+      },
+      {
+        "en": "Muhammad bin Tughlaq",
+        "hi": "मुहम्मद बिन तुगलक"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Malik Kafur (Hazardinari) was Alauddin Khalji's general who led the famous expeditions into South India.",
+    "explanation_hi": "मलिक काफ़ूर (हज़ारदीनारी) अलाउद्दीन खिलजी का सेनापति था जिसने दक्षिण भारत के प्रसिद्ध अभियान किए।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq70-02",
+    "subjectId": "history",
+    "topic": "history-modern",
+    "year": 2024,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The Faraizi movement was founded by whom?",
+    "question_hi": "फ़रायज़ी आंदोलन की स्थापना किसने की?",
+    "options": [
+      {
+        "en": "Haji Shariatullah",
+        "hi": "हाजी शरीयतुल्लाह"
+      },
+      {
+        "en": "Syed Ahmad Barelvi",
+        "hi": "सैयद अहमद बरेलवी"
+      },
+      {
+        "en": "Titu Mir",
+        "hi": "तितु मीर"
+      },
+      {
+        "en": "Dudu Miyan",
+        "hi": "दूदू मियाँ"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The Faraizi movement was founded by Haji Shariatullah in Bengal (early 19th century); it was later led by his son Dudu Miyan.",
+    "explanation_hi": "फ़रायज़ी आंदोलन की स्थापना बंगाल में हाजी शरीयतुल्लाह ने की (19वीं सदी के आरंभ में); बाद में इसका नेतृत्व उनके पुत्र दूदू मियाँ ने किया।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq70-03",
+    "subjectId": "geography",
+    "topic": "geography-bihar",
+    "year": 2024,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "Which river is known as the \"Sorrow of Bihar\"?",
+    "question_hi": "किस नदी को \"बिहार का शोक\" कहा जाता है?",
+    "options": [
+      {
+        "en": "Kosi",
+        "hi": "कोसी"
+      },
+      {
+        "en": "Son",
+        "hi": "सोन"
+      },
+      {
+        "en": "Gandak",
+        "hi": "गंडक"
+      },
+      {
+        "en": "Bagmati",
+        "hi": "बागमती"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The Kosi is called the \"Sorrow of Bihar\" because it frequently changes course and causes devastating floods in north Bihar.",
+    "explanation_hi": "कोसी को \"बिहार का शोक\" कहा जाता है क्योंकि यह बार-बार मार्ग बदलती है और उत्तर बिहार में विनाशकारी बाढ़ लाती है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq70-04",
+    "subjectId": "polity",
+    "topic": "polity-rights",
+    "year": 2024,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Which Article of the Constitution abolishes untouchability?",
+    "question_hi": "संविधान का कौन-सा अनुच्छेद अस्पृश्यता का उन्मूलन करता है?",
+    "options": [
+      {
+        "en": "Article 17",
+        "hi": "अनुच्छेद 17"
+      },
+      {
+        "en": "Article 14",
+        "hi": "अनुच्छेद 14"
+      },
+      {
+        "en": "Article 19",
+        "hi": "अनुच्छेद 19"
+      },
+      {
+        "en": "Article 21",
+        "hi": "अनुच्छेद 21"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Article 17 abolishes untouchability and forbids its practice in any form.",
+    "explanation_hi": "अनुच्छेद 17 अस्पृश्यता का उन्मूलन करता है और किसी भी रूप में इसके आचरण को प्रतिबंधित करता है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq70-05",
+    "subjectId": "history",
+    "topic": "history-medieval",
+    "year": 2024,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The book \"Chachnama\" is related to the history of which region?",
+    "question_hi": "\"चचनामा\" पुस्तक किस क्षेत्र के इतिहास से संबंधित है?",
+    "options": [
+      {
+        "en": "Sindh",
+        "hi": "सिंध"
+      },
+      {
+        "en": "Bengal",
+        "hi": "बंगाल"
+      },
+      {
+        "en": "Malwa",
+        "hi": "मालवा"
+      },
+      {
+        "en": "Gujarat",
+        "hi": "गुजरात"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The Chachnama chronicles the Arab conquest of Sindh (Muhammad bin Qasim) and the earlier Chach dynasty.",
+    "explanation_hi": "चचनामा सिंध पर अरब विजय (मुहम्मद बिन कासिम) और पूर्ववर्ती चच वंश का वर्णन करता है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq69-01",
+    "subjectId": "history",
+    "topic": "history-bihar-freedom",
+    "year": 2023,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "Mahatma Gandhi's first Satyagraha in India was launched at which place in 1917?",
+    "question_hi": "1917 में भारत में महात्मा गांधी का पहला सत्याग्रह किस स्थान पर आरंभ हुआ?",
+    "options": [
+      {
+        "en": "Champaran",
+        "hi": "चंपारण"
+      },
+      {
+        "en": "Kheda",
+        "hi": "खेड़ा"
+      },
+      {
+        "en": "Ahmedabad",
+        "hi": "अहमदाबाद"
+      },
+      {
+        "en": "Bardoli",
+        "hi": "बारडोली"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The Champaran Satyagraha (1917) in Bihar against indigo planters was Gandhi's first Satyagraha in India.",
+    "explanation_hi": "बिहार में नील बागान मालिकों के विरुद्ध चंपारण सत्याग्रह (1917) भारत में गांधी का पहला सत्याग्रह था।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq69-02",
+    "subjectId": "history",
+    "topic": "history-ancient",
+    "year": 2023,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Which ruler is associated with the establishment of Pataliputra as the capital of Magadha?",
+    "question_hi": "मगध की राजधानी के रूप में पाटलिपुत्र की स्थापना किस शासक से संबंधित है?",
+    "options": [
+      {
+        "en": "Udayin",
+        "hi": "उदयिन"
+      },
+      {
+        "en": "Bimbisara",
+        "hi": "बिंबिसार"
+      },
+      {
+        "en": "Ashoka",
+        "hi": "अशोक"
+      },
+      {
+        "en": "Kanishka",
+        "hi": "कनिष्क"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Udayin, son of Ajatashatru, is credited with founding Pataliputra (Patna) at the confluence of the Ganga and Son.",
+    "explanation_hi": "अजातशत्रु के पुत्र उदयिन को गंगा व सोन के संगम पर पाटलिपुत्र (पटना) की स्थापना का श्रेय दिया जाता है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq69-03",
+    "subjectId": "polity",
+    "topic": "polity-preamble",
+    "year": 2023,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The words \"Socialist\", \"Secular\" and \"Integrity\" were added to the Preamble by which amendment?",
+    "question_hi": "\"समाजवादी\", \"पंथनिरपेक्ष\" व \"अखंडता\" शब्द प्रस्तावना में किस संशोधन द्वारा जोड़े गए?",
+    "options": [
+      {
+        "en": "42nd Amendment, 1976",
+        "hi": "42वाँ संशोधन, 1976"
+      },
+      {
+        "en": "44th Amendment, 1978",
+        "hi": "44वाँ संशोधन, 1978"
+      },
+      {
+        "en": "1st Amendment, 1951",
+        "hi": "पहला संशोधन, 1951"
+      },
+      {
+        "en": "73rd Amendment, 1992",
+        "hi": "73वाँ संशोधन, 1992"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The 42nd Constitutional Amendment Act, 1976 added the words Socialist, Secular and Integrity to the Preamble.",
+    "explanation_hi": "42वाँ संविधान संशोधन अधिनियम, 1976 ने प्रस्तावना में समाजवादी, पंथनिरपेक्ष व अखंडता शब्द जोड़े।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq69-04",
+    "subjectId": "economy",
+    "topic": "economy-basics",
+    "year": 2023,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "In India, the \"repo rate\" is decided by which body?",
+    "question_hi": "भारत में \"रेपो दर\" किस संस्था द्वारा तय की जाती है?",
+    "options": [
+      {
+        "en": "Reserve Bank of India",
+        "hi": "भारतीय रिज़र्व बैंक"
+      },
+      {
+        "en": "Ministry of Finance",
+        "hi": "वित्त मंत्रालय"
+      },
+      {
+        "en": "SEBI",
+        "hi": "सेबी"
+      },
+      {
+        "en": "NITI Aayog",
+        "hi": "नीति आयोग"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The repo rate is set by the RBI's Monetary Policy Committee (MPC) as its key policy rate.",
+    "explanation_hi": "रेपो दर RBI की मौद्रिक नीति समिति (MPC) द्वारा उसकी प्रमुख नीतिगत दर के रूप में तय की जाती है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq69-05",
+    "subjectId": "geography",
+    "topic": "geography-india",
+    "year": 2023,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The Tropic of Cancer does NOT pass through which of these states?",
+    "question_hi": "कर्क रेखा इनमें से किस राज्य से होकर नहीं गुज़रती?",
+    "options": [
+      {
+        "en": "Bihar",
+        "hi": "बिहार"
+      },
+      {
+        "en": "Jharkhand",
+        "hi": "झारखंड"
+      },
+      {
+        "en": "West Bengal",
+        "hi": "पश्चिम बंगाल"
+      },
+      {
+        "en": "Gujarat",
+        "hi": "गुजरात"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The Tropic of Cancer passes through 8 states but NOT Bihar; it crosses neighbouring Jharkhand and West Bengal.",
+    "explanation_hi": "कर्क रेखा 8 राज्यों से गुज़रती है पर बिहार से नहीं; यह निकटवर्ती झारखंड व पश्चिम बंगाल से गुज़रती है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq69-06",
+    "subjectId": "bihar",
+    "topic": "bihar-static",
+    "year": 2023,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "Nalanda Mahavihara, a UNESCO World Heritage Site, flourished under which dynasty's patronage initially?",
+    "question_hi": "यूनेस्को विश्व धरोहर स्थल नालंदा महाविहार आरंभ में किस वंश के संरक्षण में फला-फूला?",
+    "options": [
+      {
+        "en": "Gupta",
+        "hi": "गुप्त"
+      },
+      {
+        "en": "Maurya",
+        "hi": "मौर्य"
+      },
+      {
+        "en": "Pala",
+        "hi": "पाल"
+      },
+      {
+        "en": "Kushana",
+        "hi": "कुषाण"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Nalanda was established under the Gupta emperor Kumaragupta I and later patronised by the Palas.",
+    "explanation_hi": "नालंदा की स्थापना गुप्त सम्राट कुमारगुप्त प्रथम के अधीन हुई और बाद में पालों ने इसे संरक्षण दिया।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq68-01",
+    "subjectId": "polity",
+    "topic": "polity-executive",
+    "year": 2023,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Who administers the oath of office to the President of India?",
+    "question_hi": "भारत के राष्ट्रपति को पद की शपथ कौन दिलाता है?",
+    "options": [
+      {
+        "en": "Chief Justice of India",
+        "hi": "भारत के मुख्य न्यायाधीश"
+      },
+      {
+        "en": "Vice-President",
+        "hi": "उपराष्ट्रपति"
+      },
+      {
+        "en": "Speaker of Lok Sabha",
+        "hi": "लोकसभा अध्यक्ष"
+      },
+      {
+        "en": "Prime Minister",
+        "hi": "प्रधानमंत्री"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Under Article 60, the Chief Justice of India (or, in his absence, the senior-most SC judge) administers the oath to the President.",
+    "explanation_hi": "अनुच्छेद 60 के अनुसार भारत के मुख्य न्यायाधीश (या उनकी अनुपस्थिति में वरिष्ठतम न्यायाधीश) राष्ट्रपति को शपथ दिलाते हैं।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq68-02",
+    "subjectId": "science",
+    "topic": "science-everyday",
+    "year": 2023,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "Deficiency of which vitamin causes scurvy?",
+    "question_hi": "किस विटामिन की कमी से स्कर्वी रोग होता है?",
+    "options": [
+      {
+        "en": "Vitamin C",
+        "hi": "विटामिन C"
+      },
+      {
+        "en": "Vitamin A",
+        "hi": "विटामिन A"
+      },
+      {
+        "en": "Vitamin D",
+        "hi": "विटामिन D"
+      },
+      {
+        "en": "Vitamin K",
+        "hi": "विटामिन K"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Scurvy (bleeding gums, weakness) is caused by deficiency of Vitamin C (ascorbic acid).",
+    "explanation_hi": "स्कर्वी (मसूड़ों से रक्तस्राव, कमज़ोरी) विटामिन C (एस्कॉर्बिक अम्ल) की कमी से होता है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq68-03",
+    "subjectId": "history",
+    "topic": "history-modern",
+    "year": 2023,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The Quit India Movement was launched in which year?",
+    "question_hi": "भारत छोड़ो आंदोलन किस वर्ष आरंभ हुआ?",
+    "options": [
+      {
+        "en": "1942",
+        "hi": "1942"
+      },
+      {
+        "en": "1930",
+        "hi": "1930"
+      },
+      {
+        "en": "1920",
+        "hi": "1920"
+      },
+      {
+        "en": "1945",
+        "hi": "1945"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The Quit India Movement began on 8 August 1942 with Gandhi's \"Do or Die\" call at the Bombay session.",
+    "explanation_hi": "भारत छोड़ो आंदोलन 8 अगस्त 1942 को बंबई अधिवेशन में गांधी के \"करो या मरो\" आह्वान के साथ आरंभ हुआ।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq68-04",
+    "subjectId": "geography",
+    "topic": "geography-bihar",
+    "year": 2023,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The Sone river joins the Ganga near which place in Bihar?",
+    "question_hi": "सोन नदी बिहार में किस स्थान के निकट गंगा में मिलती है?",
+    "options": [
+      {
+        "en": "Near Patna (Maner)",
+        "hi": "पटना (मनेर) के निकट"
+      },
+      {
+        "en": "Bhagalpur",
+        "hi": "भागलपुर"
+      },
+      {
+        "en": "Buxar",
+        "hi": "बक्सर"
+      },
+      {
+        "en": "Munger",
+        "hi": "मुंगेर"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The Sone, the largest south-bank tributary, joins the Ganga just west of Patna near Maner.",
+    "explanation_hi": "सोन, सबसे बड़ी दक्षिणी सहायक नदी, पटना के पश्चिम में मनेर के निकट गंगा में मिलती है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq67-01",
+    "subjectId": "polity",
+    "topic": "polity-rights",
+    "year": 2022,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The Right to Education (Article 21A) was inserted by which Constitutional Amendment?",
+    "question_hi": "शिक्षा का अधिकार (अनुच्छेद 21A) किस संविधान संशोधन द्वारा जोड़ा गया?",
+    "options": [
+      {
+        "en": "86th Amendment, 2002",
+        "hi": "86वाँ संशोधन, 2002"
+      },
+      {
+        "en": "42nd Amendment, 1976",
+        "hi": "42वाँ संशोधन, 1976"
+      },
+      {
+        "en": "73rd Amendment, 1992",
+        "hi": "73वाँ संशोधन, 1992"
+      },
+      {
+        "en": "61st Amendment, 1989",
+        "hi": "61वाँ संशोधन, 1989"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The 86th Amendment (2002) made education a Fundamental Right for children aged 6–14 via Article 21A.",
+    "explanation_hi": "86वें संशोधन (2002) ने अनुच्छेद 21A के माध्यम से 6–14 वर्ष के बच्चों हेतु शिक्षा को मौलिक अधिकार बनाया।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq67-02",
+    "subjectId": "history",
+    "topic": "history-ancient",
+    "year": 2022,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The Third Buddhist Council was held at Pataliputra under the patronage of which ruler?",
+    "question_hi": "तृतीय बौद्ध संगीति पाटलिपुत्र में किस शासक के संरक्षण में हुई?",
+    "options": [
+      {
+        "en": "Ashoka",
+        "hi": "अशोक"
+      },
+      {
+        "en": "Kanishka",
+        "hi": "कनिष्क"
+      },
+      {
+        "en": "Ajatashatru",
+        "hi": "अजातशत्रु"
+      },
+      {
+        "en": "Kalashoka",
+        "hi": "कालाशोक"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The Third Buddhist Council (c. 250 BCE) was held at Pataliputra under Ashoka, presided over by Moggaliputta Tissa.",
+    "explanation_hi": "तृतीय बौद्ध संगीति (लगभग 250 ई.पू.) अशोक के संरक्षण में पाटलिपुत्र में हुई, अध्यक्षता मोग्गलिपुत्त तिस्स ने की।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq67-03",
+    "subjectId": "economy",
+    "topic": "economy-basics",
+    "year": 2022,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The \"Blue Revolution\" in India is associated with which sector?",
+    "question_hi": "भारत में \"नीली क्रांति\" किस क्षेत्र से संबंधित है?",
+    "options": [
+      {
+        "en": "Fisheries",
+        "hi": "मत्स्य पालन"
+      },
+      {
+        "en": "Milk",
+        "hi": "दूध"
+      },
+      {
+        "en": "Foodgrains",
+        "hi": "खाद्यान्न"
+      },
+      {
+        "en": "Oilseeds",
+        "hi": "तिलहन"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The Blue Revolution refers to the rapid growth of the fisheries and aquaculture sector.",
+    "explanation_hi": "नीली क्रांति मत्स्य पालन व जलकृषि क्षेत्र की तीव्र वृद्धि को संदर्भित करती है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq67-04",
+    "subjectId": "science",
+    "topic": "science-everyday",
+    "year": 2022,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "The chemical name of common salt is:",
+    "question_hi": "साधारण नमक का रासायनिक नाम है:",
+    "options": [
+      {
+        "en": "Sodium chloride",
+        "hi": "सोडियम क्लोराइड"
+      },
+      {
+        "en": "Sodium bicarbonate",
+        "hi": "सोडियम बाइकार्बोनेट"
+      },
+      {
+        "en": "Calcium carbonate",
+        "hi": "कैल्सियम कार्बोनेट"
+      },
+      {
+        "en": "Potassium chloride",
+        "hi": "पोटैशियम क्लोराइड"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Common salt is sodium chloride (NaCl). Sodium bicarbonate is baking soda.",
+    "explanation_hi": "साधारण नमक सोडियम क्लोराइड (NaCl) है। सोडियम बाइकार्बोनेट खाने का सोडा है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq66-01",
+    "subjectId": "polity",
+    "topic": "polity-parliament",
+    "year": 2020,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The maximum strength of the Lok Sabha as envisaged by the Constitution is:",
+    "question_hi": "संविधान के अनुसार लोकसभा की अधिकतम सदस्य संख्या है:",
+    "options": [
+      {
+        "en": "552",
+        "hi": "552"
+      },
+      {
+        "en": "550",
+        "hi": "550"
+      },
+      {
+        "en": "545",
+        "hi": "545"
+      },
+      {
+        "en": "500",
+        "hi": "500"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The Constitution fixes the maximum strength of the Lok Sabha at 552 (530 states + 20 UTs + up to 2 Anglo-Indians, the latter now discontinued).",
+    "explanation_hi": "संविधान लोकसभा की अधिकतम संख्या 552 निर्धारित करता है (530 राज्य + 20 केंद्रशासित + 2 आंग्ल-भारतीय, जो अब समाप्त)।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq66-02",
+    "subjectId": "geography",
+    "topic": "geography-india",
+    "year": 2020,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Which is the longest river of Peninsular India?",
+    "question_hi": "प्रायद्वीपीय भारत की सबसे लंबी नदी कौन-सी है?",
+    "options": [
+      {
+        "en": "Godavari",
+        "hi": "गोदावरी"
+      },
+      {
+        "en": "Krishna",
+        "hi": "कृष्णा"
+      },
+      {
+        "en": "Kaveri",
+        "hi": "कावेरी"
+      },
+      {
+        "en": "Narmada",
+        "hi": "नर्मदा"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The Godavari, \"Dakshin Ganga\", is the longest peninsular river, rising in Maharashtra and draining into the Bay of Bengal.",
+    "explanation_hi": "गोदावरी, \"दक्षिण गंगा\", सबसे लंबी प्रायद्वीपीय नदी है, जो महाराष्ट्र से निकलकर बंगाल की खाड़ी में गिरती है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq66-03",
+    "subjectId": "history",
+    "topic": "history-modern",
+    "year": 2020,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Who founded the \"Indian National Congress\" in 1885?",
+    "question_hi": "1885 में \"भारतीय राष्ट्रीय कांग्रेस\" की स्थापना किसने की?",
+    "options": [
+      {
+        "en": "A. O. Hume",
+        "hi": "ए. ओ. ह्यूम"
+      },
+      {
+        "en": "Dadabhai Naoroji",
+        "hi": "दादाभाई नौरोजी"
+      },
+      {
+        "en": "W. C. Bonnerjee",
+        "hi": "डब्ल्यू. सी. बनर्जी"
+      },
+      {
+        "en": "Surendranath Banerjee",
+        "hi": "सुरेंद्रनाथ बनर्जी"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "A. O. Hume founded the INC in 1885; W. C. Bonnerjee was its first president.",
+    "explanation_hi": "ए. ओ. ह्यूम ने 1885 में INC की स्थापना की; डब्ल्यू. सी. बनर्जी इसके प्रथम अध्यक्ष थे।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq65-01",
+    "subjectId": "polity",
+    "topic": "polity-rights",
+    "year": 2019,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The Right to Constitutional Remedies is provided under which Article?",
+    "question_hi": "संवैधानिक उपचारों का अधिकार किस अनुच्छेद के अंतर्गत दिया गया है?",
+    "options": [
+      {
+        "en": "Article 32",
+        "hi": "अनुच्छेद 32"
+      },
+      {
+        "en": "Article 19",
+        "hi": "अनुच्छेद 19"
+      },
+      {
+        "en": "Article 21",
+        "hi": "अनुच्छेद 21"
+      },
+      {
+        "en": "Article 14",
+        "hi": "अनुच्छेद 14"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Article 32 (called the \"heart and soul\" of the Constitution by Ambedkar) guarantees the right to move the Supreme Court for enforcement of Fundamental Rights.",
+    "explanation_hi": "अनुच्छेद 32 (अंबेडकर द्वारा संविधान की \"आत्मा\" कहा गया) मौलिक अधिकारों के प्रवर्तन हेतु सर्वोच्च न्यायालय जाने का अधिकार देता है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq65-02",
+    "subjectId": "history",
+    "topic": "history-bihar-freedom",
+    "year": 2019,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Who led the Revolt of 1857 in Bihar?",
+    "question_hi": "बिहार में 1857 के विद्रोह का नेतृत्व किसने किया?",
+    "options": [
+      {
+        "en": "Kunwar Singh",
+        "hi": "कुँवर सिंह"
+      },
+      {
+        "en": "Nana Sahib",
+        "hi": "नाना साहेब"
+      },
+      {
+        "en": "Tantia Tope",
+        "hi": "तांतिया टोपे"
+      },
+      {
+        "en": "Mangal Pandey",
+        "hi": "मंगल पांडे"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Babu Kunwar Singh of Jagdishpur led the 1857 revolt in Bihar at the age of about 80.",
+    "explanation_hi": "जगदीशपुर के बाबू कुँवर सिंह ने लगभग 80 वर्ष की आयु में बिहार में 1857 के विद्रोह का नेतृत्व किया।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq65-03",
+    "subjectId": "economy",
+    "topic": "economy-basics",
+    "year": 2019,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "The \"Green Revolution\" in India is primarily associated with which crops?",
+    "question_hi": "भारत में \"हरित क्रांति\" मुख्यतः किन फसलों से संबंधित है?",
+    "options": [
+      {
+        "en": "Wheat and rice",
+        "hi": "गेहूँ व चावल"
+      },
+      {
+        "en": "Pulses and oilseeds",
+        "hi": "दलहन व तिलहन"
+      },
+      {
+        "en": "Cotton and jute",
+        "hi": "कपास व जूट"
+      },
+      {
+        "en": "Tea and coffee",
+        "hi": "चाय व कॉफ़ी"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "The Green Revolution (1960s, led by M. S. Swaminathan) dramatically raised wheat and rice output via HYV seeds.",
+    "explanation_hi": "हरित क्रांति (1960 का दशक, एम. एस. स्वामीनाथन के नेतृत्व में) ने HYV बीजों से गेहूँ व चावल उत्पादन बढ़ाया।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq64-01",
+    "subjectId": "history",
+    "topic": "history-ancient",
+    "year": 2018,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Which Maurya ruler embraced Jainism and is said to have migrated to Shravanabelagola?",
+    "question_hi": "किस मौर्य शासक ने जैन धर्म अपनाया और श्रवणबेलगोला गया माना जाता है?",
+    "options": [
+      {
+        "en": "Chandragupta Maurya",
+        "hi": "चंद्रगुप्त मौर्य"
+      },
+      {
+        "en": "Bindusara",
+        "hi": "बिंदुसार"
+      },
+      {
+        "en": "Ashoka",
+        "hi": "अशोक"
+      },
+      {
+        "en": "Dasharatha",
+        "hi": "दशरथ"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Chandragupta Maurya is traditionally believed to have adopted Jainism under Bhadrabahu and moved to Shravanabelagola.",
+    "explanation_hi": "परंपरा के अनुसार चंद्रगुप्त मौर्य ने भद्रबाहु के अधीन जैन धर्म अपनाया और श्रवणबेलगोला गए।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq64-02",
+    "subjectId": "polity",
+    "topic": "polity-executive",
+    "year": 2018,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Who was the first President of India?",
+    "question_hi": "भारत के प्रथम राष्ट्रपति कौन थे?",
+    "options": [
+      {
+        "en": "Dr. Rajendra Prasad",
+        "hi": "डॉ. राजेंद्र प्रसाद"
+      },
+      {
+        "en": "Dr. S. Radhakrishnan",
+        "hi": "डॉ. एस. राधाकृष्णन"
+      },
+      {
+        "en": "Jawaharlal Nehru",
+        "hi": "जवाहरलाल नेहरू"
+      },
+      {
+        "en": "Dr. Zakir Husain",
+        "hi": "डॉ. ज़ाकिर हुसैन"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Dr. Rajendra Prasad, born in Bihar, was independent India's first President (1950–1962).",
+    "explanation_hi": "बिहार में जन्मे डॉ. राजेंद्र प्रसाद स्वतंत्र भारत के प्रथम राष्ट्रपति (1950–1962) थे।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq64-03",
+    "subjectId": "geography",
+    "topic": "geography-india",
+    "year": 2018,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Black (Regur) soil is most suited for the cultivation of which crop?",
+    "question_hi": "काली (रेगुर) मृदा किस फसल की खेती हेतु सर्वाधिक उपयुक्त है?",
+    "options": [
+      {
+        "en": "Cotton",
+        "hi": "कपास"
+      },
+      {
+        "en": "Rice",
+        "hi": "चावल"
+      },
+      {
+        "en": "Tea",
+        "hi": "चाय"
+      },
+      {
+        "en": "Jute",
+        "hi": "जूट"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Black soil (regur), formed from Deccan lava, retains moisture and is ideal for cotton.",
+    "explanation_hi": "दक्कन लावा से बनी काली मृदा (रेगुर) नमी धारण करती है और कपास हेतु आदर्श है।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq63-01",
+    "subjectId": "polity",
+    "topic": "polity-making",
+    "year": 2017,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Who was the Chairman of the Drafting Committee of the Indian Constitution?",
+    "question_hi": "भारतीय संविधान की प्रारूप समिति के अध्यक्ष कौन थे?",
+    "options": [
+      {
+        "en": "Dr. B. R. Ambedkar",
+        "hi": "डॉ. बी. आर. अंबेडकर"
+      },
+      {
+        "en": "Dr. Rajendra Prasad",
+        "hi": "डॉ. राजेंद्र प्रसाद"
+      },
+      {
+        "en": "Jawaharlal Nehru",
+        "hi": "जवाहरलाल नेहरू"
+      },
+      {
+        "en": "Sardar Patel",
+        "hi": "सरदार पटेल"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Dr. B. R. Ambedkar chaired the seven-member Drafting Committee formed on 29 August 1947.",
+    "explanation_hi": "डॉ. बी. आर. अंबेडकर ने 29 अगस्त 1947 को गठित सात-सदस्यीय प्रारूप समिति की अध्यक्षता की।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq63-02",
+    "subjectId": "history",
+    "topic": "history-ancient",
+    "year": 2017,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The ancient university of Vikramshila was established by a ruler of which dynasty?",
+    "question_hi": "प्राचीन विक्रमशिला विश्वविद्यालय की स्थापना किस वंश के शासक ने की?",
+    "options": [
+      {
+        "en": "Pala",
+        "hi": "पाल"
+      },
+      {
+        "en": "Gupta",
+        "hi": "गुप्त"
+      },
+      {
+        "en": "Maurya",
+        "hi": "मौर्य"
+      },
+      {
+        "en": "Sena",
+        "hi": "सेन"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Vikramshila (in present-day Bhagalpur, Bihar) was founded by the Pala king Dharmapala.",
+    "explanation_hi": "विक्रमशिला (वर्तमान भागलपुर, बिहार में) की स्थापना पाल राजा धर्मपाल ने की।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq63-03",
+    "subjectId": "science",
+    "topic": "science-everyday",
+    "year": 2017,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "Which gas is most abundant in the Earth's atmosphere?",
+    "question_hi": "पृथ्वी के वायुमंडल में सर्वाधिक मात्रा में कौन-सी गैस है?",
+    "options": [
+      {
+        "en": "Nitrogen",
+        "hi": "नाइट्रोजन"
+      },
+      {
+        "en": "Oxygen",
+        "hi": "ऑक्सीजन"
+      },
+      {
+        "en": "Carbon dioxide",
+        "hi": "कार्बन डाइऑक्साइड"
+      },
+      {
+        "en": "Argon",
+        "hi": "आर्गन"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Nitrogen makes up about 78% of the atmosphere; oxygen about 21%.",
+    "explanation_hi": "नाइट्रोजन वायुमंडल का लगभग 78% भाग बनाती है; ऑक्सीजन लगभग 21%।",
+    "source": "pyq",
+    "status": "approved"
+  },
+  {
+    "id": "pyq63-04",
+    "subjectId": "bihar",
+    "topic": "bihar-static",
+    "year": 2017,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "When was the state of Bihar separated from Bengal Presidency?",
+    "question_hi": "बिहार राज्य को बंगाल प्रेसीडेंसी से कब पृथक किया गया?",
+    "options": [
+      {
+        "en": "1912",
+        "hi": "1912"
+      },
+      {
+        "en": "1905",
+        "hi": "1905"
+      },
+      {
+        "en": "1936",
+        "hi": "1936"
+      },
+      {
+        "en": "1947",
+        "hi": "1947"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Bihar and Orissa were carved out of the Bengal Presidency in 1912; Bihar became a separate province from Orissa in 1936.",
+    "explanation_hi": "बिहार व उड़ीसा को 1912 में बंगाल प्रेसीडेंसी से अलग किया गया; 1936 में बिहार उड़ीसा से अलग प्रांत बना।",
+    "source": "pyq",
+    "status": "approved"
   }
 ]
