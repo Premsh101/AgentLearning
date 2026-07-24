@@ -1,23 +1,22 @@
-# One-command deploy for a KVM VPS (or any Docker host).
+# Coolify-safe compose file (no host port binding).
 #
-#   docker compose up -d --build
+# On Coolify: this file is auto-detected. Traefik routes your domain directly
+# to the container's port 3000 — no host port is published, so it can never
+# clash with ports already used on the server. In the Coolify service
+# settings, set the application's port/domain mapping to 3000.
 #
-# Then open http://<server-ip>:8080
+# For standalone testing on any Docker host (publishes a host port):
+#   docker compose -f docker-compose.yml -f docker-compose.standalone.yml up -d --build
+#   → http://<server-ip>:8080   (override with APP_PORT=xxxx)
 #
-# The single container serves BOTH the app and the API. The SQLite question
-# bank is persisted in the named volume `bpsc-data` (mounted at /data), so it
-# survives restarts and redeploys.
-#
-# For a public URL (PWA install + offline + voice need HTTPS), put this behind
-# a TLS-terminating reverse proxy — e.g. Coolify/Traefik. See docs/deployment.md.
+# The SQLite question bank persists in the named volume `bpsc-data` (/data).
 
 services:
   app:
     build: .
     image: bpsc-ai-os:latest
-    container_name: bpsc-ai-os
-    ports:
-      - "8080:3000"
+    expose:
+      - "3000"
     environment:
       - PORT=3000
       - DATA_DIR=/data

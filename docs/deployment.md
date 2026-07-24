@@ -11,15 +11,17 @@ The app now ships as **one container**: a small Node server that serves the buil
 └───────────────────────────────────────────────┘
 ```
 
-## Quick deploy on any KVM box (Docker)
+## Quick deploy on any KVM box (Docker, no Coolify)
 
 ```bash
 git clone https://github.com/Premsh101/AgentLearning.git
 cd AgentLearning
-docker compose up -d --build      # builds + starts on :8080, with a persistent volume
+docker compose -f docker-compose.yml -f docker-compose.standalone.yml up -d --build
 ```
 
-Open `http://<server-ip>:8080`. Update after new commits: `git pull && docker compose up -d --build`. Stop: `docker compose down` (add `-v` to also wipe the question-bank volume).
+Open `http://<server-ip>:8080` (change the host port with `APP_PORT=9090 docker compose …`). Update after new commits: `git pull` + the same command. Stop: `docker compose down` (add `-v` to also wipe the question-bank volume).
+
+> **Why two files?** `docker-compose.yml` deliberately publishes **no host port** so it is safe under Coolify (Traefik routes your domain straight to container port 3000 — publishing a host port there causes *"Bind for 0.0.0.0:8080 failed: port is already allocated"* when the port is taken). The `.standalone.yml` override adds the host-port mapping only for direct testing.
 
 Or without compose:
 
@@ -31,8 +33,10 @@ docker run -d --name bpsc-ai-os -p 8080:3000 -v bpsc-data:/data --restart unless
 ## Deploy with Coolify (recommended for a public HTTPS URL)
 
 1. **New resource → Application → Public/Private Git Repository** → `https://github.com/Premsh101/AgentLearning`, branch `main`.
-2. **Build Pack: `Dockerfile`** (auto-detected at the repo root).
-3. **Port:** `3000` (the Node server listens there; Coolify's Traefik proxy terminates HTTPS in front).
+2. **Build Pack:** either works —
+   - **Docker Compose** (Coolify auto-detects `docker-compose.yml`): the file publishes no host ports (Coolify-safe); make sure the service's **port is set to 3000** so Traefik routes your domain to it. The `bpsc-data` volume is created automatically.
+   - **Dockerfile**: set **Port: 3000** and add a persistent volume at `/data` manually (step 4).
+3. **Port:** `3000` (the Node server listens there; Coolify's Traefik proxy terminates HTTPS in front). Do **not** add extra host-port mappings — that causes "port is already allocated" errors on shared servers.
 4. **Persistent storage:** add a volume mounted at **`/data`** (this holds `bpsc.db`; without it the question bank resets on each redeploy).
 5. **Environment variables:** none required. Optional: `PORT` (defaults to 3000), `DATA_DIR` (defaults to `/data`), and **`ADMIN_TOKEN`** — set this to lock the content-mutating endpoints (scrape / import / approve-reject) behind a token. When set, enter the same token once in the app's **Question Bank** page; leave it unset for an open single-user deploy.
 6. **Domain:** set your domain; Coolify issues a Let's Encrypt certificate. HTTPS is needed for PWA install/offline and the browser-voice features.
