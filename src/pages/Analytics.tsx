@@ -118,9 +118,12 @@ export function Analytics() {
               </div>
               <Bar pct={w.acc} color="var(--red)" />
               <p style={{ fontSize: '0.85rem', margin: '10px 0 6px', color: 'var(--text-dim)' }}>
-                {lang === 'hi' ? 'सुझाव: इन अध्यायों को दोबारा पढ़ें' : 'Suggested: revisit these chapters'}
+                {lang === 'hi' ? 'सुझाव: अभ्यास करें या ये अध्याय दोबारा पढ़ें' : 'Suggested: practise more or revisit these chapters'}
               </p>
               <div className="toolbar" style={{ margin: 0 }}>
+                <Link to={`/practice?topic=${encodeURIComponent(w.topic)}`} className="btn small primary">
+                  ✏️ {lang === 'hi' ? 'अभ्यास' : 'Practise'}
+                </Link>
                 {chapters.map((c) => (
                   <Link key={c.id} to={`/chapter/${c.id}`} className="btn small">
                     {tb(c.title)}
