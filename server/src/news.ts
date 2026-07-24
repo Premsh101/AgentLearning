@@ -158,9 +158,14 @@ export function startNewsScheduler(): void {
     return;
   }
   const run = async () => {
-    const results = await fetchAll();
-    for (const r of results) {
-      console.log(`[news] ${r.source}: fetched ${r.fetched}, added ${r.added}${r.error ? `, error: ${r.error}` : ''}`);
+    try {
+      const results = await fetchAll();
+      for (const r of results) {
+        console.log(`[news] ${r.source}: fetched ${r.fetched}, added ${r.added}${r.error ? `, error: ${r.error}` : ''}`);
+      }
+    } catch (e) {
+      // Never let a background fetch failure escape as an unhandled rejection.
+      console.error('[news] scheduled fetch failed:', e);
     }
   };
   // fire-and-forget on boot, then every 12h

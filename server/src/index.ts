@@ -6,14 +6,18 @@ import { seedIfEmpty } from './db';
 import { api } from './api';
 import { startNewsScheduler } from './news';
 
-// Crash visibility: if the process dies at boot, the container log says why.
+// Crash visibility: if the process dies, the container log says why.
+// Only exit on uncaughtException (Node's own guidance: process state is no
+// longer safe after one). A rejected promise anywhere in the app (a flaky
+// fetch, a background task) must NOT bring the whole server down — log it
+// and keep serving. Exiting on every unhandledRejection previously turned a
+// single transient async error into an infinite Coolify restart loop.
 process.on('uncaughtException', (e) => {
   console.error('[fatal] uncaughtException:', e);
   process.exit(1);
 });
 process.on('unhandledRejection', (e) => {
-  console.error('[fatal] unhandledRejection:', e);
-  process.exit(1);
+  console.error('[error] unhandledRejection (continuing):', e);
 });
 
 console.log(`[boot] node=${process.version} cwd=${process.cwd()} PORT=${process.env.PORT ?? '(unset)'} DATA_DIR=${process.env.DATA_DIR ?? '(unset)'}`);
