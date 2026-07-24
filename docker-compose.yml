@@ -4,21 +4,32 @@
 #
 # Then open http://<server-ip>:8080
 #
-# For production (PWA install + offline need HTTPS), put this behind a reverse
-# proxy that terminates TLS — e.g. Coolify/Traefik, or Caddy/Nginx Proxy Manager.
-# See docs/deployment.md.
+# The single container serves BOTH the app and the API. The SQLite question
+# bank is persisted in the named volume `bpsc-data` (mounted at /data), so it
+# survives restarts and redeploys.
+#
+# For a public URL (PWA install + offline + voice need HTTPS), put this behind
+# a TLS-terminating reverse proxy — e.g. Coolify/Traefik. See docs/deployment.md.
 
 services:
-  web:
+  app:
     build: .
     image: bpsc-ai-os:latest
     container_name: bpsc-ai-os
     ports:
-      - "8080:80"
+      - "8080:3000"
+    environment:
+      - PORT=3000
+      - DATA_DIR=/data
+    volumes:
+      - bpsc-data:/data
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
       interval: 30s
       timeout: 5s
       retries: 3
       start_period: 10s
+
+volumes:
+  bpsc-data:

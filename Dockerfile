@@ -1,31 +1,33 @@
 # syntax=docker/dockerfile:1
 
-# ---- Build stage ----
-FROM node:20-alpine AS build
+# ---- Build stage (full image has toolchain for any native module build) ----
+FROM node:20 AS build
 WORKDIR /app
-
-# Install dependencies first (better layer caching)
 COPY package.json package-lock.json ./
 RUN npm ci
-
-# Build the PWA
 COPY . .
-RUN npm run build
+# Build the frontend (dist/) and regenerate the question-bank seed from content.
+RUN npm run build && npm run seed:build
 
-# ---- Serve stage ----
-FROM nginx:1.27-alpine AS serve
+# ---- Runtime stage (slim; same Debian base → native modules stay compatible) ----
+FROM node:20-slim AS runtime
+WORKDIR /app
+ENV NODE_ENV=production \
+    PORT=3000 \
+    DATA_DIR=/data
 
-# SPA + PWA aware nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# App + deps + built assets + seed, copied from the build stage.
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/server ./server
+COPY --from=build /app/package.json ./package.json
 
-# Static build output
-COPY --from=build /app/dist /usr/share/nginx/html
+# SQLite database lives here — mount a Coolify volume at /data to persist it.
+RUN mkdir -p /data
+VOLUME ["/data"]
 
-# Coolify / reverse proxy talk to the container on port 80
-EXPOSE 80
-
-# Lightweight healthcheck used by Coolify to mark the app healthy
+EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD wget -q --spider http://127.0.0.1/ || exit 1
+  CMD node -e "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "run", "start"]

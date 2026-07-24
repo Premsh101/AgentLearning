@@ -21,6 +21,9 @@ An AI-powered, **bilingual (Hindi + English)**, **offline-first** study operatin
 | **AI Mentor** chat with pluggable providers | ✅ | AI (user's own key) |
 | **Mains Answer Evaluation** — rubric scoring + model answer | ✅ | Client-side AI (user's key) |
 | **Interview Coach** — mock interview by browser voice | ✅ | Client-side AI + Web Speech API |
+| **PYQ Intelligence** — most-repeated topics & subject weightage | ✅ | Backend analytics over the question bank |
+| **Model Test Papers** — blueprint-based paper generator + exam runner | ✅ | Backend (Node + SQLite) |
+| **Question bank + scraper** — ingest/import/review PYQs | ✅ | Backend (adapter framework + review queue) |
 | **Smart Revision** — spaced repetition (1/3/7/15/30/60-day ladder) | ✅ | Pure code |
 | **Performance Analytics** — Readiness Score, subject bars, weak-area plan | ✅ | Pure code |
 | **Weak-area detection** with chapter-level improvement plan | ✅ | Pure code |
@@ -49,10 +52,10 @@ Uses the **browser's built-in Web Speech API** only — `speechSynthesis` for re
 
 ## Tech stack
 
-- **React 18 + TypeScript + Vite**
-- **vite-plugin-pwa** (Workbox) for offline-first installability
-- No backend required for the MVP — content ships with the app; AI calls go browser-direct to the user's chosen provider
-- All progress (streaks, completion, quiz stats, settings) persists in `localStorage`
+- **Frontend:** React 18 + TypeScript + Vite; **vite-plugin-pwa** (Workbox) for offline-first installability; route-level code-splitting
+- **Backend:** Node 20 + Express 5 + **better-sqlite3** — a single server that serves the built PWA *and* the API (question bank, PYQ stats, scraper, model-test-paper generator). One container, one SQLite volume.
+- **AI features** (mentor, mains, interview, current-affairs generation, OCR) call the user's chosen provider **browser-direct** — those keys never touch the server.
+- User progress (streaks, completion, quiz stats, revision, settings, keys) persists in `localStorage`; the shared question bank persists in SQLite on the mounted volume.
 
 ## Content model
 
@@ -80,7 +83,7 @@ npm run preview    # serve the production build
 
 ## Deployment
 
-Ships as a static PWA behind nginx via a multi-stage `Dockerfile`, designed for **Coolify on a KVM VPS**. No backend, no database, no server-side secrets. See [`docs/deployment.md`](docs/deployment.md) for the full Coolify setup.
+Ships as a **single container** (Node serves the PWA + API) via a multi-stage `Dockerfile`, with a SQLite volume for the question bank — designed for **Coolify on a KVM VPS** (one service, one persistent volume at `/data`, port 3000). `docker compose up -d --build` for a one-command deploy. See [`docs/deployment.md`](docs/deployment.md) for the full Coolify setup.
 
 ---
 
