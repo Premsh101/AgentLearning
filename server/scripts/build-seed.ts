@@ -4,6 +4,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { CHAPTERS } from '../../src/content/syllabus';
+import { PYQ_BANK } from '../../src/content/pyqBank';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -44,6 +45,27 @@ for (const ch of CHAPTERS) {
       status: 'approved',
     });
   }
+}
+
+// Year-wise previous-year questions (authentic, verified) — tagged with year
+// and source 'pyq' so the PYQ module can be practised year-wise.
+for (const q of PYQ_BANK) {
+  rows.push({
+    id: q.id,
+    subjectId: q.subjectId,
+    topic: q.topic,
+    year: q.year,
+    difficulty: q.difficulty,
+    type: 'mcq',
+    question_en: q.question.en,
+    question_hi: q.question.hi,
+    options: q.options.map((o) => ({ en: o.en, hi: o.hi })),
+    answer: q.answer,
+    explanation_en: q.explanation.en,
+    explanation_hi: q.explanation.hi,
+    source: 'pyq',
+    status: 'approved',
+  });
 }
 
 const outDir = resolve(__dirname, '../seed');

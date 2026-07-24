@@ -99,14 +99,17 @@ export const api = {
   news: (status?: string) => j<{ items: NewsItem[] }>(`/news${status ? `?status=${status}` : ''}`),
   fetchNews: (url?: string) => j<{ results: { source: string; fetched: number; added: number; error?: string }[] }>('/news/fetch', jsonPost({ url })),
   newsAction: (id: string, action: 'approve' | 'dismiss') => j<{ updated: number }>(`/news/${id}/${action}`, { method: 'POST' }),
-  questions: (params: { subject?: string; topic?: string; difficulty?: number; limit?: number } = {}) => {
+  questions: (params: { subject?: string; topic?: string; difficulty?: number; year?: number; source?: string; limit?: number } = {}) => {
     const q = new URLSearchParams();
     if (params.subject) q.set('subject', params.subject);
     if (params.topic) q.set('topic', params.topic);
     if (params.difficulty) q.set('difficulty', String(params.difficulty));
+    if (params.year) q.set('year', String(params.year));
+    if (params.source) q.set('source', params.source);
     q.set('limit', String(params.limit ?? 20));
     return j<{ questions: ApiQuestion[] }>(`/questions?${q.toString()}`);
   },
+  pyqYears: () => j<{ years: { year: number; count: number }[] }>('/pyq/years'),
   blueprints: () => j<{ blueprints: ApiBlueprint[] }>('/blueprints'),
   generatePaper: (blueprintId: string, seed?: number) => j<{ paper: ApiPaper; shortfall: number }>('/papers', jsonPost({ blueprintId, seed })),
   generateCustomPaper: (blueprint: ApiBlueprint, seed?: number) => j<{ paper: ApiPaper; shortfall: number }>('/papers', jsonPost({ blueprint, seed })),

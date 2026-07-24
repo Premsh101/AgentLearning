@@ -26,6 +26,7 @@ export function Practice() {
   const [params] = useSearchParams();
   const topic = params.get('topic') || undefined;
   const subject = params.get('subject') || undefined;
+  const year = params.get('year') ? Number(params.get('year')) : undefined;
 
   const [questions, setQuestions] = useState<ApiQuestion[] | null>(null);
   const [error, setError] = useState('');
@@ -34,17 +35,19 @@ export function Practice() {
   useEffect(() => {
     setQuestions(null);
     setError('');
+    // Year practice pulls the whole year's PYQ set; otherwise a 15-question set.
     api
-      .questions({ topic, subject, limit: 15 })
+      .questions({ topic, subject, year, source: year ? 'pyq' : undefined, limit: year ? 100 : 15 })
       .then((r) => setQuestions(r.questions))
       .catch((e) => setError(e instanceof Error ? e.message : String(e)));
-  }, [topic, subject, nonce]);
+  }, [topic, subject, year, nonce]);
 
   const label = useMemo(() => {
+    if (year) return (lang === 'hi' ? `${year} के प्रश्न (PYQ)` : `${year} questions (PYQ)`);
     if (topic) return TOPIC_LABELS[topic] ? tb(TOPIC_LABELS[topic]) : topic;
     if (subject) { const s = SUBJECTS.find((x) => x.id === subject); return s ? tb(s.name) : subject; }
     return lang === 'hi' ? 'प्रश्न बैंक' : 'Question bank';
-  }, [topic, subject, lang, tb]);
+  }, [topic, subject, year, lang, tb]);
 
   const mapped = useMemo(() => (questions ?? []).map(toQuestion), [questions]);
 
