@@ -1,0 +1,24 @@
+# One-command deploy for a KVM VPS (or any Docker host).
+#
+#   docker compose up -d --build
+#
+# Then open http://<server-ip>:8080
+#
+# For production (PWA install + offline need HTTPS), put this behind a reverse
+# proxy that terminates TLS — e.g. Coolify/Traefik, or Caddy/Nginx Proxy Manager.
+# See docs/deployment.md.
+
+services:
+  web:
+    build: .
+    image: bpsc-ai-os:latest
+    container_name: bpsc-ai-os
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

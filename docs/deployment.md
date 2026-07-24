@@ -14,6 +14,27 @@ We deploy it as a Docker image (Node build → nginx serve) via **Coolify** runn
 | `nginx.conf` | SPA fallback, gzip, and PWA-aware caching (never cache `sw.js`/`index.html`; cache hashed `/assets/` for a year). |
 | `.dockerignore` | Keeps `node_modules`, `dist`, `.git` etc. out of the build context. |
 
+## Quick deploy on a KVM box (no Coolify needed — for testing)
+
+If you just want it running to test, any KVM VPS with Docker works:
+
+```bash
+git clone https://github.com/Premsh101/AgentLearning.git
+cd AgentLearning
+docker compose up -d --build      # builds the image and starts nginx on :8080
+```
+
+Open `http://<server-ip>:8080`. To update after new commits: `git pull && docker compose up -d --build`. To stop: `docker compose down`.
+
+Or without compose:
+
+```bash
+docker build -t bpsc-ai-os .
+docker run -d --name bpsc-ai-os -p 8080:80 --restart unless-stopped bpsc-ai-os
+```
+
+> **PWA note:** installability and offline caching (the service worker) require **HTTPS** in production — but they also work on `http://localhost`, so plain HTTP on `:8080` is fine for testing. For a public URL, front it with a TLS-terminating reverse proxy (Coolify/Traefik below, or Caddy / Nginx Proxy Manager). No app config changes are needed — the app uses hash-based routing and serves under any domain.
+
 ## Requirements
 
 - A KVM VPS (1 vCPU / 1 GB RAM is plenty for this static app; 2 GB recommended so image builds are comfortable).

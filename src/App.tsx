@@ -9,6 +9,8 @@ const NAV = [
   { to: '/mock', key: 'nav.mock', icon: '⏱️', end: false },
   { to: '/revision', key: 'nav.revision', icon: '🔁', end: false },
   { to: '/analytics', key: 'nav.analytics', icon: '📊', end: false },
+  { to: '/mains', key: 'nav.mains', icon: '📝', end: false },
+  { to: '/interview', key: 'nav.interview', icon: '🎤', end: false },
   { to: '/mentor', key: 'nav.mentor', icon: '🤖', end: false },
   { to: '/settings', key: 'nav.settings', icon: '⚙️', end: false },
 ];
