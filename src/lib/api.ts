@@ -85,6 +85,14 @@ export interface ScrapeResult {
 
 export const api = {
   health: () => j<{ ok: boolean; questions: number; adminRequired: boolean }>('/health'),
+  questions: (params: { subject?: string; topic?: string; difficulty?: number; limit?: number } = {}) => {
+    const q = new URLSearchParams();
+    if (params.subject) q.set('subject', params.subject);
+    if (params.topic) q.set('topic', params.topic);
+    if (params.difficulty) q.set('difficulty', String(params.difficulty));
+    q.set('limit', String(params.limit ?? 20));
+    return j<{ questions: ApiQuestion[] }>(`/questions?${q.toString()}`);
+  },
   blueprints: () => j<{ blueprints: ApiBlueprint[] }>('/blueprints'),
   generatePaper: (blueprintId: string, seed?: number) => j<{ paper: ApiPaper; shortfall: number }>('/papers', jsonPost({ blueprintId, seed })),
   generateCustomPaper: (blueprint: ApiBlueprint, seed?: number) => j<{ paper: ApiPaper; shortfall: number }>('/papers', jsonPost({ blueprint, seed })),

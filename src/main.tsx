@@ -19,6 +19,7 @@ const Analytics = lazy(() => import('./pages/Analytics').then((m) => ({ default:
 const PYQ = lazy(() => import('./pages/PYQ').then((m) => ({ default: m.PYQ })));
 const TestPapers = lazy(() => import('./pages/TestPapers').then((m) => ({ default: m.TestPapers })));
 const QuestionBank = lazy(() => import('./pages/QuestionBank').then((m) => ({ default: m.QuestionBank })));
+const Practice = lazy(() => import('./pages/Practice').then((m) => ({ default: m.Practice })));
 const Mains = lazy(() => import('./pages/Mains').then((m) => ({ default: m.Mains })));
 const Interview = lazy(() => import('./pages/Interview').then((m) => ({ default: m.Interview })));
 const Mentor = lazy(() => import('./pages/Mentor').then((m) => ({ default: m.Mentor })));
@@ -51,6 +52,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path="test-papers" element={<Suspense fallback={<Loading />}><TestPapers /></Suspense>} />
             <Route path="pyq" element={<Suspense fallback={<Loading />}><PYQ /></Suspense>} />
             <Route path="question-bank" element={<Suspense fallback={<Loading />}><QuestionBank /></Suspense>} />
+            <Route path="practice" element={<Suspense fallback={<Loading />}><Practice /></Suspense>} />
             <Route path="revision" element={<Suspense fallback={<Loading />}><Revision /></Suspense>} />
             <Route path="analytics" element={<Suspense fallback={<Loading />}><Analytics /></Suspense>} />
             <Route path="mains" element={<Suspense fallback={<Loading />}><Mains /></Suspense>} />

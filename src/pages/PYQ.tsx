@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../lib/i18n';
-import { SUBJECTS, TOPIC_LABELS, chaptersForTopic } from '../content/syllabus';
+import { SUBJECTS, TOPIC_LABELS, chaptersForTopic, CHAPTERS } from '../content/syllabus';
 import { PYQS, TOTAL_PYQS, subjectWeightage, topicFrequency } from '../content/pyqs';
+import { api, type PyqStats } from '../lib/api';
 
 export function PYQ() {
   const { lang, tb } = useLang();
   const [subjectFilter, setSubjectFilter] = useState<string>('all');
+  const [live, setLive] = useState<PyqStats | null>(null);
+
+  // Prefer live stats computed over the real (growing) question bank; fall back
+  // to the bundled sample dataset when the backend isn't reachable (offline).
+  useEffect(() => {
+    api.pyqStats().then(setLive).catch(() => setLive(null));
+  }, []);
 
   const subjectName = (id: string) => {
     const s = SUBJECTS.find((x) => x.id === id);
@@ -14,24 +22,21 @@ export function PYQ() {
   };
   const topicLabel = (t: string) => (TOPIC_LABELS[t] ? tb(TOPIC_LABELS[t]) : t);
 
-  // Map each topic to the subject it appears under (from the PYQ dataset).
+  // Map each topic to the subject it appears under (topic tags are shared).
   const topicSubject = new Map<string, string>();
   for (const p of PYQS) if (!topicSubject.has(p.topic)) topicSubject.set(p.topic, p.subjectId);
+  for (const c of CHAPTERS) for (const q of c.quiz) if (!topicSubject.has(q.topic)) topicSubject.set(q.topic, c.subjectId);
 
-  const weightage = subjectWeightage();
-  const maxCount = weightage.length ? weightage[0].count : 1;
+  const total = live ? live.total : TOTAL_PYQS;
+  const weightage = live ? live.subjects : subjectWeightage();
+  const maxCount = weightage.length ? Math.max(...weightage.map((w) => w.count)) : 1;
 
-  const allFrequencies = topicFrequency();
+  const allFrequencies: { topic: string; count: number; priority: string }[] = live ? live.topics : topicFrequency();
   const frequencies =
-    subjectFilter === 'all'
-      ? allFrequencies
-      : allFrequencies.filter((f) => topicSubject.get(f.topic) === subjectFilter);
+    subjectFilter === 'all' ? allFrequencies : allFrequencies.filter((f) => topicSubject.get(f.topic) === subjectFilter);
 
-  const priorityBadge = (priority: 'Very High' | 'High' | 'Medium') => {
-    if (priority === 'Medium') return 'badge';
-    return 'badge orange';
-  };
-  const priorityLabel = (priority: 'Very High' | 'High' | 'Medium') => {
+  const priorityBadge = (priority: string) => (priority === 'Medium' ? 'badge' : 'badge orange');
+  const priorityLabel = (priority: string) => {
     if (lang !== 'hi') return priority;
     return priority === 'Very High' ? 'बहुत उच्च' : priority === 'High' ? 'उच्च' : 'मध्यम';
   };
@@ -41,8 +46,12 @@ export function PYQ() {
       <h1>🎯 {lang === 'hi' ? 'PYQ इंटेलिजेंस' : 'PYQ Intelligence'}</h1>
       <p className="subtitle">
         {lang === 'hi'
-          ? `पिछले वर्षों के प्रश्नों को केवल संग्रहीत करने के बजाय, यह ऐप उनका विश्लेषण करता है — जिससे सबसे अधिक दोहराए जाने वाले विषय और विषयवार महत्व सामने आते हैं, ताकि आप वही पढ़ें जो सबसे मायने रखता है। (${TOTAL_PYQS} नमूना प्रश्नों पर आधारित।)`
-          : `Instead of just storing previous-year questions, the app analyses them to reveal the most-repeated topics and subject weightage — so you study what matters most. (Computed from a sample of ${TOTAL_PYQS} questions.)`}
+          ? `पिछले वर्षों के प्रश्नों को केवल संग्रहीत करने के बजाय, यह ऐप उनका विश्लेषण करता है — जिससे सबसे अधिक दोहराए जाने वाले विषय और विषयवार महत्व सामने आते हैं। (${total} प्रश्नों पर आधारित।)`
+          : `Instead of just storing previous-year questions, the app analyses them to reveal the most-repeated topics and subject weightage. (Computed over ${total} questions.)`}
+        {' '}
+        <span className={`badge ${live ? 'green' : 'orange'}`} style={{ marginLeft: 4 }}>
+          {live ? (lang === 'hi' ? 'लाइव बैंक' : 'live bank') : (lang === 'hi' ? 'नमूना (ऑफ़लाइन)' : 'sample (offline)')}
+        </span>
       </p>
 
       {/* Section 1 — Subject weightage */}
@@ -98,7 +107,7 @@ export function PYQ() {
               <th>{lang === 'hi' ? 'विषय' : 'Topic'}</th>
               <th>{lang === 'hi' ? 'बारंबारता' : 'Frequency'}</th>
               <th>{lang === 'hi' ? 'प्राथमिकता' : 'Priority'}</th>
-              <th className="no-print">{lang === 'hi' ? 'अध्याय दोहराएँ' : 'Revisit chapter(s)'}</th>
+              <th className="no-print">{lang === 'hi' ? 'अभ्यास व अध्याय' : 'Practice & chapters'}</th>
             </tr>
           </thead>
           <tbody>
@@ -113,15 +122,14 @@ export function PYQ() {
                   </td>
                   <td className="no-print">
                     <div className="toolbar" style={{ margin: 0 }}>
-                      {chapters.length === 0 ? (
-                        <span style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>—</span>
-                      ) : (
-                        chapters.map((c) => (
-                          <Link key={c.id} to={`/chapter/${c.id}`} className="btn small">
-                            {tb(c.title)}
-                          </Link>
-                        ))
-                      )}
+                      <Link to={`/practice?topic=${encodeURIComponent(f.topic)}`} className="btn small primary">
+                        ✏️ {lang === 'hi' ? 'अभ्यास' : 'Practice'}
+                      </Link>
+                      {chapters.map((c) => (
+                        <Link key={c.id} to={`/chapter/${c.id}`} className="btn small">
+                          {tb(c.title)}
+                        </Link>
+                      ))}
                     </div>
                   </td>
                 </tr>
