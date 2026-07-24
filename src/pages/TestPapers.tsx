@@ -36,17 +36,34 @@ export function TestPapers() {
       .catch((e) => setError(e instanceof Error ? e.message : String(e)));
   }, []);
 
+  const beginPaper = (p: ApiPaper) => {
+    setPaper(p);
+    setAnswers({});
+    setReview(new Set());
+    setCur(0);
+    setRemaining(p.durationMin * 60);
+    setPhase('running');
+  };
+
   const start = async (blueprintId: string) => {
     setBusy(true);
     setError('');
     try {
       const { paper: p } = await api.generatePaper(blueprintId);
-      setPaper(p);
-      setAnswers({});
-      setReview(new Set());
-      setCur(0);
-      setRemaining(p.durationMin * 60);
-      setPhase('running');
+      beginPaper(p);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const startCustom = async (blueprint: ApiBlueprint) => {
+    setBusy(true);
+    setError('');
+    try {
+      const { paper: p } = await api.generateCustomPaper(blueprint);
+      beginPaper(p);
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
     } finally {
@@ -127,6 +144,8 @@ export function TestPapers() {
             </div>
           ))}
         </div>
+
+        <CustomBuilder busy={busy} onStart={startCustom} />
       </div>
     );
   }
@@ -225,6 +244,61 @@ export function TestPapers() {
 
       <div style={{ marginTop: 18 }}>
         <button className="btn primary" onClick={finish}>{lang === 'hi' ? 'टेस्ट जमा करें' : 'Submit test'}</button>
+      </div>
+    </div>
+  );
+}
+
+function CustomBuilder({ busy, onStart }: { busy: boolean; onStart: (b: ApiBlueprint) => void }) {
+  const { tb, lang } = useLang();
+  const [counts, setCounts] = useState<Record<string, number>>(() =>
+    Object.fromEntries(SUBJECTS.map((s) => [s.id, s.id === 'polity' ? 5 : 3]))
+  );
+  const [duration, setDuration] = useState(30);
+  const [negative, setNegative] = useState(0);
+
+  const total = Object.values(counts).reduce((a, b) => a + b, 0);
+
+  const build = () => {
+    const sections = SUBJECTS.map((s) => ({ subjectId: s.id, count: counts[s.id] || 0 })).filter((s) => s.count > 0);
+    const bp: ApiBlueprint = {
+      id: 'custom',
+      title: { en: `Custom Test — ${total} questions`, hi: `कस्टम टेस्ट — ${total} प्रश्न` },
+      durationMin: duration,
+      negativeMarking: negative,
+      sections,
+    };
+    onStart(bp);
+  };
+
+  return (
+    <div className="card" style={{ marginTop: 18 }}>
+      <h2 style={{ marginTop: 0 }}>🧩 {lang === 'hi' ? 'अपना पेपर बनाएँ' : 'Build your own paper'}</h2>
+      <p className="subtitle" style={{ marginTop: 0 }}>
+        {lang === 'hi' ? 'प्रत्येक विषय से प्रश्नों की संख्या, अवधि व नकारात्मक अंकन चुनें।' : 'Choose how many questions per subject, the duration and negative marking.'}
+      </p>
+      <div style={{ display: 'grid', gap: 10, gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', marginBottom: 12 }}>
+        {SUBJECTS.map((s) => (
+          <div key={s.id} className="field" style={{ margin: 0 }}>
+            <label>{s.icon} {tb(s.name)}</label>
+            <input type="number" min={0} max={30} value={counts[s.id]} onChange={(e) => setCounts({ ...counts, [s.id]: Math.max(0, Math.min(30, Number(e.target.value) || 0)) })} />
+          </div>
+        ))}
+      </div>
+      <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-end' }}>
+        <div className="field" style={{ margin: 0 }}>
+          <label>{lang === 'hi' ? 'अवधि (मिनट)' : 'Duration (min)'}</label>
+          <input type="number" min={1} max={180} value={duration} onChange={(e) => setDuration(Math.max(1, Number(e.target.value) || 1))} style={{ maxWidth: 120 }} />
+        </div>
+        <div className="field" style={{ margin: 0 }}>
+          <label>{lang === 'hi' ? 'नकारात्मक अंकन' : 'Negative marking'}</label>
+          <select value={negative} onChange={(e) => setNegative(Number(e.target.value))} style={{ maxWidth: 140 }}>
+            {[0, 0.25, 0.33, 0.5, 1].map((n) => <option key={n} value={n}>{n === 0 ? (lang === 'hi' ? 'कोई नहीं' : 'None') : `- ${n}`}</option>)}
+          </select>
+        </div>
+        <button className="btn primary" onClick={build} disabled={busy || total === 0}>
+          {busy ? '…' : `▶ ${lang === 'hi' ? `${total} प्रश्नों का पेपर` : `Generate ${total}-question paper`}`}
+        </button>
       </div>
     </div>
   );

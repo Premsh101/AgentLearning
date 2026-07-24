@@ -34,7 +34,7 @@ docker run -d --name bpsc-ai-os -p 8080:3000 -v bpsc-data:/data --restart unless
 2. **Build Pack: `Dockerfile`** (auto-detected at the repo root).
 3. **Port:** `3000` (the Node server listens there; Coolify's Traefik proxy terminates HTTPS in front).
 4. **Persistent storage:** add a volume mounted at **`/data`** (this holds `bpsc.db`; without it the question bank resets on each redeploy).
-5. **Environment variables:** none required. Optional: `PORT` (defaults to 3000), `DATA_DIR` (defaults to `/data`).
+5. **Environment variables:** none required. Optional: `PORT` (defaults to 3000), `DATA_DIR` (defaults to `/data`), and **`ADMIN_TOKEN`** — set this to lock the content-mutating endpoints (scrape / import / approve-reject) behind a token. When set, enter the same token once in the app's **Question Bank** page; leave it unset for an open single-user deploy.
 6. **Domain:** set your domain; Coolify issues a Let's Encrypt certificate. HTTPS is needed for PWA install/offline and the browser-voice features.
 7. **Deploy.** Enable auto-deploy so each push to `main` rebuilds.
 

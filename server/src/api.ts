@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import type { Request, Response } from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import { db, insertQuestions, rowToQuestion, type InsertQuestion } from './db';
 import { normalize } from './scraper/normalize';
 import { runScrape, ADAPTERS } from './scraper/index';
@@ -14,9 +14,19 @@ const wrap = (fn: (req: Request, res: Response) => Promise<void> | void) => (req
   });
 };
 
+// Optional admin guard for content-mutating endpoints (scrape / import / review).
+// If ADMIN_TOKEN is unset the endpoints are open (simple single-user deploy);
+// if set, callers must send a matching `x-admin-token` header.
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN || '';
+function requireAdmin(req: Request, res: Response, next: NextFunction): void {
+  if (!ADMIN_TOKEN) return next();
+  if (req.header('x-admin-token') === ADMIN_TOKEN) return next();
+  res.status(401).json({ error: 'Admin token required. Set it in the Question Bank page.' });
+}
+
 api.get('/health', (_req, res) => {
   const n = (db.prepare('SELECT COUNT(*) AS n FROM questions').get() as { n: number }).n;
-  res.json({ ok: true, questions: n });
+  res.json({ ok: true, questions: n, adminRequired: !!ADMIN_TOKEN });
 });
 
 // ---- Question bank ----
@@ -48,6 +58,7 @@ api.get(
 // Trusted bulk import → inserted as approved.
 api.post(
   '/questions/import',
+  requireAdmin,
   wrap((req, res) => {
     const items = Array.isArray(req.body) ? req.body : req.body?.questions;
     if (!Array.isArray(items)) { res.status(400).json({ error: 'Body must be an array of questions or { questions: [...] }.' }); return; }
@@ -60,6 +71,7 @@ api.post(
 
 api.post(
   '/questions/:id/:action',
+  requireAdmin,
   wrap((req, res) => {
     const action = String(req.params.action);
     if (action !== 'approve' && action !== 'reject') { res.status(400).json({ error: 'action must be approve or reject' }); return; }
@@ -91,6 +103,7 @@ api.get('/scrape/sources', (_req, res) => {
 
 api.post(
   '/scrape',
+  requireAdmin,
   wrap(async (req, res) => {
     const { source, url, limit } = req.body ?? {};
     if (!source) { res.status(400).json({ error: 'source is required' }); return; }
