@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLang } from '../lib/i18n';
 import { useMentorChat } from '../lib/useMentorChat';
 import { Markdown } from './Markdown';
+import { exportAnswerDoc } from '../lib/exportDoc';
 
 /**
  * Floating quick-access AI Mentor. A button pinned to the bottom-right of every
@@ -56,6 +57,21 @@ export function MentorWidget() {
             {messages.map((m, i) => (
               <div key={i} className={`msg ${m.role === 'user' ? 'user' : 'ai'}`}>
                 {m.role === 'user' ? m.content : <Markdown text={m.content} />}
+                {m.role === 'assistant' && (
+                  <div className="msg-tools no-print">
+                    <button
+                      title={lang === 'hi' ? 'Word में डाउनलोड करें' : 'Download as Word'}
+                      onClick={(e) => {
+                        const md = (e.currentTarget.closest('.msg')?.querySelector('.md') as HTMLElement | null)?.innerHTML ?? '';
+                        let q = '';
+                        for (let j = i - 1; j >= 0; j--) if (messages[j].role === 'user') { q = messages[j].content; break; }
+                        exportAnswerDoc(q, md);
+                      }}
+                    >
+                      📄 Word
+                    </button>
+                  </div>
+                )}
               </div>
             ))}
             {loading && <div className="msg ai typing">…</div>}

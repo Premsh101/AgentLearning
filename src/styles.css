@@ -386,9 +386,15 @@ table.content-table { border-collapse: collapse; width: 100%; margin: 14px 0; fo
 .msg.user .md-table th, .msg.user .md-table td { border-color: rgba(255,255,255,0.35); }
 
 /* ---------- Mentor full page: only the message panel scrolls ---------- */
-.mentor-page { display: flex; flex-direction: column; height: calc(100vh - 48px); }
-.chat-scroll { flex: 1; overflow-y: auto; padding-right: 4px; }
+.mentor-page { display: flex; flex-direction: column; height: calc(100dvh - 100px); }
+.chat-scroll { flex: 1; min-height: 0; overflow-y: auto; padding-right: 4px; overscroll-behavior: contain; }
+.mentor-page .chat-input { flex-shrink: 0; margin-top: 4px; }
 .typing { opacity: 0.6; }
+@media (max-width: 820px) {
+  /* On mobile the sidebar becomes a top bar, so give the page its own height. */
+  .mentor-page { height: auto; }
+  .mentor-page .chat-scroll { height: 52dvh; min-height: 240px; flex: none; }
+}
 
 /* ---------- Floating AI Mentor widget ---------- */
 .mentor-fab {
@@ -441,3 +447,47 @@ table.content-table { border-collapse: collapse; width: 100%; margin: 14px 0; fo
 .map-stage.grab:active { cursor: grabbing; }
 .map-controls { display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-top: 1px solid var(--border); background: var(--surface); }
 .map-zoom { margin-left: auto; font-size: 0.82rem; color: var(--text-dim); }
+
+/* Mentor page header + per-message tools */
+.mentor-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.mentor-head h1 { margin-bottom: 4px; }
+.msg-tools { margin-top: 8px; display: flex; gap: 6px; }
+.msg-tools button {
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text-dim);
+  font-size: 0.74rem; padding: 3px 9px; border-radius: 7px; cursor: pointer;
+}
+.msg-tools button:hover { color: var(--text); border-color: var(--primary); }
+
+/* ---------- Highlight-to-notebook ---------- */
+.hl-menu {
+  position: fixed; z-index: 70; transform: translate(-50%, -110%);
+}
+.hl-menu button, .hl-saved {
+  background: var(--primary); color: #fff; border: none; border-radius: 9px;
+  padding: 7px 13px; font-size: 0.85rem; cursor: pointer; white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(20,30,60,0.3); display: inline-block;
+}
+.hl-saved { background: var(--green); }
+
+/* ---------- Notebook ---------- */
+.nb-entry { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin: 12px 0; background: var(--bg); }
+.nb-entry.highlight { border-left: 4px solid var(--accent); }
+.nb-entry.note { border-left: 4px solid var(--primary); }
+.nb-text { white-space: pre-wrap; }
+.nb-meta { font-size: 0.78rem; color: var(--text-dim); margin-top: 6px; display: flex; align-items: center; gap: 6px; }
+.nb-del { margin-left: auto; border: none; background: transparent; color: var(--text-dim); cursor: pointer; font-size: 0.85rem; }
+.nb-del:hover { color: var(--red); }
+.nb-add { display: flex; gap: 8px; margin-top: 16px; align-items: flex-end; flex-wrap: wrap; }
+.nb-add textarea {
+  flex: 1; min-width: 240px; resize: vertical; padding: 10px 12px;
+  border: 1px solid var(--border); border-radius: 10px;
+  background: var(--surface); color: var(--text); font-family: inherit; font-size: 0.92rem;
+}
+
+/* Maps: map + exam-insights side panel */
+.map-layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(240px, 1fr); gap: 16px; align-items: start; }
+.map-insights { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+.map-insights h3 { margin: 0 0 8px; font-size: 1rem; color: var(--primary); }
+.map-insights ul { margin: 0; padding-left: 18px; }
+.map-insights li { margin: 8px 0; font-size: 0.88rem; line-height: 1.5; }
+@media (max-width: 900px) { .map-layout { grid-template-columns: 1fr; } }
