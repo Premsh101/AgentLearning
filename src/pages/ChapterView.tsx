@@ -8,6 +8,7 @@ import { QuizRunner } from '../components/QuizRunner';
 import { ReportMistake } from '../components/ReportMistake';
 import { loadJSON, saveJSON, touchStudyDay } from '../lib/storage';
 import { speak, stopSpeaking, isSpeechSupported } from '../lib/tts';
+import { enroll } from '../lib/revision';
 
 export function ChapterView() {
   const { chapterId = '' } = useParams();
@@ -36,6 +37,7 @@ export function ChapterView() {
       list.push(chapterId);
       saveJSON('completedChapters', list);
     }
+    enroll(chapterId); // start the spaced-repetition schedule
     touchStudyDay();
     setCompleted(true);
   };

@@ -7,6 +7,8 @@ const NAV = [
   { to: '/quiz', key: 'nav.quiz', icon: '✅', end: false },
   { to: '/current-affairs', key: 'nav.ca', icon: '📰', end: false },
   { to: '/mock', key: 'nav.mock', icon: '⏱️', end: false },
+  { to: '/revision', key: 'nav.revision', icon: '🔁', end: false },
+  { to: '/analytics', key: 'nav.analytics', icon: '📊', end: false },
   { to: '/mentor', key: 'nav.mentor', icon: '🤖', end: false },
   { to: '/settings', key: 'nav.settings', icon: '⚙️', end: false },
 ];

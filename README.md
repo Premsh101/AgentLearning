@@ -19,7 +19,9 @@ An AI-powered, **bilingual (Hindi + English)**, **offline-first** study operatin
 | **Mock Test** — real exam simulation | ✅ | Pure code |
 | **"Report a mistake"** on every chapter | ✅ | Local store + pre-filled GitHub issue |
 | **AI Mentor** chat with pluggable providers | ✅ | AI (user's own key) |
-| **Weak-area analytics** (per-topic accuracy) | ✅ | Pure code |
+| **Smart Revision** — spaced repetition (1/3/7/15/30/60-day ladder) | ✅ | Pure code |
+| **Performance Analytics** — Readiness Score, subject bars, weak-area plan | ✅ | Pure code |
+| **Weak-area detection** with chapter-level improvement plan | ✅ | Pure code |
 | Streaks, chapter completion, exam countdown | ✅ | Pure code |
 | **PWA / installable / offline** | ✅ | Service worker |
 
@@ -84,7 +86,7 @@ Ships as a static PWA behind nginx via a multi-stage `Dockerfile`, designed for 
 
 - **Phase 1:** content + core code + AI mentor + mock engine + PWA. ✅
 - **Phase 2 (started):** Current Affairs Intelligence. **Delivered client-side:** a curated, static-GK-linked digest (browse by category, PDF export) and the signature **"news → exam material"** generator that turns any pasted news item into a summary, background, static-GK link, key facts, MCQs and mains questions using the user's own AI provider. **Next (server-side):** the automated daily batch pipeline (source monitoring → dedup via embeddings → BPSC-relevance classifier → exam-content generation) with a **human review queue** before publishing, and auto-assembled daily/weekly/monthly magazines. That part needs a backend and is intentionally out of the current no-backend MVP.
-- **Phase 3:** performance dashboard, spaced-repetition (FSRS), planner feedback loop, BPSC notification watcher.
+- **Phase 3 (delivered):** Smart Revision (spaced-repetition interval ladder with recall grades), Performance Analytics with a transparent **Readiness Score** (0.4×coverage + 0.35×accuracy + 0.25×revision — deliberately *not* a guessed "selection probability"), subject-completion bars, and weak-area detection that maps weak topics to the exact chapters to revisit. *Next:* planner feedback loop, BPSC notification watcher.
 - **Phase 4:** mains answer evaluation (OCR + rubric), interview coach (browser voice), predicted-questions batch job.
 
 The reusable architecture means swapping the syllabus, PYQs and knowledge base retargets the same OS to UPSC, SSC, and other exams.
