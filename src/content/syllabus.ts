@@ -128,6 +128,11 @@ export function chapterById(id: string): Chapter | undefined {
 
 export const QUESTION_BANK: Question[] = CHAPTERS.flatMap((c) => c.quiz);
 
+/** Chapters whose question bank covers a given topic — used for the weak-area improvement plan. */
+export function chaptersForTopic(topic: string): Chapter[] {
+  return CHAPTERS.filter((c) => c.quiz.some((q) => q.topic === topic));
+}
+
 export const TOPIC_LABELS: Record<string, Bilingual> = {
   'polity-historical': { en: 'Polity: Historical Background', hi: 'राजव्यवस्था: ऐतिहासिक पृष्ठभूमि' },
   'polity-making': { en: 'Polity: Making of the Constitution', hi: 'राजव्यवस्था: संविधान निर्माण' },

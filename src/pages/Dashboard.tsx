@@ -3,6 +3,7 @@ import { useLang } from '../lib/i18n';
 import { computeStreak, loadJSON } from '../lib/storage';
 import { CHAPTERS } from '../content/syllabus';
 import { totalAttempts, accuracy } from '../lib/analytics';
+import { revisionSummary } from '../lib/revision';
 
 function daysToExam(): number | null {
   const date = loadJSON<string>('examDate', '');
@@ -20,10 +21,19 @@ export function Dashboard() {
   const acc = accuracy(totals);
   const greeting = lang === 'hi' ? 'नमस्ते! 👋' : 'Welcome back! 👋';
 
+  const due = revisionSummary().due;
+
   return (
     <div>
       <h1>{greeting}</h1>
       <p className="subtitle">{t('app.tagline')}</p>
+
+      {due > 0 && (
+        <Link to="/revision" className="card" style={{ display: 'block', color: 'var(--text)', borderColor: 'var(--accent)', marginBottom: 18 }}>
+          🔁 <strong>{due}</strong>{' '}
+          {lang === 'hi' ? 'अध्याय आज रिवीजन हेतु बकाया — अभी दोहराएँ →' : `chapter(s) due for revision today — review now →`}
+        </Link>
+      )}
 
       <div className="stat-row">
         <div className="card stat">

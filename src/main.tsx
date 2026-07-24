@@ -10,6 +10,8 @@ import { ChapterView } from './pages/ChapterView';
 import { DailyQuiz } from './pages/DailyQuiz';
 import { CurrentAffairs } from './pages/CurrentAffairs';
 import { MockTest } from './pages/MockTest';
+import { Revision } from './pages/Revision';
+import { Analytics } from './pages/Analytics';
 import { Mentor } from './pages/Mentor';
 import { Settings } from './pages/Settings';
 import './styles.css';
@@ -27,6 +29,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path="quiz" element={<DailyQuiz />} />
             <Route path="current-affairs" element={<CurrentAffairs />} />
             <Route path="mock" element={<MockTest />} />
+            <Route path="revision" element={<Revision />} />
+            <Route path="analytics" element={<Analytics />} />
             <Route path="mentor" element={<Mentor />} />
             <Route path="settings" element={<Settings />} />
           </Route>

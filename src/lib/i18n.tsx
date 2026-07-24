@@ -19,6 +19,8 @@ const UI: Record<string, Bilingual> = {
   'nav.quiz': { en: 'Daily Quiz', hi: 'दैनिक क्विज़' },
   'nav.ca': { en: 'Current Affairs', hi: 'करेंट अफेयर्स' },
   'nav.mock': { en: 'Mock Test', hi: 'मॉक टेस्ट' },
+  'nav.revision': { en: 'Revision', hi: 'रिवीजन' },
+  'nav.analytics': { en: 'Analytics', hi: 'विश्लेषण' },
   'nav.mentor': { en: 'AI Mentor', hi: 'AI मेंटर' },
   'nav.settings': { en: 'Settings', hi: 'सेटिंग्स' },
   'app.tagline': { en: 'Your Personal AI Coach to Crack BPSC', hi: 'BPSC क्रैक करने के लिए आपका निजी AI कोच' },
