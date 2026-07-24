@@ -11,7 +11,7 @@
     "server": "tsx watch server/src/index.ts",
     "start": "tsx server/src/index.ts",
     "typecheck:server": "tsc -p server/tsconfig.json",
-    "build:server": "esbuild server/src/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=server-dist/index.mjs --external:better-sqlite3 --banner:js=\"import{createRequire as __cr}from'node:module';const require=__cr(import.meta.url);\""
+    "build:server": "esbuild server/src/index.ts --bundle --platform=node --target=node22 --format=esm --outfile=server-dist/index.mjs --external:better-sqlite3 --banner:js=\"import{createRequire as __cr}from'node:module';const require=__cr(import.meta.url);\""
   },
   "dependencies": {
     "better-sqlite3": "^13.0.1",
