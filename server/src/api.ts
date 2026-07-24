@@ -4,6 +4,7 @@ import { db, insertQuestions, rowToQuestion, type InsertQuestion } from './db';
 import { normalize } from './scraper/normalize';
 import { runScrape, ADAPTERS } from './scraper/index';
 import { BLUEPRINTS, getBlueprint, generatePaper, getPaper } from './papers';
+import { fetchAll, listNews, setNewsStatus } from './news';
 import type { Blueprint } from './types';
 
 export const api = Router();
@@ -109,6 +110,36 @@ api.post(
     if (!source) { res.status(400).json({ error: 'source is required' }); return; }
     const result = await runScrape(String(source), { url, limit: limit ? Number(limit) : undefined });
     res.json(result);
+  })
+);
+
+// ---- News pipeline (server-side Current Affairs) ----
+api.get(
+  '/news',
+  wrap((req, res) => {
+    const status = req.query.status ? String(req.query.status) : undefined;
+    res.json({ items: listNews(status) });
+  })
+);
+
+api.post(
+  '/news/fetch',
+  requireAdmin,
+  wrap(async (req, res) => {
+    const { url } = req.body ?? {};
+    const results = await fetchAll(url ? String(url) : undefined);
+    res.json({ results });
+  })
+);
+
+api.post(
+  '/news/:id/:action',
+  requireAdmin,
+  wrap((req, res) => {
+    const action = String(req.params.action);
+    if (action !== 'approve' && action !== 'dismiss') { res.status(400).json({ error: 'action must be approve or dismiss' }); return; }
+    const updated = setNewsStatus(String(req.params.id), action === 'approve' ? 'approved' : 'dismissed');
+    res.json({ updated });
   })
 );
 

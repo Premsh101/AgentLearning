@@ -29,7 +29,10 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
-        navigateFallback: '/index.html'
+        // Keep the (image-heavy) user manual out of the offline precache.
+        globIgnores: ['user-manual/**'],
+        navigateFallback: '/index.html',
+        navigateFallbackDenylist: [/^\/user-manual/, /^\/api/]
       }
     })
   ]

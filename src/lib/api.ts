@@ -83,8 +83,22 @@ export interface ScrapeResult {
   message: string;
 }
 
+export interface NewsItem {
+  id: string;
+  source: string;
+  title: string;
+  link: string;
+  description: string;
+  pubDate: string;
+  status: 'new' | 'approved' | 'dismissed';
+  fetchedAt: string;
+}
+
 export const api = {
   health: () => j<{ ok: boolean; questions: number; adminRequired: boolean }>('/health'),
+  news: (status?: string) => j<{ items: NewsItem[] }>(`/news${status ? `?status=${status}` : ''}`),
+  fetchNews: (url?: string) => j<{ results: { source: string; fetched: number; added: number; error?: string }[] }>('/news/fetch', jsonPost({ url })),
+  newsAction: (id: string, action: 'approve' | 'dismiss') => j<{ updated: number }>(`/news/${id}/${action}`, { method: 'POST' }),
   questions: (params: { subject?: string; topic?: string; difficulty?: number; limit?: number } = {}) => {
     const q = new URLSearchParams();
     if (params.subject) q.set('subject', params.subject);

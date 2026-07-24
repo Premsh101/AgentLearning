@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../lib/i18n';
 import { CA_CATEGORIES, caByCategory, type CurrentAffair } from '../content/currentAffairs';
@@ -7,12 +7,19 @@ import { QuizRunner } from '../components/QuizRunner';
 import { loadJSON } from '../lib/storage';
 import { DEFAULT_AI_SETTINGS, type AISettings } from '../lib/ai/types';
 import { generateExamMaterial, type GeneratedCA } from '../lib/ai/currentAffairs';
+import { api, type NewsItem } from '../lib/api';
 
-type Tab = 'digest' | 'generate';
+type Tab = 'digest' | 'news' | 'generate';
 
 export function CurrentAffairs() {
   const { t, lang } = useLang();
   const [tab, setTab] = useState<Tab>('digest');
+  const [prefill, setPrefill] = useState('');
+
+  const convert = (text: string) => {
+    setPrefill(text);
+    setTab('generate');
+  };
 
   return (
     <div>
@@ -27,12 +34,17 @@ export function CurrentAffairs() {
         <button className={`btn ${tab === 'digest' ? 'primary' : ''}`} onClick={() => setTab('digest')}>
           📚 {lang === 'hi' ? 'डाइजेस्ट' : 'Digest'}
         </button>
+        <button className={`btn ${tab === 'news' ? 'primary' : ''}`} onClick={() => setTab('news')}>
+          🗞️ {lang === 'hi' ? 'लाइव समाचार' : 'Live News'}
+        </button>
         <button className={`btn ${tab === 'generate' ? 'primary' : ''}`} onClick={() => setTab('generate')}>
           ✨ {lang === 'hi' ? 'समाचार → परीक्षा सामग्री' : 'News → Exam Material'}
         </button>
       </div>
 
-      {tab === 'digest' ? <Digest /> : <Generator />}
+      {tab === 'digest' && <Digest />}
+      {tab === 'news' && <LiveNews onConvert={convert} />}
+      {tab === 'generate' && <Generator initialText={prefill} />}
 
       {tab === 'digest' && (
         <p className="subtitle" style={{ marginTop: 24, fontSize: '0.82rem' }}>
@@ -135,10 +147,104 @@ function CACard({ item }: { item: CurrentAffair }) {
   );
 }
 
-function Generator() {
+function LiveNews({ onConvert }: { onConvert: (text: string) => void }) {
+  const { lang } = useLang();
+  const [items, setItems] = useState<NewsItem[] | null>(null);
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState('');
+
+  const load = () => {
+    setError('');
+    api
+      .news()
+      .then((r) => setItems(r.items.filter((i) => i.status !== 'dismissed')))
+      .catch((e) => setError(e instanceof Error ? e.message : String(e)));
+  };
+  useEffect(load, []);
+
+  const fetchNow = async () => {
+    setBusy(true);
+    setMsg('');
+    setError('');
+    try {
+      const { results } = await api.fetchNews();
+      setMsg(results.map((r) => `${r.source}: +${r.added}${r.error ? ` (${r.error})` : ''}`).join(' · '));
+      load();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const act = async (id: string, action: 'approve' | 'dismiss') => {
+    try {
+      await api.newsAction(id, action);
+      load();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    }
+  };
+
+  return (
+    <div>
+      <div className="toolbar no-print" style={{ marginTop: 0 }}>
+        <button className="btn small" onClick={fetchNow} disabled={busy}>
+          {busy ? '…' : `🔄 ${lang === 'hi' ? 'अभी फेच करें' : 'Fetch now'}`}
+        </button>
+        <span style={{ fontSize: '0.78rem', color: 'var(--text-dim)', alignSelf: 'center' }}>
+          {lang === 'hi'
+            ? 'सर्वर प्रतिदिन PIB फ़ीड से समाचार लाता है। किसी भी समाचार को एक क्लिक में परीक्षा सामग्री में बदलें।'
+            : 'The server fetches news from PIB feeds daily. Convert any item into exam material in one click.'}
+        </span>
+      </div>
+      {msg && <p style={{ color: 'var(--green)', fontSize: '0.82rem' }}>✓ {msg}</p>}
+      {error && <p className="error-text">⚠️ {error}</p>}
+      {!items && !error && <p className="subtitle">{lang === 'hi' ? 'लोड हो रहा है…' : 'Loading…'}</p>}
+      {items && items.length === 0 && (
+        <div className="card">
+          <p style={{ margin: 0 }}>
+            {lang === 'hi'
+              ? 'अभी कोई समाचार नहीं। "अभी फेच करें" दबाएँ (सर्वर से इंटरनेट पहुँच आवश्यक)।'
+              : 'No news yet. Click "Fetch now" (the server needs internet access to the feeds).'}
+          </p>
+        </div>
+      )}
+      {(items ?? []).map((n) => (
+        <div className="card" key={n.id} style={{ marginBottom: 10 }}>
+          <div style={{ fontSize: '0.76rem', color: 'var(--text-dim)' }}>
+            {n.source} {n.pubDate && `· ${n.pubDate}`}{' '}
+            {n.status === 'approved' && <span className="badge green">✓ {lang === 'hi' ? 'स्वीकृत' : 'approved'}</span>}
+          </div>
+          <h3 style={{ margin: '4px 0 6px' }}>{n.title}</h3>
+          {n.description && <p style={{ margin: '0 0 8px', fontSize: '0.9rem', color: 'var(--text-dim)' }}>{n.description}</p>}
+          <div className="toolbar" style={{ margin: 0 }}>
+            <button className="btn small primary" onClick={() => onConvert(`${n.title}\n\n${n.description}`)}>
+              ✨ {lang === 'hi' ? 'परीक्षा सामग्री बनाएँ' : 'Convert to exam material'}
+            </button>
+            {n.link && (
+              <a className="btn small" href={n.link} target="_blank" rel="noreferrer">
+                🔗 {lang === 'hi' ? 'स्रोत' : 'Source'}
+              </a>
+            )}
+            {n.status === 'new' && (
+              <>
+                <button className="btn small" onClick={() => act(n.id, 'approve')}>✅</button>
+                <button className="btn small" onClick={() => act(n.id, 'dismiss')}>🗑️</button>
+              </>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Generator({ initialText = '' }: { initialText?: string }) {
   const { lang } = useLang();
   const [settings] = useState<AISettings>(() => loadJSON('aiSettings', DEFAULT_AI_SETTINGS));
-  const [news, setNews] = useState('');
+  const [news, setNews] = useState(initialText);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [result, setResult] = useState<GeneratedCA | null>(null);
