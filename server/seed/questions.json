@@ -2541,6 +2541,270 @@
     "status": "approved"
   },
   {
+    "id": "p10q1",
+    "subjectId": "polity",
+    "topic": "polity-state",
+    "year": null,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "The Governor of a state is:",
+    "question_hi": "किसी राज्य का राज्यपाल होता है:",
+    "options": [
+      {
+        "en": "Elected directly by the people of the state",
+        "hi": "राज्य की जनता द्वारा प्रत्यक्ष निर्वाचित"
+      },
+      {
+        "en": "Elected by the MLAs of the state",
+        "hi": "राज्य के विधायकों द्वारा निर्वाचित"
+      },
+      {
+        "en": "Appointed by the President",
+        "hi": "राष्ट्रपति द्वारा नियुक्त"
+      },
+      {
+        "en": "Appointed by the Chief Minister",
+        "hi": "मुख्यमंत्री द्वारा नियुक्त"
+      }
+    ],
+    "answer": 2,
+    "explanation_en": "Under Article 155, the Governor is appointed by the President — there is no election. The Governor holds office during the pleasure of the President (Article 156).",
+    "explanation_hi": "अनुच्छेद 155 के अंतर्गत राज्यपाल की नियुक्ति राष्ट्रपति करते हैं — कोई निर्वाचन नहीं होता। राज्यपाल राष्ट्रपति के प्रसादपर्यंत पद पर रहते हैं (अनुच्छेद 156)।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "p10q2",
+    "subjectId": "polity",
+    "topic": "polity-state",
+    "year": null,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "The minimum age to be appointed as Governor of a state is:",
+    "question_hi": "राज्य के राज्यपाल के रूप में नियुक्ति हेतु न्यूनतम आयु है:",
+    "options": [
+      {
+        "en": "25 years",
+        "hi": "25 वर्ष"
+      },
+      {
+        "en": "30 years",
+        "hi": "30 वर्ष"
+      },
+      {
+        "en": "35 years",
+        "hi": "35 वर्ष"
+      },
+      {
+        "en": "40 years",
+        "hi": "40 वर्ष"
+      }
+    ],
+    "answer": 2,
+    "explanation_en": "Article 157 prescribes a minimum age of 35 years for the office of Governor — the same as for the President.",
+    "explanation_hi": "अनुच्छेद 157 राज्यपाल पद हेतु न्यूनतम आयु 35 वर्ष निर्धारित करता है — राष्ट्रपति के समान।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "p10q3",
+    "subjectId": "polity",
+    "topic": "polity-state",
+    "year": null,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "The strength of the Bihar Vidhan Sabha (Legislative Assembly) is:",
+    "question_hi": "बिहार विधान सभा की सदस्य संख्या है:",
+    "options": [
+      {
+        "en": "224",
+        "hi": "224"
+      },
+      {
+        "en": "243",
+        "hi": "243"
+      },
+      {
+        "en": "250",
+        "hi": "250"
+      },
+      {
+        "en": "294",
+        "hi": "294"
+      }
+    ],
+    "answer": 1,
+    "explanation_en": "The Bihar Vidhan Sabha has 243 directly elected members with a 5-year term; the Vidhan Parishad has 75 members.",
+    "explanation_hi": "बिहार विधान सभा में 243 प्रत्यक्ष निर्वाचित सदस्य हैं, कार्यकाल 5 वर्ष; विधान परिषद में 75 सदस्य हैं।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "p10q4",
+    "subjectId": "polity",
+    "topic": "polity-state",
+    "year": null,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "A Legislative Council in a state is created or abolished by:",
+    "question_hi": "किसी राज्य में विधान परिषद का सृजन या उत्सादन (समाप्ति) कौन करता है?",
+    "options": [
+      {
+        "en": "The state Assembly alone, by special majority",
+        "hi": "अकेली राज्य विधान सभा, विशेष बहुमत से"
+      },
+      {
+        "en": "The Governor, on the CM's advice",
+        "hi": "राज्यपाल, मुख्यमंत्री की सलाह पर"
+      },
+      {
+        "en": "Parliament under Article 169, after the Assembly's special-majority resolution",
+        "hi": "संसद, अनुच्छेद 169 के अंतर्गत, विधान सभा के विशेष-बहुमत संकल्प के बाद"
+      },
+      {
+        "en": "The President by ordinance",
+        "hi": "राष्ट्रपति, अध्यादेश द्वारा"
+      }
+    ],
+    "answer": 2,
+    "explanation_en": "Under Article 169, only Parliament can create or abolish a Legislative Council — but the state Assembly must first pass a resolution by special majority. The state cannot do it alone.",
+    "explanation_hi": "अनुच्छेद 169 के अंतर्गत, विधान परिषद का सृजन या समाप्ति केवल संसद कर सकती है — पर पहले राज्य विधान सभा को विशेष बहुमत से संकल्प पारित करना होता है। राज्य अकेले यह नहीं कर सकता।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "p10q5",
+    "subjectId": "polity",
+    "topic": "polity-state",
+    "year": null,
+    "difficulty": 2,
+    "type": "statement",
+    "question_en": "Consider the following statements about the Bihar Vidhan Parishad:\n1. It is a permanent house and one-third of its members retire every two years.\n2. The term of a member is 6 years, and the minimum age is 30 years.\nWhich is/are correct?",
+    "question_hi": "बिहार विधान परिषद के बारे में निम्न कथनों पर विचार करें:\n1. यह एक स्थायी सदन है और इसके एक-तिहाई सदस्य प्रत्येक दो वर्ष में सेवानिवृत्त होते हैं।\n2. सदस्य का कार्यकाल 6 वर्ष है, और न्यूनतम आयु 30 वर्ष है।\nकौन-सा/से सही है/हैं?",
+    "options": [
+      {
+        "en": "Only 1",
+        "hi": "केवल 1"
+      },
+      {
+        "en": "Only 2",
+        "hi": "केवल 2"
+      },
+      {
+        "en": "Both 1 and 2",
+        "hi": "1 और 2 दोनों"
+      },
+      {
+        "en": "Neither 1 nor 2",
+        "hi": "न 1, न 2"
+      }
+    ],
+    "answer": 2,
+    "explanation_en": "Both are correct. The Vidhan Parishad follows the Rajya Sabha pattern: a permanent house, 1/3 retiring every 2 years, 6-year member term, minimum age 30.",
+    "explanation_hi": "दोनों सही हैं। विधान परिषद राज्य सभा के ढाँचे का अनुसरण करती है: स्थायी सदन, प्रत्येक 2 वर्ष में 1/3 सेवानिवृत्ति, 6 वर्ष का सदस्य कार्यकाल, न्यूनतम आयु 30।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "p10q6",
+    "subjectId": "polity",
+    "topic": "polity-state",
+    "year": null,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "A Money Bill in the Bihar legislature can be introduced only in the Vidhan Sabha. For how long, at most, can the Vidhan Parishad delay it?",
+    "question_hi": "बिहार विधानमंडल में धन विधेयक केवल विधान सभा में प्रस्तुत हो सकता है। विधान परिषद इसे अधिकतम कितने समय तक रोक सकती है?",
+    "options": [
+      {
+        "en": "14 days",
+        "hi": "14 दिन"
+      },
+      {
+        "en": "1 month",
+        "hi": "1 माह"
+      },
+      {
+        "en": "3 months",
+        "hi": "3 माह"
+      },
+      {
+        "en": "6 months",
+        "hi": "6 माह"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "A state Money Bill is introduced only in the Vidhan Sabha, and the Vidhan Parishad can delay it for at most 14 days — just like the Rajya Sabha at the Union level.",
+    "explanation_hi": "राज्य का धन विधेयक केवल विधान सभा में प्रस्तुत होता है, और विधान परिषद इसे अधिकतम 14 दिनों तक रोक सकती है — संघ स्तर पर राज्य सभा की तरह।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "p10q7",
+    "subjectId": "polity",
+    "topic": "polity-state",
+    "year": null,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Under the 91st Amendment (2003), the total number of ministers in a state, including the Chief Minister, must not exceed:",
+    "question_hi": "91वें संशोधन (2003) के अंतर्गत, किसी राज्य में मुख्यमंत्री सहित मंत्रियों की कुल संख्या इससे अधिक नहीं हो सकती:",
+    "options": [
+      {
+        "en": "10% of the Assembly's strength",
+        "hi": "विधान सभा की संख्या का 10%"
+      },
+      {
+        "en": "15% of the Assembly's strength",
+        "hi": "विधान सभा की संख्या का 15%"
+      },
+      {
+        "en": "20% of the Assembly's strength",
+        "hi": "विधान सभा की संख्या का 20%"
+      },
+      {
+        "en": "25% of the Assembly's strength",
+        "hi": "विधान सभा की संख्या का 25%"
+      }
+    ],
+    "answer": 1,
+    "explanation_en": "The 91st Amendment (2003) caps the Council of Ministers, including the CM, at 15% of the Legislative Assembly's strength.",
+    "explanation_hi": "91वाँ संशोधन (2003) मंत्रिपरिषद को, मुख्यमंत्री सहित, विधान सभा की संख्या के 15% तक सीमित करता है।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "p10q8",
+    "subjectId": "polity",
+    "topic": "polity-state",
+    "year": null,
+    "difficulty": 3,
+    "type": "statement",
+    "question_en": "Consider the following statements:\n1. In case of a deadlock over an ordinary bill, a joint sitting of the Vidhan Sabha and Vidhan Parishad is held.\n2. The Governor can promulgate ordinances under Article 213.\nWhich is/are correct?",
+    "question_hi": "निम्न कथनों पर विचार करें:\n1. सामान्य विधेयक पर गतिरोध की स्थिति में विधान सभा व विधान परिषद की संयुक्त बैठक होती है।\n2. राज्यपाल अनुच्छेद 213 के अंतर्गत अध्यादेश जारी कर सकते हैं।\nकौन-सा/से सही है/हैं?",
+    "options": [
+      {
+        "en": "Only 1",
+        "hi": "केवल 1"
+      },
+      {
+        "en": "Only 2",
+        "hi": "केवल 2"
+      },
+      {
+        "en": "Both 1 and 2",
+        "hi": "1 और 2 दोनों"
+      },
+      {
+        "en": "Neither 1 nor 2",
+        "hi": "न 1, न 2"
+      }
+    ],
+    "answer": 1,
+    "explanation_en": "Statement 1 is wrong — there is no provision for a joint sitting at the state level; the Assembly can override the Council on ordinary bills. Statement 2 is correct — Article 213 gives the Governor ordinance power (the state counterpart of Article 123).",
+    "explanation_hi": "कथन 1 गलत है — राज्य स्तर पर संयुक्त बैठक का कोई प्रावधान नहीं है; सामान्य विधेयकों पर विधान सभा परिषद की अनदेखी कर सकती है। कथन 2 सही है — अनुच्छेद 213 राज्यपाल को अध्यादेश शक्ति देता है (अनुच्छेद 123 का राज्य-समकक्ष)।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
     "id": "h1q1",
     "subjectId": "history",
     "topic": "history-ancient-bihar",
@@ -6926,6 +7190,534 @@
     "answer": 1,
     "explanation_en": "Statement 1 is wrong — the Governor is the constitutional head, while the Chief Minister is the real head of the government. Statement 2 is correct: Kanya Utthan Yojana supports the girl child from birth through education.",
     "explanation_hi": "कथन 1 गलत है — राज्यपाल संवैधानिक प्रमुख हैं, जबकि मुख्यमंत्री सरकार के वास्तविक प्रमुख हैं। कथन 2 सही है: कन्या उत्थान योजना जन्म से शिक्षा तक बालिका को सहायता देती है।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m1q1",
+    "subjectId": "mental",
+    "topic": "mental-numerical",
+    "year": null,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "What is 25% of 480?",
+    "question_hi": "480 का 25% क्या है?",
+    "options": [
+      {
+        "en": "100",
+        "hi": "100"
+      },
+      {
+        "en": "110",
+        "hi": "110"
+      },
+      {
+        "en": "120",
+        "hi": "120"
+      },
+      {
+        "en": "140",
+        "hi": "140"
+      }
+    ],
+    "answer": 2,
+    "explanation_en": "25% = 1/4, and 480 ÷ 4 = 120.",
+    "explanation_hi": "25% = 1/4, और 480 ÷ 4 = 120।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m1q2",
+    "subjectId": "mental",
+    "topic": "mental-numerical",
+    "year": null,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "Divide ₹64 between two people in the ratio 3 : 5. The larger share is:",
+    "question_hi": "₹64 को दो व्यक्तियों में 3 : 5 के अनुपात में बाँटें। बड़ा भाग है:",
+    "options": [
+      {
+        "en": "₹24",
+        "hi": "₹24"
+      },
+      {
+        "en": "₹32",
+        "hi": "₹32"
+      },
+      {
+        "en": "₹40",
+        "hi": "₹40"
+      },
+      {
+        "en": "₹48",
+        "hi": "₹48"
+      }
+    ],
+    "answer": 2,
+    "explanation_en": "3 + 5 = 8 parts; each part = 64/8 = 8. Larger share = 5 × 8 = ₹40.",
+    "explanation_hi": "3 + 5 = 8 भाग; प्रत्येक भाग = 64/8 = 8। बड़ा भाग = 5 × 8 = ₹40।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m1q3",
+    "subjectId": "mental",
+    "topic": "mental-numerical",
+    "year": null,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "The average of 12, 18, 24, 30 and 36 is:",
+    "question_hi": "12, 18, 24, 30 व 36 का औसत है:",
+    "options": [
+      {
+        "en": "22",
+        "hi": "22"
+      },
+      {
+        "en": "24",
+        "hi": "24"
+      },
+      {
+        "en": "26",
+        "hi": "26"
+      },
+      {
+        "en": "28",
+        "hi": "28"
+      }
+    ],
+    "answer": 1,
+    "explanation_en": "These are equally spaced (gap 6), so the average is the middle value: 24. (Check: sum 120 ÷ 5 = 24.)",
+    "explanation_hi": "ये समान अंतराल (6) पर हैं, अतः औसत बीच का मान है: 24। (जाँच: योग 120 ÷ 5 = 24।)",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m1q4",
+    "subjectId": "mental",
+    "topic": "mental-numerical",
+    "year": null,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "A train covers 240 km in 4 hours. Its speed is:",
+    "question_hi": "एक रेलगाड़ी 4 घंटे में 240 किमी तय करती है। उसकी चाल है:",
+    "options": [
+      {
+        "en": "50 km/h",
+        "hi": "50 किमी/घंटा"
+      },
+      {
+        "en": "55 km/h",
+        "hi": "55 किमी/घंटा"
+      },
+      {
+        "en": "60 km/h",
+        "hi": "60 किमी/घंटा"
+      },
+      {
+        "en": "65 km/h",
+        "hi": "65 किमी/घंटा"
+      }
+    ],
+    "answer": 2,
+    "explanation_en": "Speed = Distance ÷ Time = 240 ÷ 4 = 60 km/h.",
+    "explanation_hi": "चाल = दूरी ÷ समय = 240 ÷ 4 = 60 किमी/घंटा।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m1q5",
+    "subjectId": "mental",
+    "topic": "mental-numerical",
+    "year": null,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "The simple interest on ₹5,000 at 8% per annum for 3 years is:",
+    "question_hi": "₹5,000 पर 8% वार्षिक दर से 3 वर्ष का साधारण ब्याज है:",
+    "options": [
+      {
+        "en": "₹1,000",
+        "hi": "₹1,000"
+      },
+      {
+        "en": "₹1,200",
+        "hi": "₹1,200"
+      },
+      {
+        "en": "₹1,250",
+        "hi": "₹1,250"
+      },
+      {
+        "en": "₹1,500",
+        "hi": "₹1,500"
+      }
+    ],
+    "answer": 1,
+    "explanation_en": "SI = PRT/100 = (5000 × 8 × 3)/100 = ₹1,200.",
+    "explanation_hi": "साधारण ब्याज = मूलधन×दर×समय/100 = (5000 × 8 × 3)/100 = ₹1,200।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m1q6",
+    "subjectId": "mental",
+    "topic": "mental-numerical",
+    "year": null,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "A number increased by 20% becomes 240. The original number is:",
+    "question_hi": "कोई संख्या 20% बढ़ने पर 240 हो जाती है। मूल संख्या है:",
+    "options": [
+      {
+        "en": "192",
+        "hi": "192"
+      },
+      {
+        "en": "200",
+        "hi": "200"
+      },
+      {
+        "en": "210",
+        "hi": "210"
+      },
+      {
+        "en": "220",
+        "hi": "220"
+      }
+    ],
+    "answer": 1,
+    "explanation_en": "If the original is x, then 1.2x = 240 → x = 200. (Trap: 240 − 20% of 240 = 192 is wrong, because the 20% was taken on the original, not on 240.)",
+    "explanation_hi": "यदि मूल संख्या x है, तो 1.2x = 240 → x = 200। (जाल: 240 − 240 का 20% = 192 गलत है, क्योंकि 20% मूल संख्या पर लिया गया था, 240 पर नहीं।)",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m1q7",
+    "subjectId": "mental",
+    "topic": "mental-numerical",
+    "year": null,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Two successive discounts of 10% and 10% are equivalent to a single discount of:",
+    "question_hi": "10% व 10% की दो क्रमिक छूटें किस एकल छूट के बराबर हैं?",
+    "options": [
+      {
+        "en": "20%",
+        "hi": "20%"
+      },
+      {
+        "en": "19%",
+        "hi": "19%"
+      },
+      {
+        "en": "18%",
+        "hi": "18%"
+      },
+      {
+        "en": "21%",
+        "hi": "21%"
+      }
+    ],
+    "answer": 1,
+    "explanation_en": "₹100 → ₹90 → ₹81, so the total discount is ₹19 = 19%. Formula: −10 − 10 + (10×10)/100 = −19%.",
+    "explanation_hi": "₹100 → ₹90 → ₹81, अतः कुल छूट ₹19 = 19%। सूत्र: −10 − 10 + (10×10)/100 = −19%।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m1q8",
+    "subjectId": "mental",
+    "topic": "mental-numerical",
+    "year": null,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "A can finish a job in 10 days and B in 15 days. Working together they finish it in:",
+    "question_hi": "A कोई काम 10 दिन में और B 15 दिन में कर सकता है। साथ मिलकर वे उसे पूरा करेंगे:",
+    "options": [
+      {
+        "en": "5 days",
+        "hi": "5 दिन"
+      },
+      {
+        "en": "6 days",
+        "hi": "6 दिन"
+      },
+      {
+        "en": "7.5 days",
+        "hi": "7.5 दिन"
+      },
+      {
+        "en": "12.5 days",
+        "hi": "12.5 दिन"
+      }
+    ],
+    "answer": 1,
+    "explanation_en": "Per day: 1/10 + 1/15 = 3/30 + 2/30 = 5/30 = 1/6 of the job → 6 days together.",
+    "explanation_hi": "प्रतिदिन: 1/10 + 1/15 = 3/30 + 2/30 = 5/30 = काम का 1/6 → साथ में 6 दिन।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m2q1",
+    "subjectId": "mental",
+    "topic": "mental-reasoning",
+    "year": null,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "Find the next term: 2, 6, 12, 20, 30, ?",
+    "question_hi": "अगला पद ज्ञात करें: 2, 6, 12, 20, 30, ?",
+    "options": [
+      {
+        "en": "36",
+        "hi": "36"
+      },
+      {
+        "en": "40",
+        "hi": "40"
+      },
+      {
+        "en": "42",
+        "hi": "42"
+      },
+      {
+        "en": "44",
+        "hi": "44"
+      }
+    ],
+    "answer": 2,
+    "explanation_en": "Differences are 4, 6, 8, 10 → next difference 12 → 30 + 12 = 42. (Pattern n(n+1): 6×7 = 42.)",
+    "explanation_hi": "अंतर 4, 6, 8, 10 → अगला अंतर 12 → 30 + 12 = 42। (पैटर्न n(n+1): 6×7 = 42।)",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m2q2",
+    "subjectId": "mental",
+    "topic": "mental-reasoning",
+    "year": null,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "In a code, CAT = 24 (sum of letter positions). What is DOG?",
+    "question_hi": "किसी कूट में CAT = 24 (अक्षर स्थानों का योग)। DOG क्या होगा?",
+    "options": [
+      {
+        "en": "25",
+        "hi": "25"
+      },
+      {
+        "en": "26",
+        "hi": "26"
+      },
+      {
+        "en": "27",
+        "hi": "27"
+      },
+      {
+        "en": "28",
+        "hi": "28"
+      }
+    ],
+    "answer": 1,
+    "explanation_en": "D(4) + O(15) + G(7) = 26.",
+    "explanation_hi": "D(4) + O(15) + G(7) = 26।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m2q3",
+    "subjectId": "mental",
+    "topic": "mental-reasoning",
+    "year": null,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Find the next letter: A, C, F, J, O, ?",
+    "question_hi": "अगला अक्षर ज्ञात करें: A, C, F, J, O, ?",
+    "options": [
+      {
+        "en": "S",
+        "hi": "S"
+      },
+      {
+        "en": "T",
+        "hi": "T"
+      },
+      {
+        "en": "U",
+        "hi": "U"
+      },
+      {
+        "en": "V",
+        "hi": "V"
+      }
+    ],
+    "answer": 2,
+    "explanation_en": "Positions 1, 3, 6, 10, 15 with gaps +2, +3, +4, +5 → next gap +6 → 21 = U.",
+    "explanation_hi": "स्थान 1, 3, 6, 10, 15, अंतर +2, +3, +4, +5 → अगला अंतर +6 → 21 = U।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m2q4",
+    "subjectId": "mental",
+    "topic": "mental-reasoning",
+    "year": null,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Ravi walks 3 km north, turns right and walks 4 km. How far is he from his starting point?",
+    "question_hi": "रवि 3 किमी उत्तर चलता है, दाएँ मुड़कर 4 किमी चलता है। वह प्रारंभिक बिंदु से कितनी दूर है?",
+    "options": [
+      {
+        "en": "5 km",
+        "hi": "5 किमी"
+      },
+      {
+        "en": "6 km",
+        "hi": "6 किमी"
+      },
+      {
+        "en": "7 km",
+        "hi": "7 किमी"
+      },
+      {
+        "en": "4 km",
+        "hi": "4 किमी"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "North then east are at right angles: distance = √(3² + 4²) = √25 = 5 km (the 3-4-5 triangle).",
+    "explanation_hi": "उत्तर फिर पूर्व समकोण पर हैं: दूरी = √(3² + 4²) = √25 = 5 किमी (3-4-5 त्रिभुज)।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m2q5",
+    "subjectId": "mental",
+    "topic": "mental-reasoning",
+    "year": null,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "Pointing to a photo, Ram says, \"She is the daughter of my grandfather's only son.\" How is she related to Ram?",
+    "question_hi": "एक फोटो की ओर संकेत कर राम कहता है, \"वह मेरे दादा के इकलौते पुत्र की पुत्री है।\" वह राम की क्या लगती है?",
+    "options": [
+      {
+        "en": "Mother",
+        "hi": "माता"
+      },
+      {
+        "en": "Sister",
+        "hi": "बहन"
+      },
+      {
+        "en": "Aunt",
+        "hi": "बुआ/मौसी"
+      },
+      {
+        "en": "Daughter",
+        "hi": "पुत्री"
+      }
+    ],
+    "answer": 1,
+    "explanation_en": "Grandfather's only son = Ram's father. The father's daughter = Ram's sister.",
+    "explanation_hi": "दादा का इकलौता पुत्र = राम के पिता। पिता की पुत्री = राम की बहन।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m2q6",
+    "subjectId": "mental",
+    "topic": "mental-reasoning",
+    "year": null,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "Find the odd one out: 3, 5, 7, 9, 11",
+    "question_hi": "विषम की पहचान करें: 3, 5, 7, 9, 11",
+    "options": [
+      {
+        "en": "5",
+        "hi": "5"
+      },
+      {
+        "en": "7",
+        "hi": "7"
+      },
+      {
+        "en": "9",
+        "hi": "9"
+      },
+      {
+        "en": "11",
+        "hi": "11"
+      }
+    ],
+    "answer": 2,
+    "explanation_en": "All are prime numbers except 9 (9 = 3 × 3).",
+    "explanation_hi": "9 को छोड़कर (9 = 3 × 3) सभी अभाज्य संख्याएँ हैं।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m2q7",
+    "subjectId": "mental",
+    "topic": "mental-reasoning",
+    "year": null,
+    "difficulty": 1,
+    "type": "mcq",
+    "question_en": "What is the angle between the hands of a clock at exactly 3:00?",
+    "question_hi": "ठीक 3:00 बजे घड़ी की सुइयों के बीच कोण क्या होता है?",
+    "options": [
+      {
+        "en": "60°",
+        "hi": "60°"
+      },
+      {
+        "en": "75°",
+        "hi": "75°"
+      },
+      {
+        "en": "90°",
+        "hi": "90°"
+      },
+      {
+        "en": "105°",
+        "hi": "105°"
+      }
+    ],
+    "answer": 2,
+    "explanation_en": "The hour hand moves 30° per hour; at 3:00 it is at 3 × 30° = 90° while the minute hand is at 0°.",
+    "explanation_hi": "घंटे की सुई 30° प्रति घंटा चलती है; 3:00 बजे वह 3 × 30° = 90° पर होती है जबकि मिनट की सुई 0° पर।",
+    "source": "seed:chapters",
+    "status": "approved"
+  },
+  {
+    "id": "m2q8",
+    "subjectId": "mental",
+    "topic": "mental-reasoning",
+    "year": null,
+    "difficulty": 2,
+    "type": "mcq",
+    "question_en": "In a certain code, MOBILE is written as NPCJMF. How is PHONE written in that code?",
+    "question_hi": "किसी कूट में MOBILE को NPCJMF लिखा जाता है। उसी कूट में PHONE कैसे लिखा जाएगा?",
+    "options": [
+      {
+        "en": "QIPOF",
+        "hi": "QIPOF"
+      },
+      {
+        "en": "QIPNE",
+        "hi": "QIPNE"
+      },
+      {
+        "en": "OGNMD",
+        "hi": "OGNMD"
+      },
+      {
+        "en": "QJPOF",
+        "hi": "QJPOF"
+      }
+    ],
+    "answer": 0,
+    "explanation_en": "Each letter shifts +1 (M→N, O→P, B→C…). So P→Q, H→I, O→P, N→O, E→F = QIPOF.",
+    "explanation_hi": "हर अक्षर +1 खिसकता है (M→N, O→P, B→C…)। अतः P→Q, H→I, O→P, N→O, E→F = QIPOF।",
     "source": "seed:chapters",
     "status": "approved"
   }
