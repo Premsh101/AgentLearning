@@ -24,6 +24,7 @@ An AI-powered, **bilingual (Hindi + English)**, **offline-first** study operatin
 | **PYQ Intelligence** — most-repeated topics & subject weightage | ✅ | Backend analytics over the question bank |
 | **Model Test Papers** — blueprint-based paper generator + exam runner | ✅ | Backend (Node + SQLite) |
 | **Question bank + scraper** — ingest/import/review PYQs | ✅ | Backend (adapter framework + review queue) |
+| **Accounts + cross-device progress sync** — simple login/register; streaks, chapters, quiz stats & revision follow you | ✅ | Backend (SQLite on the `/data` volume) |
 | **Smart Revision** — spaced repetition (1/3/7/15/30/60-day ladder) | ✅ | Pure code |
 | **Performance Analytics** — Readiness Score, subject bars, weak-area plan | ✅ | Pure code |
 | **Weak-area detection** with chapter-level improvement plan | ✅ | Pure code |
@@ -55,7 +56,7 @@ Uses the **browser's built-in Web Speech API** only — `speechSynthesis` for re
 - **Frontend:** React 18 + TypeScript + Vite; **vite-plugin-pwa** (Workbox) for offline-first installability; route-level code-splitting
 - **Backend:** Node 20 + Express 5 + **better-sqlite3** — a single server that serves the built PWA *and* the API (question bank, PYQ stats, scraper, model-test-paper generator). One container, one SQLite volume.
 - **AI features** (mentor, mains, interview, current-affairs generation, OCR) call the user's chosen provider **browser-direct** — those keys never touch the server.
-- User progress (streaks, completion, quiz stats, revision, settings, keys) persists in `localStorage`; the shared question bank persists in SQLite on the mounted volume.
+- User progress persists in `localStorage` and — when logged in — syncs to the server, so it follows the user across devices. The SQLite database on the `/data` volume holds the question bank, news items, **users, sessions and per-user progress**. AI keys and the admin token are never synced — they stay on the device.
 
 ## Content model
 

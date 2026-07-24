@@ -27,6 +27,7 @@ const UI: Record<string, Bilingual> = {
   'nav.interview': { en: 'Interview Coach', hi: 'साक्षात्कार कोच' },
   'nav.mentor': { en: 'AI Mentor', hi: 'AI मेंटर' },
   'nav.qbank': { en: 'Question Bank', hi: 'प्रश्न बैंक' },
+  'nav.account': { en: 'Account', hi: 'खाता' },
   'nav.settings': { en: 'Settings', hi: 'सेटिंग्स' },
   'app.tagline': { en: 'Your Personal AI Coach to Crack BPSC', hi: 'BPSC क्रैक करने के लिए आपका निजी AI कोच' },
   'common.chapters': { en: 'Chapters', hi: 'अध्याय' },
