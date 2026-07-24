@@ -141,7 +141,24 @@ export async function listModels(s: AISettings): Promise<string[]> {
       const res = await fetch(`${baseUrl.replace(/\/$/, '')}/models`, { headers });
       if (!res.ok) await readError(res);
       const data = await res.json();
-      const ids = (data.data ?? []).map((m: { id: string }) => m.id).sort();
+      // Keep only chat-capable models. OpenRouter (and some compatible hosts)
+      // list embedding / moderation / image models alongside chat ones; picking
+      // an embedding model throws "cannot be used with chat/completions".
+      type ModelRow = {
+        id: string;
+        architecture?: { output_modalities?: string[]; modality?: string };
+      };
+      const isChatModel = (m: ModelRow): boolean => {
+        const id = (m.id || '').toLowerCase();
+        if (/embed|moderation|whisper|tts|dall-?e|stable-?diffusion|rerank|guard/.test(id)) return false;
+        const out = m.architecture?.output_modalities;
+        if (Array.isArray(out) && out.length && !out.includes('text')) return false;
+        return true;
+      };
+      const ids = ((data.data ?? []) as ModelRow[])
+        .filter(isChatModel)
+        .map((m) => m.id)
+        .sort();
       return ids.length ? ids : meta.defaultModels;
     }
     if (s.provider === 'gemini') {
