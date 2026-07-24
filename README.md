@@ -10,7 +10,7 @@ An AI-powered, **bilingual (Hindi + English)**, **offline-first** study operatin
 
 | Area | Status | AI or code? |
 |---|---|---|
-| **Bilingual study material** (Polity ×6, History ×3, Geography ×1, Economy ×1, Science ×1, Bihar GK ×2) with chapter takeaways | ✅ | Build-time content |
+| **Bilingual study material** — full Phase 1 syllabus, 26 chapters across all 6 subjects (Polity ×9, History ×5, Geography ×3, Economy ×3, Science ×3, Bihar GK ×3) with chapter takeaways | ✅ | Build-time content |
 | **Visual learning** — inline-SVG maps, infographics & timelines | ✅ | Build-time content (offline-safe) |
 | **Read-aloud** (Hindi/English) | ✅ | Browser TTS (`speechSynthesis`) — no server voice |
 | **PDF export** of any chapter | ✅ | Print-optimized CSS |
@@ -84,7 +84,7 @@ Ships as a static PWA behind nginx via a multi-stage `Dockerfile`, designed for 
 
 ## Roadmap
 
-- **Phase 1:** content + core code + AI mentor + mock engine + PWA. ✅
+- **Phase 1:** content + core code + AI mentor + mock engine + PWA. ✅ **Syllabus content complete — 26 chapters across all six subjects.**
 - **Phase 2 (started):** Current Affairs Intelligence. **Delivered client-side:** a curated, static-GK-linked digest (browse by category, PDF export) and the signature **"news → exam material"** generator that turns any pasted news item into a summary, background, static-GK link, key facts, MCQs and mains questions using the user's own AI provider. **Next (server-side):** the automated daily batch pipeline (source monitoring → dedup via embeddings → BPSC-relevance classifier → exam-content generation) with a **human review queue** before publishing, and auto-assembled daily/weekly/monthly magazines. That part needs a backend and is intentionally out of the current no-backend MVP.
 - **Phase 3 (delivered):** Smart Revision (spaced-repetition interval ladder with recall grades), Performance Analytics with a transparent **Readiness Score** (0.4×coverage + 0.35×accuracy + 0.25×revision — deliberately *not* a guessed "selection probability"), subject-completion bars, and weak-area detection that maps weak topics to the exact chapters to revisit. *Next:* planner feedback loop, BPSC notification watcher.
 - **Phase 4:** mains answer evaluation (OCR + rubric), interview coach (browser voice), predicted-questions batch job.
