@@ -10,7 +10,7 @@ An AI-powered, **bilingual (Hindi + English)**, **offline-first** study operatin
 
 | Area | Status | AI or code? |
 |---|---|---|
-| **Bilingual study material** — full Phase 1 syllabus, 26 chapters across all 6 subjects (Polity ×9, History ×5, Geography ×3, Economy ×3, Science ×3, Bihar GK ×3) with chapter takeaways | ✅ | Build-time content |
+| **Bilingual study material** — full BPSC prelims syllabus, 29 chapters across all 7 subjects (Polity ×10, History ×5, Geography ×3, Economy ×3, Science ×3, Bihar GK ×3, Mental Ability ×2) with chapter takeaways | ✅ | Build-time content |
 | **Visual learning** — inline-SVG maps, infographics & timelines | ✅ | Build-time content (offline-safe) |
 | **Read-aloud** (Hindi/English) | ✅ | Browser TTS (`speechSynthesis`) — no server voice |
 | **PDF export** of any chapter | ✅ | Print-optimized CSS |

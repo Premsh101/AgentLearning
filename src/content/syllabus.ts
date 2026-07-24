@@ -7,6 +7,9 @@ import { polityCh04 } from './polity/ch04-fundamental-rights';
 import { polityCh05 } from './polity/ch05-dpsp-duties';
 import { polityCh06 } from './polity/ch06-parliament';
 import { polityCh07 } from './polity/ch07-executive';
+import { polityCh10 } from './polity/ch10-state-government';
+import { mentalCh01 } from './mental/ch01-numerical-ability';
+import { mentalCh02 } from './mental/ch02-logical-reasoning';
 import { polityCh08 } from './polity/ch08-judiciary';
 import { polityCh09 } from './polity/ch09-panchayati-raj';
 import { historyCh01 } from './history/ch01-ancient-bihar';
@@ -82,6 +85,15 @@ export const SUBJECTS: Subject[] = [
       hi: 'बिहार सामान्य ज्ञान — वह खंड जो BPSC चयन तय करता है।',
     },
   },
+  {
+    id: 'mental',
+    name: { en: 'Mental Ability', hi: 'मानसिक क्षमता' },
+    icon: '🧮',
+    description: {
+      en: 'Numerical ability and reasoning — the most score-friendly section of the paper.',
+      hi: 'संख्यात्मक क्षमता व तर्कशक्ति — पेपर का सबसे अंक-अनुकूल खंड।',
+    },
+  },
 ];
 
 export const CHAPTERS: Chapter[] = [
@@ -94,6 +106,7 @@ export const CHAPTERS: Chapter[] = [
   polityCh07,
   polityCh08,
   polityCh09,
+  polityCh10,
   historyCh01,
   historyCh02,
   historyCh03,
@@ -111,6 +124,8 @@ export const CHAPTERS: Chapter[] = [
   biharCh01,
   biharCh02,
   biharCh03,
+  mentalCh01,
+  mentalCh02,
 ];
 
 /** Chapters planned for upcoming content drops, shown as "coming soon". Empty — the core Phase 1 syllabus is now complete. */
@@ -139,6 +154,9 @@ export const TOPIC_LABELS: Record<string, Bilingual> = {
   'polity-dpsp': { en: 'Polity: DPSP & Duties', hi: 'राजव्यवस्था: नीति-निदेशक तत्व व कर्तव्य' },
   'polity-parliament': { en: 'Polity: Parliament', hi: 'राजव्यवस्था: संसद' },
   'polity-executive': { en: 'Polity: Union Executive', hi: 'राजव्यवस्था: संघीय कार्यपालिका' },
+  'polity-state': { en: 'Polity: State Government', hi: 'राजव्यवस्था: राज्य सरकार' },
+  'mental-numerical': { en: 'Mental Ability: Numerical', hi: 'मानसिक क्षमता: संख्यात्मक' },
+  'mental-reasoning': { en: 'Mental Ability: Reasoning', hi: 'मानसिक क्षमता: तर्कशक्ति' },
   'polity-judiciary': { en: 'Polity: Judiciary', hi: 'राजव्यवस्था: न्यायपालिका' },
   'polity-panchayat': { en: 'Polity: Panchayati Raj', hi: 'राजव्यवस्था: पंचायती राज' },
   'history-ancient-bihar': { en: 'History: Ancient Bihar', hi: 'इतिहास: प्राचीन बिहार' },

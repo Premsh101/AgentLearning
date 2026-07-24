@@ -10,12 +10,13 @@ export const BLUEPRINTS: Blueprint[] = [
     durationMin: 30,
     negativeMarking: 0,
     sections: [
-      { subjectId: 'polity', count: 8 },
-      { subjectId: 'history', count: 6 },
+      { subjectId: 'polity', count: 7 },
+      { subjectId: 'history', count: 5 },
       { subjectId: 'geography', count: 4 },
       { subjectId: 'economy', count: 4 },
       { subjectId: 'science', count: 4 },
       { subjectId: 'bihar', count: 4 },
+      { subjectId: 'mental', count: 2 },
     ],
   },
   {
@@ -24,12 +25,13 @@ export const BLUEPRINTS: Blueprint[] = [
     durationMin: 60,
     negativeMarking: 0,
     sections: [
-      { subjectId: 'polity', count: 12 },
-      { subjectId: 'history', count: 10 },
-      { subjectId: 'geography', count: 8 },
+      { subjectId: 'polity', count: 11 },
+      { subjectId: 'history', count: 9 },
+      { subjectId: 'geography', count: 7 },
       { subjectId: 'economy', count: 7 },
       { subjectId: 'science', count: 6 },
-      { subjectId: 'bihar', count: 7 },
+      { subjectId: 'bihar', count: 6 },
+      { subjectId: 'mental', count: 4 },
     ],
   },
   {
