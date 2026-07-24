@@ -1,14 +1,15 @@
 import { loadJSON, saveJSON, onSave, clearKeys } from './storage';
 
 /**
- * Simple accounts + cross-device progress sync.
- * When logged in, the study-progress keys below are synced to the server
- * (SQLite on the deployment volume) — so streaks, completed chapters, quiz
- * stats and the revision schedule follow the user across devices.
- * AI settings / API keys and the admin token are deliberately NOT synced:
- * they are secrets and stay on the device only.
+ * Simple accounts + cross-device sync.
+ * When logged in, the keys below are synced to the server (SQLite on the
+ * deployment volume) so a user's progress AND their AI provider/model/key
+ * follow them to any device they log in on.
+ * Note: this means the AI API key is stored on the (self-hosted) server for
+ * that user — a deliberate choice so the same AI works across systems. The
+ * admin token stays device-only (it's an ops secret, not per-user).
  */
-const SYNC_KEYS = ['completedChapters', 'studyDays', 'topicStats', 'revision', 'examDate', 'mistakeReports', 'lang'];
+const SYNC_KEYS = ['completedChapters', 'studyDays', 'topicStats', 'revision', 'examDate', 'mistakeReports', 'lang', 'aiSettings'];
 
 const BASE = ((import.meta.env.VITE_API_BASE as string | undefined) ?? '').replace(/\/$/, '');
 

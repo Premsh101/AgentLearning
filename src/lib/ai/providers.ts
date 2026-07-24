@@ -35,6 +35,22 @@ export const PROVIDERS: ProviderMeta[] = [
     canListModels: true,
   },
   {
+    id: 'openrouter',
+    label: 'OpenRouter',
+    needsApiKey: true,
+    needsBaseUrl: false,
+    needsVertexConfig: false,
+    defaultModels: [
+      'openai/gpt-4o-mini',
+      'anthropic/claude-3.5-sonnet',
+      'google/gemini-2.0-flash-001',
+      'meta-llama/llama-3.3-70b-instruct',
+      'deepseek/deepseek-chat',
+    ],
+    keyHint: 'sk-or-…',
+    canListModels: true,
+  },
+  {
     id: 'openai-compatible',
     label: 'OpenAI-compatible API',
     needsApiKey: true,

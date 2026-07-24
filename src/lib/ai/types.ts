@@ -1,6 +1,7 @@
 export type ProviderId =
   | 'anthropic'
   | 'openai'
+  | 'openrouter'
   | 'openai-compatible'
   | 'gemini'
   | 'vertex'

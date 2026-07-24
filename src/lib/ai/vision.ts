@@ -60,9 +60,13 @@ export async function transcribeImage(s: AISettings, dataUrl: string, _lang: Lan
     return data.content?.[0]?.text ?? '';
   }
 
-  if (s.provider === 'openai' || s.provider === 'openai-compatible' || s.provider === 'local') {
+  if (s.provider === 'openai' || s.provider === 'openrouter' || s.provider === 'openai-compatible' || s.provider === 'local') {
     const baseUrl =
-      s.provider === 'openai' ? 'https://api.openai.com/v1' : (s.baseUrl || 'http://localhost:11434/v1');
+      s.provider === 'openai'
+        ? 'https://api.openai.com/v1'
+        : s.provider === 'openrouter'
+          ? 'https://openrouter.ai/api/v1'
+          : (s.baseUrl || 'http://localhost:11434/v1');
     const headers: Record<string, string> = { 'content-type': 'application/json' };
     if (s.apiKey) headers.authorization = `Bearer ${s.apiKey}`;
     const res = await fetch(`${baseUrl.replace(/\/$/, '')}/chat/completions`, {

@@ -99,6 +99,8 @@ export async function chat(s: AISettings, messages: ChatMessage[]): Promise<stri
       return chatAnthropic(s, messages);
     case 'openai':
       return chatOpenAICompatible(s, messages, 'https://api.openai.com/v1');
+    case 'openrouter':
+      return chatOpenAICompatible(s, messages, 'https://openrouter.ai/api/v1');
     case 'openai-compatible':
       return chatOpenAICompatible(s, messages, s.baseUrl);
     case 'local':
@@ -127,9 +129,13 @@ export async function listModels(s: AISettings): Promise<string[]> {
       const ids = (data.data ?? []).map((m: { id: string }) => m.id);
       return ids.length ? ids : meta.defaultModels;
     }
-    if (s.provider === 'openai' || s.provider === 'openai-compatible' || s.provider === 'local') {
+    if (s.provider === 'openai' || s.provider === 'openrouter' || s.provider === 'openai-compatible' || s.provider === 'local') {
       const baseUrl =
-        s.provider === 'openai' ? 'https://api.openai.com/v1' : s.baseUrl || meta.defaultBaseUrl || '';
+        s.provider === 'openai'
+          ? 'https://api.openai.com/v1'
+          : s.provider === 'openrouter'
+            ? 'https://openrouter.ai/api/v1'
+            : s.baseUrl || meta.defaultBaseUrl || '';
       const headers: Record<string, string> = {};
       if (s.apiKey) headers.authorization = `Bearer ${s.apiKey}`;
       const res = await fetch(`${baseUrl.replace(/\/$/, '')}/models`, { headers });
