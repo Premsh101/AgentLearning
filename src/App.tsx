@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { useLang } from './lib/i18n';
+import { MentorWidget } from './components/MentorWidget';
 
 const NAV = [
   { to: '/', key: 'nav.dashboard', icon: '📊', end: true },
@@ -14,6 +15,7 @@ const NAV = [
   { to: '/mains', key: 'nav.mains', icon: '📝', end: false },
   { to: '/interview', key: 'nav.interview', icon: '🎤', end: false },
   { to: '/mentor', key: 'nav.mentor', icon: '🤖', end: false },
+  { to: '/maps', key: 'nav.maps', icon: '🗺️', end: false },
   { to: '/question-bank', key: 'nav.qbank', icon: '🛠️', end: false },
   { to: '/account', key: 'nav.account', icon: '👤', end: false },
   { to: '/settings', key: 'nav.settings', icon: '⚙️', end: false },
@@ -48,6 +50,7 @@ export function App() {
       <main className="main">
         <Outlet />
       </main>
+      <MentorWidget />
     </div>
   );
 }
