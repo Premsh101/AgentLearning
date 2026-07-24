@@ -6,3 +6,4 @@ dev-dist
 data
 *.db
 *.db-*
+server-dist

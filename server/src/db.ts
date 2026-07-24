@@ -1,13 +1,11 @@
 import Database from 'better-sqlite3';
 import { existsSync, mkdirSync, readFileSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import type { QuestionRow, Bilingual } from './types';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
 // Persistent data dir — mount a Coolify volume at /data in production.
-const DATA_DIR = process.env.DATA_DIR || resolve(__dirname, '../../data');
+// cwd-based so it works both from source (tsx) and as the bundled server.
+const DATA_DIR = process.env.DATA_DIR || resolve(process.cwd(), 'data');
 mkdirSync(DATA_DIR, { recursive: true });
 
 export const db = new Database(resolve(DATA_DIR, 'bpsc.db'));
@@ -127,7 +125,7 @@ export function insertQuestions(items: InsertQuestion[]): number {
 export function seedIfEmpty(): void {
   const count = (db.prepare('SELECT COUNT(*) AS n FROM questions').get() as { n: number }).n;
   if (count > 0) return;
-  const seedPath = resolve(__dirname, '../seed/questions.json');
+  const seedPath = process.env.SEED_PATH || resolve(process.cwd(), 'server/seed/questions.json');
   if (!existsSync(seedPath)) {
     console.warn('No seed file found at', seedPath);
     return;
