@@ -1,10 +1,15 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, type ReactNode } from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { LangProvider } from './lib/i18n';
 import { App } from './App';
 import { initSync, pullState, getAuth } from './lib/auth';
 import './styles.css';
+
+// Gate: the whole app shell is only reachable when logged in.
+function RequireAuth({ children }: { children: ReactNode }) {
+  return getAuth() ? <>{children}</> : <Navigate to="/welcome" replace />;
+}
 
 // Lazy-load pages so each route is a separate chunk — smaller initial load,
 // faster first paint on low-bandwidth connections and modest VPS hosting.
@@ -26,6 +31,8 @@ const Interview = lazy(() => import('./pages/Interview').then((m) => ({ default:
 const Mentor = lazy(() => import('./pages/Mentor').then((m) => ({ default: m.Mentor })));
 const Settings = lazy(() => import('./pages/Settings').then((m) => ({ default: m.Settings })));
 const Account = lazy(() => import('./pages/Account').then((m) => ({ default: m.Account })));
+const Landing = lazy(() => import('./pages/Landing').then((m) => ({ default: m.Landing })));
+const Login = lazy(() => import('./pages/Login').then((m) => ({ default: m.Login })));
 
 function Loading() {
   return <div style={{ padding: 32, color: 'var(--text-dim)' }}>…</div>;
@@ -47,7 +54,9 @@ function render() {
     <LangProvider>
       <HashRouter>
         <Routes>
-          <Route path="/" element={<App />}>
+          <Route path="/welcome" element={<Suspense fallback={<Loading />}><Landing /></Suspense>} />
+          <Route path="/login" element={<Suspense fallback={<Loading />}><Login /></Suspense>} />
+          <Route path="/" element={<RequireAuth><App /></RequireAuth>}>
             <Route
               index
               element={

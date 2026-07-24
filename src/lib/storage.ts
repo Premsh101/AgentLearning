@@ -24,6 +24,17 @@ export function saveJSON<T>(key: string, value: T): void {
   }
 }
 
+/** Remove keys from local storage (used to isolate progress between users). */
+export function clearKeys(keys: string[]): void {
+  for (const k of keys) {
+    try {
+      localStorage.removeItem(PREFIX + k);
+    } catch {
+      // ignore
+    }
+  }
+}
+
 /** Records today as a study day and returns the current streak length. */
 export function touchStudyDay(): number {
   const days = new Set(loadJSON<string[]>('studyDays', []));
