@@ -1,0 +1,9 @@
+# Standalone override — publishes a host port for direct testing WITHOUT a
+# reverse proxy (do NOT use this on Coolify; Traefik routes to the container).
+#
+#   docker compose -f docker-compose.yml -f docker-compose.standalone.yml up -d --build
+#   APP_PORT=9090 docker compose -f docker-compose.yml -f docker-compose.standalone.yml up -d
+services:
+  app:
+    ports:
+      - "${APP_PORT:-8080}:3000"
