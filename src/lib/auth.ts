@@ -9,7 +9,7 @@ import { loadJSON, saveJSON, onSave, clearKeys } from './storage';
  * that user — a deliberate choice so the same AI works across systems. The
  * admin token stays device-only (it's an ops secret, not per-user).
  */
-const SYNC_KEYS = ['completedChapters', 'studyDays', 'topicStats', 'revision', 'examDate', 'mistakeReports', 'lang', 'aiSettings'];
+const SYNC_KEYS = ['completedChapters', 'studyDays', 'topicStats', 'revision', 'examDate', 'mistakeReports', 'lang', 'aiSettings', 'notebook'];
 
 const BASE = ((import.meta.env.VITE_API_BASE as string | undefined) ?? '').replace(/\/$/, '');
 

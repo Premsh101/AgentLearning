@@ -5,6 +5,7 @@ import { resolve } from 'node:path';
 import { seedIfEmpty } from './db';
 import { api } from './api';
 import { auth } from './auth';
+import { userMaps } from './userMaps';
 import { startNewsScheduler } from './news';
 
 // Crash visibility: if the process dies, the container log says why.
@@ -32,6 +33,7 @@ app.use(express.json({ limit: '4mb' }));
 
 app.use('/api', api);
 app.use('/api/auth', auth);
+app.use('/api/user-maps', userMaps);
 
 // Serve the built frontend (single-container deploy) with SPA fallback.
 // Works both when run from source (tsx, cwd = repo root) and when run as the

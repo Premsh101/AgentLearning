@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useLang } from '../lib/i18n';
 import { chapterById } from '../content/syllabus';
@@ -6,6 +6,7 @@ import { Blocks } from '../components/Blocks';
 import { RichText } from '../components/RichText';
 import { QuizRunner } from '../components/QuizRunner';
 import { ReportMistake } from '../components/ReportMistake';
+import { HighlightMenu } from '../components/HighlightMenu';
 import { loadJSON, saveJSON, touchStudyDay } from '../lib/storage';
 import { speak, stopSpeaking, isSpeechSupported } from '../lib/tts';
 import { enroll } from '../lib/revision';
@@ -17,6 +18,7 @@ export function ChapterView() {
   const [speaking, setSpeaking] = useState(false);
   const [practice, setPractice] = useState(false);
   const [completed, setCompleted] = useState(() => loadJSON<string[]>('completedChapters', []).includes(chapterId));
+  const contentRef = useRef<HTMLDivElement>(null);
 
   if (!chapter) return <p>Not found. <Link to="/learn">← Back</Link></p>;
 
@@ -67,23 +69,27 @@ export function ChapterView() {
         <ReportMistake context={`${tb(chapter.title)}`} />
       </div>
 
-      {chapter.sections.map((sec) => (
-        <section key={sec.id}>
-          <h2>{tb(sec.heading)}</h2>
-          <Blocks blocks={sec.blocks} />
-        </section>
-      ))}
+      {/* Select any text below to add it to your notebook. */}
+      <div ref={contentRef}>
+        {chapter.sections.map((sec) => (
+          <section key={sec.id}>
+            <h2>{tb(sec.heading)}</h2>
+            <Blocks blocks={sec.blocks} />
+          </section>
+        ))}
 
-      <div className="takeaways">
-        <h2>📌 {t('common.takeaways')}</h2>
-        <ul>
-          {chapter.takeaways.map((tk, i) => (
-            <li key={i}>
-              <RichText text={tb(tk)} />
-            </li>
-          ))}
-        </ul>
+        <div className="takeaways">
+          <h2>📌 {t('common.takeaways')}</h2>
+          <ul>
+            {chapter.takeaways.map((tk, i) => (
+              <li key={i}>
+                <RichText text={tb(tk)} />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
+      <HighlightMenu containerRef={contentRef} page={chapter.subjectId} chapterId={chapter.id} chapterTitle={tb(chapter.title)} />
 
       <div className="no-print">
         <h2>❓ {t('common.practice')}</h2>

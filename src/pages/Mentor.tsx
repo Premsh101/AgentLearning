@@ -1,7 +1,9 @@
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../lib/i18n';
 import { useMentorChat } from '../lib/useMentorChat';
 import { Markdown } from '../components/Markdown';
+import { exportAnswerDoc, exportChatDoc } from '../lib/exportDoc';
 
 export function Mentor() {
   const { t, lang } = useLang();
@@ -9,15 +11,44 @@ export function Mentor() {
     settings, configured, messages, input, setInput,
     loading, error, listening, send, toggleVoice, endRef,
   } = useMentorChat();
+  const chatRef = useRef<HTMLDivElement>(null);
+
+  // Question that produced the reply at index i (for the export header).
+  const questionFor = (i: number) => {
+    for (let j = i - 1; j >= 0; j--) if (messages[j].role === 'user') return messages[j].content;
+    return '';
+  };
+
+  const downloadWhole = () => {
+    const nodes = chatRef.current?.querySelectorAll('.msg.ai .md') ?? [];
+    const pairs: { q: string; html: string }[] = [];
+    let n = 0;
+    messages.forEach((m, i) => {
+      if (m.role === 'assistant') {
+        const el = nodes[n++] as HTMLElement | undefined;
+        if (el) pairs.push({ q: questionFor(i), html: el.innerHTML });
+      }
+    });
+    if (pairs.length) exportChatDoc(pairs);
+  };
 
   return (
     <div className="mentor-page">
-      <h1>🤖 {t('nav.mentor')}</h1>
-      <p className="subtitle">
-        {lang === 'hi'
-          ? `प्रदाता: ${settings.provider} · मॉडल: ${settings.model}`
-          : `Provider: ${settings.provider} · Model: ${settings.model}`}
-      </p>
+      <div className="mentor-head">
+        <div>
+          <h1>🤖 {t('nav.mentor')}</h1>
+          <p className="subtitle" style={{ marginBottom: 0 }}>
+            {lang === 'hi'
+              ? `प्रदाता: ${settings.provider} · मॉडल: ${settings.model}`
+              : `Provider: ${settings.provider} · Model: ${settings.model}`}
+          </p>
+        </div>
+        {messages.some((m) => m.role === 'assistant') && (
+          <button className="btn small no-print" onClick={downloadWhole}>
+            📄 {lang === 'hi' ? 'चैट Word में सहेजें' : 'Download chat (Word)'}
+          </button>
+        )}
+      </div>
 
       {!configured && (
         <div className="card" style={{ marginBottom: 16 }}>
@@ -28,7 +59,7 @@ export function Mentor() {
       )}
 
       {/* Only this panel scrolls; the composer below stays put. */}
-      <div className="chat chat-scroll">
+      <div className="chat chat-scroll" ref={chatRef}>
         {messages.length === 0 && (
           <div className="msg ai">
             {lang === 'hi'
@@ -39,6 +70,19 @@ export function Mentor() {
         {messages.map((m, i) => (
           <div key={i} className={`msg ${m.role === 'user' ? 'user' : 'ai'}`}>
             {m.role === 'user' ? m.content : <Markdown text={m.content} />}
+            {m.role === 'assistant' && (
+              <div className="msg-tools no-print">
+                <button
+                  title={lang === 'hi' ? 'Word में डाउनलोड करें' : 'Download as Word'}
+                  onClick={(e) => {
+                    const md = (e.currentTarget.closest('.msg')?.querySelector('.md') as HTMLElement | null)?.innerHTML ?? '';
+                    exportAnswerDoc(questionFor(i), md);
+                  }}
+                >
+                  📄 Word
+                </button>
+              </div>
+            )}
           </div>
         ))}
         {loading && <div className="msg ai typing">…</div>}

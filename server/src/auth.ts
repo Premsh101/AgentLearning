@@ -34,7 +34,7 @@ function hash(password: string, salt: string): string {
   return scryptSync(password, salt, 64).toString('hex');
 }
 
-function userForToken(token: string | undefined): { id: string; username: string } | null {
+export function userForToken(token: string | undefined): { id: string; username: string } | null {
   if (!token) return null;
   const row = db
     .prepare(
