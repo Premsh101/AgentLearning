@@ -26,6 +26,7 @@ const UI: Record<string, Bilingual> = {
   'nav.mains': { en: 'Mains Evaluation', hi: 'मुख्य परीक्षा मूल्यांकन' },
   'nav.interview': { en: 'Interview Coach', hi: 'साक्षात्कार कोच' },
   'nav.mentor': { en: 'AI Mentor', hi: 'AI मेंटर' },
+  'nav.maps': { en: 'Maps', hi: 'मानचित्र' },
   'nav.qbank': { en: 'Question Bank', hi: 'प्रश्न बैंक' },
   'nav.account': { en: 'Account', hi: 'खाता' },
   'nav.settings': { en: 'Settings', hi: 'सेटिंग्स' },
