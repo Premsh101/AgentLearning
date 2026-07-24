@@ -27,6 +27,8 @@ COPY --from=build /app/server/seed ./server/seed
 COPY --from=build /app/node_modules/better-sqlite3 ./node_modules/better-sqlite3
 COPY --from=build /app/node_modules/node-addon-api ./node_modules/node-addon-api
 COPY --from=build /app/package.json ./package.json
+COPY --from=build /app/docker-entrypoint.sh ./docker-entrypoint.sh
+RUN chmod +x ./docker-entrypoint.sh
 
 # SQLite database lives here — mount a volume at /data to persist it.
 RUN mkdir -p /data
@@ -37,4 +39,4 @@ EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
   CMD node -e "const p=process.env.PORT||3000;fetch('http://127.0.0.1:'+p+'/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 
-CMD ["node", "server-dist/index.mjs"]
+CMD ["./docker-entrypoint.sh"]

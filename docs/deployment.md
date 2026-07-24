@@ -42,6 +42,17 @@ docker run -d --name bpsc-ai-os -p 8080:3000 -v bpsc-data:/data --restart unless
 6. **Domain:** set your domain; Coolify issues a Let's Encrypt certificate. HTTPS is needed for PWA install/offline and the browser-voice features.
 7. **Deploy.** Enable auto-deploy so each push to `main` rebuilds.
 
+## Auto-deploy on merge to main
+
+Two ways — pick one:
+
+1. **GitHub Actions → Coolify webhook (included in this repo).** `.github/workflows/deploy.yml` calls your app's Coolify deploy webhook on every push to `main`. One-time setup: in Coolify open your app → **Webhooks** → copy the **Deploy Webhook** URL; create an API token under **Keys & Tokens** → API tokens; then in GitHub repo **Settings → Secrets and variables → Actions** add `COOLIFY_WEBHOOK` (the URL) and `COOLIFY_TOKEN` (the token). Every merge then redeploys automatically.
+2. **Coolify's own Git webhook.** In your app → **Webhooks**, Coolify shows a GitHub webhook URL + secret; add them in the GitHub repo's **Settings → Webhooks** (push events). Apps created through Coolify's GitHub App source get this wired automatically — apps added as a plain public repo URL don't, which is why some of your projects auto-deploy and this one didn't.
+
+## Reading the container logs (debugging a failed boot)
+
+The container runs a wrapper entrypoint: if the server process ever exits, the container **stays alive** and the Logs tab shows full boot diagnostics, the error, and the exit code (the healthcheck goes unhealthy instead of crash-looping). For any startup problem: open the app's **Logs** tab and read the `[entrypoint]` / `[boot]` / `SERVER EXITED with code N` lines. Exit code **137 = out-of-memory kill** (add RAM or swap on the VPS); any other code prints the actual error just above it.
+
 ## What runs where
 
 - **Static content, quizzes, spaced-repetition, analytics, AI mentor/mains/interview** — all in the browser (AI calls go browser-direct to the user's own provider key; nothing server-side).

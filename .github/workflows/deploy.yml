@@ -1,0 +1,33 @@
+name: Deploy to Coolify
+
+# Triggers a Coolify redeploy on every push/merge to main.
+#
+# One-time setup (repo Settings → Secrets and variables → Actions):
+#   COOLIFY_WEBHOOK — the app's Deploy Webhook URL from Coolify
+#                     (your app → Webhooks → "Deploy Webhook", looks like
+#                      https://<your-coolify>/api/v1/deploy?uuid=<app-uuid>&force=false)
+#   COOLIFY_TOKEN   — an API token from Coolify → Keys & Tokens → API tokens
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Coolify deployment
+        env:
+          WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}
+          TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+        run: |
+          if [ -z "$WEBHOOK" ]; then
+            echo "::warning::COOLIFY_WEBHOOK secret is not set — skipping auto-deploy."
+            echo "Add it under repo Settings → Secrets → Actions (see comments in this workflow file)."
+            exit 0
+          fi
+          echo "Calling Coolify deploy webhook…"
+          curl -fsSL --retry 3 --retry-delay 5 \
+            -H "Authorization: Bearer $TOKEN" \
+            "$WEBHOOK"
+          echo "Deploy triggered."
