@@ -77,6 +77,18 @@ export function Dashboard() {
           <h2 style={{ marginTop: 0 }}>⏱️ {t('nav.mock')}</h2>
           <p style={{ color: 'var(--text-dim)', margin: 0 }}>{t('mock.desc')}</p>
         </Link>
+        <Link to="/mains" className="card" style={{ color: 'var(--text)' }}>
+          <h2 style={{ marginTop: 0 }}>📝 {t('nav.mains')}</h2>
+          <p style={{ color: 'var(--text-dim)', margin: 0 }}>
+            {lang === 'hi' ? 'अपना मुख्य परीक्षा उत्तर लिखें — AI संरचना, तथ्य व भाषा पर अंक व सुझाव देता है।' : 'Write a mains answer — AI scores structure, facts & language and gives a model answer.'}
+          </p>
+        </Link>
+        <Link to="/interview" className="card" style={{ color: 'var(--text)' }}>
+          <h2 style={{ marginTop: 0 }}>🎤 {t('nav.interview')}</h2>
+          <p style={{ color: 'var(--text-dim)', margin: 0 }}>
+            {lang === 'hi' ? 'ब्राउज़र की आवाज़ से मॉक साक्षात्कार का अभ्यास करें।' : 'Practise a mock interview by voice, using your browser.'}
+          </p>
+        </Link>
         <Link to="/mentor" className="card" style={{ color: 'var(--text)' }}>
           <h2 style={{ marginTop: 0 }}>🤖 {t('nav.mentor')}</h2>
           <p style={{ color: 'var(--text-dim)', margin: 0 }}>
