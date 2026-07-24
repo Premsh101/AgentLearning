@@ -77,6 +77,18 @@ export function Dashboard() {
           <h2 style={{ marginTop: 0 }}>⏱️ {t('nav.mock')}</h2>
           <p style={{ color: 'var(--text-dim)', margin: 0 }}>{t('mock.desc')}</p>
         </Link>
+        <Link to="/test-papers" className="card" style={{ color: 'var(--text)' }}>
+          <h2 style={{ marginTop: 0 }}>🗂️ {t('nav.papers')}</h2>
+          <p style={{ color: 'var(--text-dim)', margin: 0 }}>
+            {lang === 'hi' ? 'सर्वर प्रश्न बैंक से ब्लूप्रिंट अनुसार मॉडल टेस्ट पेपर तैयार करें।' : 'Generate model test papers to a blueprint from the server question bank.'}
+          </p>
+        </Link>
+        <Link to="/pyq" className="card" style={{ color: 'var(--text)' }}>
+          <h2 style={{ marginTop: 0 }}>🎯 {t('nav.pyq')}</h2>
+          <p style={{ color: 'var(--text-dim)', margin: 0 }}>
+            {lang === 'hi' ? 'सर्वाधिक दोहराए गए विषय व विषयवार महत्व का विश्लेषण।' : 'Analysis of the most-repeated topics and subject weightage.'}
+          </p>
+        </Link>
         <Link to="/mains" className="card" style={{ color: 'var(--text)' }}>
           <h2 style={{ marginTop: 0 }}>📝 {t('nav.mains')}</h2>
           <p style={{ color: 'var(--text-dim)', margin: 0 }}>

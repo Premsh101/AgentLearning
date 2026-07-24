@@ -3,6 +3,12 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+  server: {
+    // Dev convenience: `npm run dev` (5173) proxies API calls to `npm run server` (3000).
+    proxy: {
+      '/api': 'http://localhost:3000',
+    },
+  },
   plugins: [
     react(),
     VitePWA({

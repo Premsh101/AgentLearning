@@ -19,6 +19,8 @@ const UI: Record<string, Bilingual> = {
   'nav.quiz': { en: 'Daily Quiz', hi: 'दैनिक क्विज़' },
   'nav.ca': { en: 'Current Affairs', hi: 'करेंट अफेयर्स' },
   'nav.mock': { en: 'Mock Test', hi: 'मॉक टेस्ट' },
+  'nav.papers': { en: 'Test Papers', hi: 'टेस्ट पेपर' },
+  'nav.pyq': { en: 'PYQ Intelligence', hi: 'PYQ इंटेलिजेंस' },
   'nav.revision': { en: 'Revision', hi: 'रिवीजन' },
   'nav.analytics': { en: 'Analytics', hi: 'विश्लेषण' },
   'nav.mains': { en: 'Mains Evaluation', hi: 'मुख्य परीक्षा मूल्यांकन' },

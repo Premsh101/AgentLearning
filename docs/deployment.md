@@ -1,83 +1,58 @@
 # Deploying BPSC AI OS on KVM with Coolify
 
-This app is a **static, self-contained PWA** — the production build is plain HTML/CSS/JS with a service worker. There is no backend, no database, and no server-side secrets to manage (users enter their own AI key in the browser). That makes it very cheap and simple to host.
+The app now ships as **one container**: a small Node server that serves the built frontend **and** the API (question bank, PYQ intelligence, scraper, model-test-paper generator). Data lives in a **SQLite file** on a mounted volume — no separate database service. That keeps a Coolify deploy about as simple as a backend app gets: **one service + one persistent volume**.
 
-We deploy it as a Docker image (Node build → nginx serve) via **Coolify** running on a **KVM VPS**.
+```
+┌───────────────────────────────────────────────┐
+│  Container (Node 20)                            │
+│   • serves the PWA (built dist/)                │
+│   • serves /api/*  (Express)                    │
+│   • SQLite question bank at /data/bpsc.db  ◄── volume
+└───────────────────────────────────────────────┘
+```
 
----
-
-## What's in the repo for deployment
-
-| File | Purpose |
-|---|---|
-| `Dockerfile` | Multi-stage build: `node:20-alpine` builds the PWA, `nginx:1.27-alpine` serves it on port **80**. |
-| `nginx.conf` | SPA fallback, gzip, and PWA-aware caching (never cache `sw.js`/`index.html`; cache hashed `/assets/` for a year). |
-| `.dockerignore` | Keeps `node_modules`, `dist`, `.git` etc. out of the build context. |
-
-## Quick deploy on a KVM box (no Coolify needed — for testing)
-
-If you just want it running to test, any KVM VPS with Docker works:
+## Quick deploy on any KVM box (Docker)
 
 ```bash
 git clone https://github.com/Premsh101/AgentLearning.git
 cd AgentLearning
-docker compose up -d --build      # builds the image and starts nginx on :8080
+docker compose up -d --build      # builds + starts on :8080, with a persistent volume
 ```
 
-Open `http://<server-ip>:8080`. To update after new commits: `git pull && docker compose up -d --build`. To stop: `docker compose down`.
+Open `http://<server-ip>:8080`. Update after new commits: `git pull && docker compose up -d --build`. Stop: `docker compose down` (add `-v` to also wipe the question-bank volume).
 
 Or without compose:
 
 ```bash
 docker build -t bpsc-ai-os .
-docker run -d --name bpsc-ai-os -p 8080:80 --restart unless-stopped bpsc-ai-os
+docker run -d --name bpsc-ai-os -p 8080:3000 -v bpsc-data:/data --restart unless-stopped bpsc-ai-os
 ```
 
-> **PWA note:** installability and offline caching (the service worker) require **HTTPS** in production — but they also work on `http://localhost`, so plain HTTP on `:8080` is fine for testing. For a public URL, front it with a TLS-terminating reverse proxy (Coolify/Traefik below, or Caddy / Nginx Proxy Manager). No app config changes are needed — the app uses hash-based routing and serves under any domain.
+## Deploy with Coolify (recommended for a public HTTPS URL)
 
-## Requirements
+1. **New resource → Application → Public/Private Git Repository** → `https://github.com/Premsh101/AgentLearning`, branch `main`.
+2. **Build Pack: `Dockerfile`** (auto-detected at the repo root).
+3. **Port:** `3000` (the Node server listens there; Coolify's Traefik proxy terminates HTTPS in front).
+4. **Persistent storage:** add a volume mounted at **`/data`** (this holds `bpsc.db`; without it the question bank resets on each redeploy).
+5. **Environment variables:** none required. Optional: `PORT` (defaults to 3000), `DATA_DIR` (defaults to `/data`).
+6. **Domain:** set your domain; Coolify issues a Let's Encrypt certificate. HTTPS is needed for PWA install/offline and the browser-voice features.
+7. **Deploy.** Enable auto-deploy so each push to `main` rebuilds.
 
-- A KVM VPS (1 vCPU / 1 GB RAM is plenty for this static app; 2 GB recommended so image builds are comfortable).
-- **Coolify** installed on the VPS. If it isn't yet:
-  ```bash
-  curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
-  ```
-  Then open `http://<server-ip>:8000` and finish the onboarding.
-- A domain (or subdomain) pointing an **A record** at the server's IP — needed so Coolify can issue HTTPS (the PWA service worker only runs over HTTPS or `localhost`).
+## What runs where
 
----
+- **Static content, quizzes, spaced-repetition, analytics, AI mentor/mains/interview** — all in the browser (AI calls go browser-direct to the user's own provider key; nothing server-side).
+- **Question bank, PYQ stats, scraper, model test papers** — the Node/SQLite backend. Seeded on first boot from the app's own content (~210 questions).
 
-## One-time setup in Coolify
+## Populating the question bank
 
-1. **Create a project** (e.g. `bpsc-ai-os`) and an environment (`production`).
-2. **Add a resource → Application → Public/Private Git Repository.**
-   - Repository: `https://github.com/Premsh101/AgentLearning`
-   - Branch: `main`
-   - **Build Pack: `Dockerfile`** (Coolify auto-detects the `Dockerfile` at the repo root).
-3. **Port:** set the exposed/ports mapping to **80** (the container serves nginx on 80). Coolify's Traefik proxy sits in front and terminates HTTPS.
-4. **Domain:** enter your domain (e.g. `https://bpsc.example.com`). Coolify requests a Let's Encrypt certificate automatically.
-5. **Environment variables:** none required for the MVP. (AI provider keys are entered by each user in **Settings** and stored only in their browser.)
-6. **Deploy.** Coolify clones the repo, builds the Dockerfile, and starts the container. The `HEALTHCHECK` in the Dockerfile lets Coolify mark it healthy once nginx responds.
+- **Seed:** on first run the DB is auto-seeded from `server/seed/questions.json` (generated from the chapters' question banks).
+- **Import (trusted):** `POST /api/questions/import` with a JSON array of questions → added as `approved`.
+- **Scrape (needs review):** `POST /api/scrape` with `{ "source": "json-endpoint", "url": "…" }` (or the built-in `sample-bihar-pyq` source) ingests questions as **`pending`**. Review them, then approve: `POST /api/questions/:id/approve`. Only `approved` questions appear in quizzes and generated papers — a deliberate guard so unverified scraped text is never shown as fact.
 
-## Continuous deployment
+> **On scraping:** the scraper is a pluggable framework. The safest, most reliable source is a JSON endpoint you control (`json-endpoint`). HTML-scraping a third-party site is brittle and may raise copyright issues, so treat auto-scraped questions as drafts to review, not ground truth.
 
-Enable Coolify's **automatic deployment / webhook** on the resource. After that, every push to `main` (each merged PR) triggers a rebuild and redeploy. No manual step.
+## Notes
 
----
-
-## Verifying the deploy
-
-After the first deploy, open your domain and check:
-
-- The dashboard loads and the **EN / हिंदी** toggle switches the whole UI.
-- **Install app** is offered by the browser (PWA), and the app still opens after going offline (service worker caching).
-- A chapter opens with its figures, timeline and takeaways; **Export PDF** prints cleanly.
-- **Settings → AI Provider** saves; the mentor answers once a provider/key is configured.
-
-## Notes & troubleshooting
-
-- **Service worker / HTTPS:** the PWA needs HTTPS in production. If install/offline don't work, confirm Coolify issued the TLS certificate and the site is served over `https://`.
-- **Stateless:** no volumes or persistent storage are needed — all user progress lives in the browser's `localStorage`. Redeploys never lose user data because it was never on the server.
-- **Updates rolling out:** `sw.js` and `index.html` are served with `no-cache`, so a new deploy reaches users on their next visit without a hard refresh.
-- **Resource use:** the running container is just nginx serving static files — a few MB of RAM. You can host several such apps on a small KVM box.
-- **Rollback:** use Coolify's deployment history to redeploy a previous build if a release regresses.
+- **Persistence:** everything worth keeping is in `/data`. Redeploys keep the volume; user progress (streaks, quiz stats, revision, settings, API keys) lives in the browser's `localStorage`.
+- **Native module:** the backend uses `better-sqlite3`; the multi-stage Dockerfile builds it on the full `node:20` image and copies it into the slim runtime (same Debian base → compatible).
+- **Rollback:** use Coolify's deployment history.

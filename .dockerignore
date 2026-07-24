@@ -5,5 +5,6 @@ dev-dist
 .gitignore
 *.log
 .DS_Store
-docs
-README.md
+data
+*.db
+*.db-*

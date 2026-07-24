@@ -1,9 +1,19 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../lib/i18n';
 import { loadJSON } from '../lib/storage';
 import { DEFAULT_AI_SETTINGS, type AISettings } from '../lib/ai/types';
 import { evaluateAnswer, type MainsEvaluation } from '../lib/ai/mains';
+import { transcribeImage } from '../lib/ai/vision';
+
+function readFileAsDataUrl(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = () => reject(new Error('Could not read the image file.'));
+    reader.readAsDataURL(file);
+  });
+}
 
 export function Mains() {
   const { lang } = useLang();
@@ -11,11 +21,30 @@ export function Mains() {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
+  const [ocrLoading, setOcrLoading] = useState(false);
   const [error, setError] = useState('');
   const [result, setResult] = useState<MainsEvaluation | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
 
   const configured = settings.provider === 'local' || settings.apiKey.trim().length > 0;
   const wordCount = answer.trim() ? answer.trim().split(/\s+/).length : 0;
+
+  const onUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (fileRef.current) fileRef.current.value = ''; // allow re-selecting the same file
+    if (!file || !configured) return;
+    setError('');
+    setOcrLoading(true);
+    try {
+      const dataUrl = await readFileAsDataUrl(file);
+      const text = await transcribeImage(settings, dataUrl, lang);
+      setAnswer((prev) => (prev.trim() ? prev + '\n' + text : text));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : String(err));
+    } finally {
+      setOcrLoading(false);
+    }
+  };
 
   const run = async () => {
     if (!question.trim() || !answer.trim() || loading || !configured) return;
@@ -83,10 +112,19 @@ export function Mains() {
         />
         <div className="hint" style={{ fontSize: '0.78rem', color: 'var(--text-dim)', marginTop: 4 }}>
           {lang === 'hi' ? `शब्द गणना: ${wordCount}` : `Word count: ${wordCount}`}
-          {' · '}
-          {lang === 'hi'
-            ? 'हस्तलिखित उत्तर की छवि (OCR) से मूल्यांकन अगले चरण में आएगा।'
-            : 'Handwriting-image OCR is a planned future step.'}
+        </div>
+        <div className="toolbar no-print" style={{ marginTop: 8 }}>
+          <input ref={fileRef} type="file" accept="image/*" onChange={onUpload} style={{ display: 'none' }} />
+          <button className="btn small" onClick={() => fileRef.current?.click()} disabled={!configured || ocrLoading}>
+            {ocrLoading
+              ? lang === 'hi' ? '📷 पढ़ रहा है…' : '📷 Reading…'
+              : lang === 'hi' ? '📷 हस्तलिखित उत्तर की फोटो अपलोड करें' : '📷 Upload a photo of your handwritten answer'}
+          </button>
+          <span style={{ fontSize: '0.76rem', color: 'var(--text-dim)', alignSelf: 'center' }}>
+            {lang === 'hi'
+              ? 'फोटो को आपके AI प्रदाता द्वारा टेक्स्ट में बदला जाता है (विज़न आवश्यक)।'
+              : 'The photo is transcribed to text by your AI provider (needs a vision model).'}
+          </span>
         </div>
       </div>
 
