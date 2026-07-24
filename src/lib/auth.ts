@@ -1,4 +1,4 @@
-import { loadJSON, saveJSON, onSave } from './storage';
+import { loadJSON, saveJSON, onSave, clearKeys } from './storage';
 
 /**
  * Simple accounts + cross-device progress sync.
@@ -91,14 +91,17 @@ export function initSync(): void {
 
 export async function register(username: string, password: string): Promise<AuthInfo> {
   const a = await call<AuthInfo>('/register', { method: 'POST', body: JSON.stringify({ username, password }) });
+  // A brand-new account starts clean — never inherit the previous user's
+  // progress that may be sitting in this browser.
+  clearKeys(SYNC_KEYS);
   saveJSON('auth', a);
-  // First device wins: push whatever local progress exists up to the new account.
-  await pushState();
   return a;
 }
 
 export async function login(username: string, password: string): Promise<AuthInfo> {
   const a = await call<AuthInfo>('/login', { method: 'POST', body: JSON.stringify({ username, password }) });
+  // Wipe any local progress from a previous session, then load THIS user's.
+  clearKeys(SYNC_KEYS);
   saveJSON('auth', a);
   await pullState().catch(() => {});
   return a;
@@ -111,4 +114,6 @@ export async function logout(): Promise<void> {
     // best effort
   }
   saveJSON('auth', null);
+  // Leave no personal progress on the device after logout.
+  clearKeys(SYNC_KEYS);
 }
