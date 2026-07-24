@@ -31,7 +31,11 @@ export function App() {
             <span>{t(n.key)}</span>
           </NavLink>
         ))}
-        <div className="lang-switch no-print">
+        <a className="nav-link no-print" href="/user-manual/index.html" target="_blank" rel="noreferrer" style={{ marginTop: 'auto', fontSize: '0.85rem' }}>
+          <span>📖</span>
+          <span>{lang === 'hi' ? 'उपयोग पुस्तिका' : 'User Manual'}</span>
+        </a>
+        <div className="lang-switch no-print" style={{ marginTop: 4 }}>
           <button className={lang === 'en' ? 'on' : ''} onClick={() => setLang('en')}>
             EN
           </button>

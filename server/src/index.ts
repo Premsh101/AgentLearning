@@ -5,10 +5,12 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { seedIfEmpty } from './db';
 import { api } from './api';
+import { startNewsScheduler } from './news';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 seedIfEmpty();
+startNewsScheduler();
 
 const app = express();
 app.use(cors());

@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BPSC AI OS — User Manual</title>
+<style>
+  :root{--primary:#1a3a6b;--accent:#d97b12;--bg:#f6f7fb;--surface:#fff;--text:#1c2333;--dim:#5a647a;--border:#dde2ee;--green:#1e7a44}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,'Noto Sans','Noto Sans Devanagari',sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 20px 80px}
+  header.hero{background:var(--primary);color:#fff;border-radius:16px;padding:36px 32px;margin-bottom:28px}
+  header.hero h1{margin:0 0 6px;font-size:2rem}
+  header.hero p{margin:0;opacity:.85}
+  nav.toc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:30px;columns:2;column-gap:32px}
+  nav.toc a{display:block;color:var(--primary);text-decoration:none;padding:3px 0;font-size:.95rem}
+  nav.toc a:hover{text-decoration:underline}
+  section{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:24px}
+  h2{margin:0 0 4px;color:var(--primary);font-size:1.35rem}
+  h3{color:var(--text);margin:20px 0 6px;font-size:1.05rem}
+  .hi{color:var(--dim);font-size:.9rem;margin:0 0 14px}
+  img.shot{width:100%;border:1px solid var(--border);border-radius:10px;margin:14px 0;box-shadow:0 2px 8px rgba(20,30,60,.08)}
+  ol,ul{padding-left:22px}
+  li{margin:5px 0}
+  code{background:#eef1f8;border-radius:5px;padding:1px 6px;font-size:.88em}
+  pre{background:#101828;color:#e6edf7;border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:.85rem}
+  .tip{border-left:4px solid var(--accent);background:#fdf0dd;border-radius:8px;padding:10px 16px;margin:14px 0;font-size:.93rem}
+  .ok{border-left:4px solid var(--green);background:#e2f4e9;border-radius:8px;padding:10px 16px;margin:14px 0;font-size:.93rem}
+  table{border-collapse:collapse;width:100%;font-size:.92rem;margin:12px 0}
+  th,td{border:1px solid var(--border);padding:8px 12px;text-align:left}
+  th{background:#e3ebf8;color:var(--primary)}
+  footer{text-align:center;color:var(--dim);font-size:.85rem;margin-top:36px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>📘 BPSC AI OS — User Manual</h1>
+  <p>Your Personal AI Coach to Crack BPSC · bilingual (English + हिंदी) · works offline · runs on your own server</p>
+</header>
+
+<nav class="toc">
+  <a href="#start">1. Getting started</a>
+  <a href="#dashboard">2. Dashboard</a>
+  <a href="#learn">3. Learn — chapters</a>
+  <a href="#quiz">4. Daily Quiz</a>
+  <a href="#ca">5. Current Affairs &amp; Live News</a>
+  <a href="#mock">6. Mock Test</a>
+  <a href="#papers">7. Model Test Papers</a>
+  <a href="#pyq">8. PYQ Intelligence &amp; Practice</a>
+  <a href="#revision">9. Smart Revision</a>
+  <a href="#analytics">10. Analytics &amp; Readiness Score</a>
+  <a href="#mains">11. Mains Answer Evaluation</a>
+  <a href="#interview">12. Interview Coach</a>
+  <a href="#mentor">13. AI Mentor</a>
+  <a href="#qbank">14. Question Bank (Admin)</a>
+  <a href="#settings">15. Settings &amp; AI providers</a>
+  <a href="#hindi">16. Using the app in Hindi</a>
+  <a href="#deploy">17. Deployment (Coolify / Docker)</a>
+  <a href="#faq">18. FAQ &amp; troubleshooting</a>
+</nav>
+
+<section id="start">
+  <h2>1. Getting started</h2>
+  <p class="hi">शुरुआत कैसे करें</p>
+  <ol>
+    <li>Open the app in your browser (your deployed URL, e.g. <code>https://bpsc.example.com</code>).</li>
+    <li>Pick your language with the <b>EN / हिंदी</b> toggle at the bottom of the sidebar — every chapter, quiz and screen is fully bilingual.</li>
+    <li>Go to <b>Settings</b> and set your <b>exam date</b> (for the countdown) and, if you want the AI features, your <b>AI provider + API key</b> (see §15).</li>
+    <li>Install it as an app: in Chrome/Edge use <i>Install app</i> from the address bar. Chapters, quizzes and revision then work <b>offline</b>.</li>
+  </ol>
+  <div class="ok">No account is needed. All your progress (streaks, scores, revision schedule, settings) is stored in your own browser.</div>
+</section>
+
+<section id="dashboard">
+  <h2>2. Dashboard</h2>
+  <p class="hi">डैशबोर्ड</p>
+  <p>Your daily starting point: study streak, chapters completed, days to exam, average accuracy, a <b>revision-due reminder</b>, and one-click cards to every module.</p>
+  <img class="shot" src="images/dashboard.png" alt="Dashboard">
+</section>
+
+<section id="learn">
+  <h2>3. Learn — chapters</h2>
+  <p class="hi">अध्ययन — अध्याय</p>
+  <p><b>29 bilingual chapters across 7 subjects</b> (Polity, History, Geography, Economy, Science, Bihar Special, Mental Ability) covering the full BPSC Prelims syllabus — written in simple language with maps, infographics, timelines and memory tricks.</p>
+  <img class="shot" src="images/learn.png" alt="Subjects">
+  <h3>Inside a chapter</h3>
+  <ul>
+    <li><b>🔊 Listen</b> — read-aloud in English or Hindi (browser voice).</li>
+    <li><b>📄 Export PDF</b> — print-friendly copy of the chapter.</li>
+    <li><b>🚩 Report a mistake</b> — flag any error; it is saved and can be filed on GitHub.</li>
+    <li><b>Takeaways</b> box at the end — the chapter compressed into revision points.</li>
+    <li><b>Practice questions</b> — a chapter quiz with instant explanations.</li>
+    <li><b>Mark as complete</b> — logs your streak and auto-enrols the chapter into Smart Revision.</li>
+  </ul>
+  <img class="shot" src="images/chapter.png" alt="Chapter view">
+</section>
+
+<section id="quiz">
+  <h2>4. Daily Quiz</h2>
+  <p class="hi">दैनिक क्विज़</p>
+  <p>10 questions selected from your material — weak topics are prioritised automatically. Every answer shows an instant explanation.</p>
+  <img class="shot" src="images/quiz.png" alt="Daily quiz">
+</section>
+
+<section id="ca">
+  <h2>5. Current Affairs &amp; Live News</h2>
+  <p class="hi">करेंट अफेयर्स व लाइव समाचार</p>
+  <p>Three tabs:</p>
+  <ul>
+    <li><b>📚 Digest</b> — curated, exam-ready items (summary → background → static-GK link → facts → MCQs → mains questions), filterable by category, exportable to PDF.</li>
+    <li><b>🗞️ Live News</b> — the server fetches headlines from PIB feeds daily. Click <b>✨ Convert to exam material</b> on any item.</li>
+    <li><b>✨ News → Exam Material</b> — paste (or send from Live News) any news text; your AI provider turns it into complete exam material.</li>
+  </ul>
+  <img class="shot" src="images/current-affairs.png" alt="Current affairs digest">
+  <img class="shot" src="images/live-news.png" alt="Live news">
+</section>
+
+<section id="mock">
+  <h2>6. Mock Test</h2>
+  <p class="hi">मॉक टेस्ट</p>
+  <p>A real exam simulation from the built-in bank: countdown timer (auto-submits), question palette, mark-for-review, configurable negative marking (default 0 = the real BPSC prelims pattern), and a full result analysis.</p>
+  <img class="shot" src="images/mock.png" alt="Mock test setup">
+</section>
+
+<section id="papers">
+  <h2>7. Model Test Papers</h2>
+  <p class="hi">मॉडल टेस्ट पेपर</p>
+  <p>Generated <b>fresh from the server question bank</b> — so papers get richer as the bank grows. Choose a preset blueprint (Quick 30, Prelims GS 50, Bihar Special 20) or <b>build your own paper</b>: questions per subject, duration, negative marking. Results include subject-wise breakdown and full answer review.</p>
+  <img class="shot" src="images/test-papers.png" alt="Test papers and custom builder">
+</section>
+
+<section id="pyq">
+  <h2>8. PYQ Intelligence &amp; Bank Practice</h2>
+  <p class="hi">PYQ इंटेलिजेंस व बैंक अभ्यास</p>
+  <p>Instead of storing previous-year questions, the app <b>analyses</b> them: subject weightage bars and a topic-priority table (Very High / High / Medium) computed live from the question bank. Every topic row has <b>✏️ Practice</b> (drill questions on exactly that topic) and links to the chapters to revisit.</p>
+  <img class="shot" src="images/pyq.png" alt="PYQ intelligence">
+  <img class="shot" src="images/practice.png" alt="Bank practice">
+</section>
+
+<section id="revision">
+  <h2>9. Smart Revision</h2>
+  <p class="hi">स्मार्ट रिवीजन</p>
+  <p>Spaced repetition on the <b>1 → 3 → 7 → 15 → 30 → 60 day</b> ladder. Chapters enrol automatically when you mark them complete. Try to recall first, reveal the takeaways, then grade yourself (Again / Hard / Good / Easy) — the schedule adapts. Nothing gets forgotten.</p>
+  <img class="shot" src="images/revision.png" alt="Smart revision">
+</section>
+
+<section id="analytics">
+  <h2>10. Analytics &amp; Readiness Score</h2>
+  <p class="hi">विश्लेषण व तैयारी स्कोर</p>
+  <p>A transparent <b>Readiness Score</b> = 0.4 × syllabus coverage + 0.35 × accuracy + 0.25 × revision compliance — every part is something you can move. Below it: subject completion bars, and <b>weak areas with an improvement plan</b> (practise the topic from the bank, or reread the mapped chapters).</p>
+  <img class="shot" src="images/analytics.png" alt="Analytics">
+</section>
+
+<section id="mains">
+  <h2>11. Mains Answer Evaluation</h2>
+  <p class="hi">मुख्य परीक्षा उत्तर मूल्यांकन</p>
+  <p>Type your answer <i>or</i> <b>📷 upload a photo of your handwritten answer</b> (transcribed by your AI provider's vision model). The AI grades it like a BPSC examiner: estimated marks /15, dimension-wise bars (structure, content, relevance, language, presentation), strengths, improvements and a model answer. Exportable to PDF.</p>
+  <img class="shot" src="images/mains.png" alt="Mains evaluation">
+</section>
+
+<section id="interview">
+  <h2>12. Interview Coach</h2>
+  <p class="hi">साक्षात्कार कोच</p>
+  <p>A mock BPSC panel interview <b>by voice</b> — the coach asks a question aloud (browser TTS), you answer by speaking (🎤) or typing, it gives a one-line critique and asks the next. Choose your focus: Bihar-specific, current affairs, graduation/general or situational. Works best in Chrome/Edge; falls back to text-only elsewhere.</p>
+  <img class="shot" src="images/interview.png" alt="Interview coach">
+</section>
+
+<section id="mentor">
+  <h2>13. AI Mentor</h2>
+  <p class="hi">AI मेंटर</p>
+  <p>Ask any BPSC doubt, any time — answers in your language, exam-focused. Includes 🎤 voice input.</p>
+  <img class="shot" src="images/mentor.png" alt="AI mentor">
+</section>
+
+<section id="qbank">
+  <h2>14. Question Bank (Admin)</h2>
+  <p class="hi">प्रश्न बैंक (एडमिन)</p>
+  <p>Grow the question bank that powers quizzes, practice and test papers:</p>
+  <ul>
+    <li><b>📋 Review queue</b> — scraped/ingested questions arrive as <i>pending</i>; approve ✅ or reject ❌ each (the correct answer is highlighted). Only approved questions ever reach students.</li>
+    <li><b>🌐 Scrape</b> — pull questions from a source (built-in sample, or any URL returning a JSON array).</li>
+    <li><b>📥 Import</b> — paste a JSON array of questions to add directly.</li>
+  </ul>
+  <img class="shot" src="images/question-bank.png" alt="Question bank admin">
+  <div class="tip">To lock these admin actions on a public server, set the <code>ADMIN_TOKEN</code> environment variable in Coolify and enter the same token once in this page's token field.</div>
+</section>
+
+<section id="settings">
+  <h2>15. Settings &amp; AI providers</h2>
+  <p class="hi">सेटिंग्स व AI प्रदाता</p>
+  <p>Choose the AI backend for the Mentor, Mains, Interview, OCR and news-conversion features: <b>Claude (Anthropic) · OpenAI · OpenAI-compatible · Google Gemini · Vertex AI · Local LLM (Ollama)</b>. Enter your API key, click <b>Fetch models</b> and pick from the dropdown.</p>
+  <img class="shot" src="images/settings.png" alt="Settings">
+  <div class="ok">🔒 Your API key is stored only in your browser and sent directly to the provider — it never touches this server.</div>
+</section>
+
+<section id="hindi">
+  <h2>16. Using the app in Hindi</h2>
+  <p class="hi">ऐप हिंदी में</p>
+  <p>Press <b>हिंदी</b> in the sidebar — the entire interface <i>and all content</i> (chapters, questions, explanations, takeaways) switch instantly.</p>
+  <img class="shot" src="images/dashboard-hindi.png" alt="Dashboard in Hindi">
+</section>
+
+<section id="deploy">
+  <h2>17. Deployment (Coolify / Docker)</h2>
+  <p class="hi">परिनियोजन</p>
+  <h3>Coolify (recommended)</h3>
+  <ol>
+    <li>New resource → Application → this Git repository, branch <code>main</code>.</li>
+    <li>Build pack: <b>Docker Compose</b> (auto-detected) or <b>Dockerfile</b>. Either way the app listens on port <b>3000</b> — set that as the service port so Traefik routes your domain to it. <b>Do not publish extra host ports.</b></li>
+    <li>Add a persistent volume at <code>/data</code> (keeps the question bank across redeploys; the compose file creates it automatically).</li>
+    <li>Optional env vars: <code>ADMIN_TOKEN</code> (lock admin endpoints), <code>NEWS_AUTOFETCH=0</code> (disable the daily news fetch).</li>
+    <li>Set your domain → Coolify issues HTTPS automatically (needed for PWA install, offline and voice).</li>
+  </ol>
+  <h3>Plain Docker (testing)</h3>
+  <pre>git clone https://github.com/Premsh101/AgentLearning.git
+cd AgentLearning
+docker compose -f docker-compose.yml -f docker-compose.standalone.yml up -d --build
+# open http://&lt;server-ip&gt;:8080   (change with APP_PORT=9090)</pre>
+</section>
+
+<section id="faq">
+  <h2>18. FAQ &amp; troubleshooting</h2>
+  <p class="hi">सामान्य प्रश्न</p>
+  <table>
+    <tr><th>Problem</th><th>Fix</th></tr>
+    <tr><td>AI features say “configure a provider”</td><td>Settings → choose a provider → paste your API key → Save. Local LLM needs no key (point it at your Ollama URL).</td></tr>
+    <tr><td>Voice doesn’t work</td><td>Use Chrome or Edge over <b>HTTPS</b> (or localhost). Other browsers fall back to text.</td></tr>
+    <tr><td>Test Papers / PYQ “live” / Practice show an error</td><td>Those need the backend — make sure the container is running (<code>/api/health</code> should return <code>ok</code>).</td></tr>
+    <tr><td>Live News is empty</td><td>The server needs outbound internet to reach the PIB feed; press <i>Fetch now</i>, or add a custom feed via the Question Bank admin token + <code>POST /api/news/fetch</code>.</td></tr>
+    <tr><td>Coolify deploy: “port is already allocated”</td><td>You’re on an old compose file — pull latest <code>main</code>: it publishes no host ports.</td></tr>
+    <tr><td>Question bank reset after redeploy</td><td>The <code>/data</code> volume wasn’t mounted — add persistent storage at <code>/data</code>.</td></tr>
+    <tr><td>Progress lost</td><td>Progress lives in the browser’s localStorage — use the same browser/profile, and don’t clear site data.</td></tr>
+  </table>
+</section>
+
+<footer>BPSC AI OS · user manual · generated from the live application</footer>
+</div>
+</body>
+</html>
