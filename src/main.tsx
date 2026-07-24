@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { LangProvider } from './lib/i18n';
 import { App } from './App';
+import { initSync, pullState, getAuth } from './lib/auth';
 import './styles.css';
 
 // Lazy-load pages so each route is a separate chunk — smaller initial load,
@@ -24,12 +25,24 @@ const Mains = lazy(() => import('./pages/Mains').then((m) => ({ default: m.Mains
 const Interview = lazy(() => import('./pages/Interview').then((m) => ({ default: m.Interview })));
 const Mentor = lazy(() => import('./pages/Mentor').then((m) => ({ default: m.Mentor })));
 const Settings = lazy(() => import('./pages/Settings').then((m) => ({ default: m.Settings })));
+const Account = lazy(() => import('./pages/Account').then((m) => ({ default: m.Account })));
 
 function Loading() {
   return <div style={{ padding: 32, color: 'var(--text-dim)' }}>…</div>;
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+// Hydrate synced progress from the server (when logged in) BEFORE first render,
+// so pages read up-to-date state. Bounded so a slow network never blocks the app.
+async function boot() {
+  initSync();
+  if (getAuth()) {
+    await Promise.race([pullState().catch(() => {}), new Promise((r) => setTimeout(r, 1500))]);
+  }
+  render();
+}
+
+function render() {
+  ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <LangProvider>
       <HashRouter>
@@ -59,9 +72,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path="interview" element={<Suspense fallback={<Loading />}><Interview /></Suspense>} />
             <Route path="mentor" element={<Suspense fallback={<Loading />}><Mentor /></Suspense>} />
             <Route path="settings" element={<Suspense fallback={<Loading />}><Settings /></Suspense>} />
+            <Route path="account" element={<Suspense fallback={<Loading />}><Account /></Suspense>} />
           </Route>
         </Routes>
       </HashRouter>
     </LangProvider>
   </React.StrictMode>
-);
+  );
+}
+
+boot();

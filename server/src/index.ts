@@ -4,6 +4,7 @@ import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { seedIfEmpty } from './db';
 import { api } from './api';
+import { auth } from './auth';
 import { startNewsScheduler } from './news';
 
 // Crash visibility: if the process dies, the container log says why.
@@ -30,6 +31,7 @@ app.use(cors());
 app.use(express.json({ limit: '4mb' }));
 
 app.use('/api', api);
+app.use('/api/auth', auth);
 
 // Serve the built frontend (single-container deploy) with SPA fallback.
 // Works both when run from source (tsx, cwd = repo root) and when run as the

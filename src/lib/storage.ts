@@ -1,5 +1,11 @@
 const PREFIX = 'bpscai.';
 
+// Optional listener so the account-sync layer can push changes to the server.
+let saveListener: ((key: string) => void) | null = null;
+export function onSave(listener: ((key: string) => void) | null): void {
+  saveListener = listener;
+}
+
 export function loadJSON<T>(key: string, fallback: T): T {
   try {
     const raw = localStorage.getItem(PREFIX + key);
@@ -12,6 +18,7 @@ export function loadJSON<T>(key: string, fallback: T): T {
 export function saveJSON<T>(key: string, value: T): void {
   try {
     localStorage.setItem(PREFIX + key, JSON.stringify(value));
+    saveListener?.(key);
   } catch {
     // storage full or unavailable — non-fatal
   }
